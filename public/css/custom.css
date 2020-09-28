@@ -1,0 +1,29 @@
+body {
+    font-family: 'Muli', sans-serif !important;
+    overflow-y: scroll;
+}
+
+.background-main {
+    background-color: #151921;
+}
+
+.background-secondary {
+    background-color: #1b2029;
+}
+
+.navbar a {
+    color: white;
+}
+
+.text-grey {
+    color: #82828a;
+}
+
+.landing-page-header {
+    font-size: 55px;
+    font-weight: 900;
+}
+
+.spacer {
+    padding-bottom: 7%;
+}
