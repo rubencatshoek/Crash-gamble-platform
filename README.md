@@ -39,18 +39,3 @@ php artisan storage:link
 
 1. Vul database met tables.
 2. Vul tables met data.
-
-## Features
-* Onderzoeken overzichtelijker maken door filteren- en kaart functionaliteiten
-* Onderzoeken tonen vanuit een centraal punt: awoz.nl
-* Communicatie stimuleren d.m.v een intern communicatiesysteem
-* Onderzoeken door onderzoekers laten toevoegen
-
-## Authors
-
-* **Kaycee Tjon-Kon-Fat** - *Initial work* - [Kaze85](https://github.com/Kaze85)
-* **Ilse Riddersma** - *Initial work* - [ridd0053](https://github.com/ridd0053)
-* **Alex Spelt** - *Initial work* - [alexspelt](https://github.com/alexspelt)
-* **Kars Hamelink** - *Initial work* - [karsenHAM](https://github.com/karsanHAM)
-* **Jeffrey Sentjens** - *Initial work* - [jpmsen](https://github.com/jpmsen)
-* **Danny Lifino** - *Initial work* - [dannylifino](https://github.com/dannylifino)
