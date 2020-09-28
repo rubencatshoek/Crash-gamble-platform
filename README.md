@@ -7,7 +7,6 @@ A readme designed to get on track to developing faster.
 
 ```
 git clone --branch master https://github.com/rubencatshoek/crash-gamble-platform
-cd AWOZ-project/
 composer install
 cp .env.example .env
 php artisan key:generate
