@@ -7,7 +7,7 @@ Een webapplicatie voor Academische Werkplek Ouderenzorg Zeeland om onderzoeken o
 Voer deze code uit om aan de minimale vereisten te voldoen.
 
 ```
-git clone --branch master https://github.com/dannylifino/AWOZ-project.git AWOZ-project
+git clone --branch master https://github.com/rubencatshoek/crash-gamble-platform
 cd AWOZ-project/
 composer install
 cp .env.example .env
