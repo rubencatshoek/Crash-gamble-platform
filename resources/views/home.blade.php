@@ -8,11 +8,21 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                yeet
+            </div>
+            <div class="col-6">
+                yeet
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 @stop
 
 @section('js')

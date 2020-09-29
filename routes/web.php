@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,16 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('
 
 // Resource example Laravel 7
 //Route::resource('application', ApplicationController::class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Admin routes within dashboard
+Route::middleware('auth.admin')->prefix('admin')->group(function () {
+
+    //user routes
+    Route::prefix('users')->group(function () {
+        Route::get('', [App\Http\Controllers\Admin\UserController::class, 'index']);
+    });
+
+});
+

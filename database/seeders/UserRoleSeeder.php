@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\UserRole;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -15,8 +16,7 @@ class UserRoleSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('user_roles')->insert([
-            'name' => 'admin',
-        ]);
+        UserRole::create(['name' => "USER"]);
+        UserRole::create(['name' => "ADMIN"]);
     }
 }

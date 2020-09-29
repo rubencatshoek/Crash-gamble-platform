@@ -42,6 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function role()
+    {
+        return $this->belongsTo(UserRole::class);
+    }
+
     /**
      * Checks if the user is an admin
      *
