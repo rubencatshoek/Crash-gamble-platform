@@ -1,7 +1,26 @@
+/* OVERALL ---------------------------------------------------------------------- */
 body {
     font-family: 'Muli', sans-serif !important;
     overflow-y: scroll;
     background-color: #151921 !important;
+}
+
+.spacer {
+    padding-bottom: 7%;
+}
+
+/* BRANDING ---------------------------------------------------------------------- */
+.input-dark {
+    background-color: #151921 !important;
+    border: none !important;
+}
+
+.background-brand {
+    background-color: #2b6ecf !important;
+}
+
+.color-brand {
+    color: #2b6ecf !important;
 }
 
 .background-main {
@@ -12,24 +31,18 @@ body {
     background-color: #1b2029;
 }
 
+/* NAV BAR ---------------------------------------------------------------------- */
 .navbar a {
     color: white;
 }
 
-.text-grey {
-    color: #82828a;
-}
-
+/* LANDING PAGE ---------------------------------------------------------------------- */
 .landing-page-header {
     font-size: 55px;
     font-weight: 900;
 }
 
-.spacer {
-    padding-bottom: 7%;
-}
-
-.input-dark {
-    background-color: #151921 !important;
-    border: none !important;
+/* OTHER ---------------------------------------------------------------------- */
+.text-grey {
+    color: #82828a;
 }

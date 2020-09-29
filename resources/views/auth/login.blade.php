@@ -10,9 +10,9 @@
                     <div class="card-body pl-5 pr-5">
 
                         <div class="text-center">
-                            <a href="./">
-                            <img alt="logo image" class="pt-5 pb-5 img-fluid" height="250px" width="250px"
-                                 src="{{ asset('img/logo.png') }}">
+                            <a href="{{ route('welcome') }}">
+                                <img alt="logo image" class="pt-5 pb-5 img-fluid" height="250px" width="250px"
+                                     src="{{ asset('img/logo.png') }}">
                             </a>
                         </div>
 
@@ -22,7 +22,7 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
-{{--                            TODO: Change email to username --}}
+                            {{-- TODO: Change email to username --}}
                             <label for="email">Email</label>
                             <input placeholder="Your email" id="email" type="email"
                                    class="form-control input-dark @error('email') is-invalid @enderror" name="email"
@@ -36,7 +36,8 @@
                             <br>
                             <label for="password">Password</label>
                             <input placeholder="Your password" id="password" type="password"
-                                   class="form-control input-dark @error('password') is-invalid @enderror" name="password" required
+                                   class="form-control input-dark @error('password') is-invalid @enderror"
+                                   name="password" required
                                    autocomplete="current-password">
 
                             @error('password')
@@ -45,10 +46,9 @@
                                     </span>
                             @enderror
 
-
                             <div class="spacer">
                             </div>
-                            <button type="submit" class="form-control btn btn-dark">
+                            <button type="submit" class="form-control btn background-brand text-white">
                                 Login
                             </button>
 
@@ -56,13 +56,13 @@
                             </div>
                             <div class="text-center pt-5">
                                 Don't have an account?
-                                <a class="" href="{{ route('password.request') }}">
+                                <a class="color-brand" href="{{ route('register') }}">
                                     Sign up
                                 </a>
 
                                 <div class="pt-2">
                                     @if (Route::has('password.request'))
-                                        <a class="" href="{{ route('password.request') }}">
+                                        <a class="color-brand" href="{{ route('password.request') }}">
                                             Forgot your password?
                                         </a>
                                     @endif
