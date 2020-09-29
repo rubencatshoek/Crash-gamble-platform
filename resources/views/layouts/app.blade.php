@@ -26,9 +26,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Muli" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg background-main fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-lg background-main fixed-top navbar-dark" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="{{ route('welcome') }}">Logo here</a>
+        <a class="navbar-brand js-scroll-trigger" href="{{ route('welcome') }}">
+            Logo here
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
