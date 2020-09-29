@@ -26,7 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Muli" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg background-main fixed-top navbar-dark" id="mainNav">
+<nav class="navbar navbar-expand-lg background-main fixed-top navbar-dark py-3" id="mainNav">
     <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="{{ route('welcome') }}">
             Logo here
@@ -38,11 +38,21 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    <a class="nav-link" href="{{ route('login') }}">Other link</a>
                 </li>
+
+                <li class="nav-item pl-4 pr-2">
+                    <a class="btn btn-outline-light px-4" href="{{ route('login') }}">
+                        Login
+                    </a>
+                </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">Sign up</a>
+                    <a class="btn background-brand text-white px-4" href="{{ route('register') }}">
+                        Sign up
+                    </a>
                 </li>
+
             </ul>
         </div>
     </div>
