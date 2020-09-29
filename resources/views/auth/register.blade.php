@@ -47,6 +47,8 @@
                             @enderror
                             <br>
 
+                            <div class="row">
+                                <div class="col-md-6">
                             <label for="password">Password</label>
                             <input placeholder="Your password" id="password" type="password"
                                    class="form-control input-dark @error('password') is-invalid @enderror"
@@ -58,21 +60,22 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                             @enderror
-                            <br>
 
+                                </div>
+                                <div class="col-md-6">
                             <label for="password-confirm">Confirm password</label>
-                            <input placeholder="Your password again" id="password-confirm" type="password"
+                            <input placeholder="Your password" id="password-confirm" type="password"
                                    class="form-control input-dark"
                                    name="password_confirmation" required autocomplete="new-password">
-
+                            </div>
+                            </div>
                             <div class="spacer">
                             </div>
                             <button type="submit" class="form-control btn background-brand text-white">
                                 Register
                             </button>
 
-                            <div class="spacer">
-                            </div>
+
 
                             <div class="text-center pt-5">
                                 Already have an account?

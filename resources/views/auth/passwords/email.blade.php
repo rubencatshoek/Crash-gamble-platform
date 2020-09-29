@@ -41,7 +41,7 @@
                             </button>
 
                             <div class="text-center pt-5">
-                                Remembered your password?
+                                Remember your password?
                                 <a class="color-brand" href="{{ route('login') }}">
                                     Login
                                 </a>
