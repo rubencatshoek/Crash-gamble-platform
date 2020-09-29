@@ -20,8 +20,6 @@ npm install
 
 ## Developing
 
-Een stappenplan om te beginnen met developen.
-
 ```
 php artisan migrate:fresh && php artisan db:seed
 php artisan storage:link
