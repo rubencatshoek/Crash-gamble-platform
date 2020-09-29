@@ -1,6 +1,7 @@
 body {
     font-family: 'Muli', sans-serif !important;
     overflow-y: scroll;
+    background-color: #151921 !important;
 }
 
 .background-main {
@@ -26,4 +27,9 @@ body {
 
 .spacer {
     padding-bottom: 7%;
+}
+
+.input-dark {
+    background-color: #151921 !important;
+    border: none !important;
 }
