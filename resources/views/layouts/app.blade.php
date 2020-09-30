@@ -41,6 +41,7 @@
                     <a class="nav-link" href="{{ route('login') }}">Other link</a>
                 </li>
 
+                @if (Auth::guest())
                 <li class="nav-item pl-4 pr-2">
                     <a class="btn btn-outline-light px-4" href="{{ route('login') }}">
                         Login
@@ -52,7 +53,29 @@
                         Sign up
                     </a>
                 </li>
+                @endif
 
+                @if ($user = Auth::user())
+                    <li class="nav-item">
+                        <p class="nav-link">|</p>
+                    </li>
+
+                    <li class="nav-item">
+                        <p class="nav-link">100 </p>
+                    </li>
+
+                    <div class="dropdown show">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">View profile</a>
+                            <a class="dropdown-item" href="#">Account settings</a>
+                            <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
+                        </div>
+                    </div>
+                @endif
             </ul>
         </div>
     </div>

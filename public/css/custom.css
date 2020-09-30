@@ -9,6 +9,10 @@ body {
     padding-bottom: 7%;
 }
 
+section {
+    padding: 6% !important;
+}
+
 /* BRANDING ---------------------------------------------------------------------- */
 .input-dark {
     background-color: #151921 !important;
@@ -32,8 +36,21 @@ body {
 }
 
 /* NAV BAR ---------------------------------------------------------------------- */
-.navbar a {
-    color: white;
+/*.navbar a {*/
+/*    color: white;*/
+/*}*/
+
+.dropdown-menu {
+    background-color: #1b2029 !important;
+    border: none !important;
+}
+
+.dropdown-item {
+    color: white !important;
+}
+
+.dropdown-item:hover {
+    background-color: #151921 !important;
 }
 
 /* LANDING PAGE ---------------------------------------------------------------------- */

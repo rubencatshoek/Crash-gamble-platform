@@ -22,6 +22,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 // Resource example Laravel 7
 //Route::resource('application', ApplicationController::class);
