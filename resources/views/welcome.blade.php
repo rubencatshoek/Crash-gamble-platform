@@ -6,7 +6,7 @@
         </div>
         <div class="container pt-5">
             <div class="row">
-                <div class="col-md-6 pr-5">
+                <div class="col-md-6">
                     <h1 class="landing-page-header">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</h1>
                     <p class="lead pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
                         dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
