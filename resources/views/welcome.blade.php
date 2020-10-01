@@ -18,9 +18,7 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-12 pb-5">
-
                             <img alt="crash gif" class="img-fluid" src="{{ asset('img/crash.gif') }}">
-
                         </div>
                         <div class="col-md-4 text-center">
                             <div class="pb-3">
@@ -96,4 +94,258 @@
 
         </div>
     </section>
+
+    <section class="background-main text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center pb-4">
+                    <h2 class="font-weight-bold">Leaderboards</h2>
+                    <p class="lead pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <h3 class="font-weight-bold">Individual</h3>
+                    <p class="lead text-grey">The top 5 individual players</p>
+                    <table class="table-landing table text-white background-secondary border-0">
+                        <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Profit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>#1</td>
+                            <td><a href="#">Mark</a></td>
+                            <td>₿50</td>
+                        </tr>
+                        <tr>
+                            <td>#2</td>
+                            <td><a href="#">Mark</a></td>
+                            <td>₿40</td>
+                        </tr>
+                        <tr>
+                            <td>#3</td>
+                            <td><a href="#">Mark</a></td>
+                            <td>₿30</td>
+                        </tr>
+                        <tr>
+                            <td>#4</td>
+                            <td><a href="#">Mark</a></td>
+                            <td>₿20</td>
+                        </tr>
+                        <tr>
+                            <td>#5</td>
+                            <td><a href="#">Mark</a></td>
+                            <td>₿10</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <h3 class="font-weight-bold">Squads</h3>
+                    <p class="lead text-grey">The top 5 squads</p>
+                    <table class="table-landing table text-white background-secondary border-0">
+                        <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Profit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>#1</td>
+                            <td><a href="#">Squad</a></td>
+                            <td>₿500</td>
+                        </tr>
+                        <tr>
+                            <td>#2</td>
+                            <td><a href="#">Squad</a></td>
+                            <td>₿400</td>
+                        </tr>
+                        <tr>
+                            <td>#3</td>
+                            <td><a href="#">Squad</a></td>
+                            <td>₿300</td>
+                        </tr>
+                        <tr>
+                            <td>#4</td>
+                            <td><a href="#">Squad</a></td>
+                            <td>₿200</td>
+                        </tr>
+                        <tr>
+                            <td>#5</td>
+                            <td><a href="#">Squad</a></td>
+                            <td>₿100</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="background-secondary text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center pb-4">
+                    <h2 class="font-weight-bold">Provably fair</h2>
+                    <p class="lead pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Content here</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="background-main text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center pb-4">
+                    <h2 class="font-weight-bold">Social aspects</h2>
+                    <p class="lead pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img alt="crash gif" class="img-fluid" src="{{ asset('img/crash.gif') }}">
+                </div>
+
+                <div class="col-lg-6 text-center">
+                    <h5 class="font-weight-bold">Title</h5>
+                    <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet.
+                    </p>
+
+                    <h5 class="font-weight-bold">Title</h5>
+                    <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="background-secondary text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center pb-4">
+                    <h2 class="font-weight-bold">Game aspects</h2>
+                    <p class="lead pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <h5 class="font-weight-bold">Title</h5>
+                    <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet.
+                    </p>
+
+                    <h5 class="font-weight-bold">Title</h5>
+                    <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet.
+                    </p>
+                </div>
+
+                <div class="col-lg-6 text-center">
+                    <img alt="crash gif" class="img-fluid" src="{{ asset('img/crash.gif') }}">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="background-main text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center pb-4">
+                    <h2 class="font-weight-bold">Featured in</h2>
+                    <p class="lead pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 text-center px-4">
+                    <img class="img-fluid" height="250px" width="250px" src="{{ asset('img/logo.png') }}">
+                    <p class="pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci.
+                    </p>
+                </div>
+
+                <div class="col-lg-4 text-center px-4">
+                    <img class="img-fluid" height="250px" width="250px" src="{{ asset('img/logo.png') }}">
+                    <p class="pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-center px-4">
+                    <img class="img-fluid" height="250px" width="250px" src="{{ asset('img/logo.png') }}">
+                    <p class="pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="background-secondary text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center pb-4">
+                    <h2 class="font-weight-bold">Sign up bonus</h2>
+                    <p class="lead pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                        laoreet.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 text-center">
+
+                </div>
+                <div class="col-lg-6 text-center">
+                    <a class="btn background-brand btn-lg w-100">Play now</a>
+                </div>
+                <div class="col-lg-3 text-center">
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    @include('layouts.footer')
 @endsection

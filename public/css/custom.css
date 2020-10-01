@@ -63,3 +63,7 @@ section {
 .text-grey {
     color: #82828a;
 }
+
+.table-landing td, .table th{
+    border: none !important;
+}
