@@ -17,25 +17,46 @@
     @endif
 
     <a href="gebruikers/aanmaken" class="btn red-button my-3">Add user</a>
-
-    <div class="row">
-        @foreach ($users as $user)
-            <div class="col-12 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    {{--                    <img class="card-img-top" src="..." alt="C">--}}
-                    <div class="card-body">
-                        <h2 class="card-title font-weight-bold">{{$user->name}}</h2> <br>
-                        <p class="card-text">
-                            {{$user->email}} <br>
-                            {{$user->phone_number}}
-                        </p>
-
-                        <a href="/dashboard/gebruikers/{{$user->id}}" class="btn btn-primary">Manage</a>
-                    </div>
-                </div>
-
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                    </tr>
+                    </thead>
+                    @foreach ($users as $user)
+                        @if($user->role_id === 2)
+                    <tbody>
+                    <tr>
+                        <th scope="row">{{$user->id}}</th>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>Admin </td>
+                        <td><a href="/admin/users/{{$user->id}}/edit" class="btn btn-primary">Manage</a></td>
+                    </tr>
+                        @endif
+                    @endforeach
+                    @foreach ($users as $user)
+                        @if($user->role_id === 1)
+                            <tbody>
+                            <tr>
+                                <th scope="row">{{$user->id}}</th>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td> User </td>
+                                <td><a href="/dashboard/gebruikers/{{$user->id}}" class="btn btn-primary">Manage</a></td>
+                            </tr>
+                            @endif
+                            @endforeach
+                    </tbody>
+                </table>
             </div>
-        @endforeach
+
+
     </div>
 
 @endsection

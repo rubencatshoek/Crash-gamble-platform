@@ -23,16 +23,9 @@ class UserController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
-    /**
-     * Displays the resource view
-     *
-     * @return void
-     */
-    public function create()
+    public function edit(User $user)
     {
-        $roles = UserRole::all();
-        $organisations = Organisation::all();
-        return view('admin.users.create', compact('roles', 'organisations'));
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
