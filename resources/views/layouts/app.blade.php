@@ -26,7 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Muli" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg background-main fixed-top navbar-dark py-3" id="mainNav">
+<nav class="shadow-sm navbar navbar-expand-lg background-main fixed-top navbar-dark py-3" id="mainNav">
     <div class="container">
         <a href="{{ route('welcome') }}">
             <img alt="logo" class="img-fluid" height="200px" width="200px" src="{{ asset('img/logo.png') }}">
@@ -38,7 +38,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Other link</a>
+                    <a class="nav-link" href="{{ route('play.index') }}">Play</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">Leaderboards</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('faq.index') }}">FAQ</a>
                 </li>
 
                 @if (Auth::guest())

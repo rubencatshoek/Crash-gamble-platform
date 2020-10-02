@@ -12,7 +12,7 @@
                         dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
                         laoreet.</p>
                     <div class="pt-3">
-                        <a class="btn background-brand btn-lg w-100">Play now</a>
+                        <a class="btn background-brand btn-lg w-100 text-white" href="{{ route('play.index') }}">Play now</a>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -290,7 +290,7 @@
             <div class="row">
                 <div class="col-lg-6 text-center">
                     <h3 class="font-weight-bold">Individual</h3>
-                    <p class="lead text-grey">The top 5 individual players</p>
+                    <p class="lead text-grey">The top 5 players</p>
                     <table class="table-landing table text-white background-secondary border-0">
                         <thead>
                         <tr>
@@ -335,7 +335,7 @@
                         <thead>
                         <tr>
                             <th>Rank</th>
-                            <th>Player</th>
+                            <th>Squad</th>
                             <th>Profit</th>
                         </tr>
                         </thead>
@@ -388,7 +388,7 @@
 
                 </div>
                 <div class="col-lg-6 text-center">
-                    <a class="btn background-brand btn-lg w-100">Play now</a>
+                    <a class="btn background-brand btn-lg w-100 text-white" href="{{ route('play.index') }}">Play now</a>
                 </div>
                 <div class="col-lg-3 text-center">
 
