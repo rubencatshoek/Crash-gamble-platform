@@ -9,6 +9,10 @@ body {
     padding-bottom: 7%;
 }
 
+section {
+    padding: 6% !important;
+}
+
 /* BRANDING ---------------------------------------------------------------------- */
 .input-dark {
     background-color: #151921 !important;
@@ -24,16 +28,29 @@ body {
 }
 
 .background-main {
-    background-color: #151921;
+    background-color: #151921 !important;
 }
 
 .background-secondary {
-    background-color: #1b2029;
+    background-color: #1b2029 !important;
 }
 
 /* NAV BAR ---------------------------------------------------------------------- */
-.navbar a {
-    color: white;
+/*.navbar a {*/
+/*    color: white;*/
+/*}*/
+
+.dropdown-menu {
+    background-color: #1b2029 !important;
+    border: none !important;
+}
+
+.dropdown-item {
+    color: white !important;
+}
+
+.dropdown-item:hover {
+    background-color: #151921 !important;
 }
 
 /* LANDING PAGE ---------------------------------------------------------------------- */
@@ -45,4 +62,24 @@ body {
 /* OTHER ---------------------------------------------------------------------- */
 .text-grey {
     color: #82828a;
+}
+
+.table-landing td, .table th{
+    border: none !important;
+}
+
+.background-brand:hover {
+    background-color: #1754ad !important;
+}
+
+.background-brand:focus, .btn:focus {
+    box-shadow: none !important;
+}
+
+.height-100 {
+    height: 91vh;
+}
+
+.padding-top {
+    padding-top: 6%;
 }
