@@ -22,10 +22,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/profile/{username}', [App\Http\Controllers\UserController::class, 'index'])->name('profile');
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
 Route::resource('faq', \App\Http\Controllers\FaqController::class);
 Route::resource('play', \App\Http\Controllers\PlayController::class);
+Route::resource('settings', \App\Http\Controllers\SettingController::class);
 
 //Admin routes within dashboard
 Route::middleware('auth.admin')->prefix('admin')->group(function () {

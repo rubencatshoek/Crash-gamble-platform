@@ -25,6 +25,8 @@ class UserSeeder extends Seeder
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),
             'password' => Hash::make('admin'),
+            'paid_balance' => 500,
+            'free_balance' => 100,
         ]);
         DB::table('users')->insert([
             'role_id' => '1',
@@ -32,6 +34,8 @@ class UserSeeder extends Seeder
             'email' => 'user@user.com',
             'email_verified_at' => now(),
             'password' => Hash::make('user'),
+            'paid_balance' => 500,
+            'free_balance' => 100,
         ]);
     }
 }

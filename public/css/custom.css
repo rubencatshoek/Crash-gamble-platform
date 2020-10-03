@@ -35,11 +35,11 @@ section {
     background-color: #1b2029 !important;
 }
 
-/* NAV BAR ---------------------------------------------------------------------- */
-/*.navbar a {*/
-/*    color: white;*/
-/*}*/
+.color-green {
+    color: green !important;
+}
 
+/* NAV BAR ---------------------------------------------------------------------- */
 .dropdown-menu {
     background-color: #1b2029 !important;
     border: none !important;
@@ -51,6 +51,18 @@ section {
 
 .dropdown-item:hover {
     background-color: #151921 !important;
+}
+
+.dropdown a {
+    color: #82828a !important;
+}
+
+.dropdown a:hover {
+    color: #ffffff !important;
+}
+
+.navbar .nav-link:hover {
+    color: #ffffff !important;
 }
 
 /* LANDING PAGE ---------------------------------------------------------------------- */
@@ -82,4 +94,9 @@ section {
 
 .padding-top {
     padding-top: 6%;
+}
+
+.footer a:hover {
+    color: white !important;
+    text-decoration: none;
 }
