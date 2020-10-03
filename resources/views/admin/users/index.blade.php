@@ -56,7 +56,7 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>Admin</td>
-                            <td><a href="/admin/users/{{$user->id}}/edit" class="btn btn-primary">Manage</a></td>
+                            <td><a href="/dashboard/admin/users/{{$user->id}}/edit" class="btn btn-primary">Manage</a></td>
                         </tr>
                     @endif
                 @endforeach
@@ -68,7 +68,7 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td> User</td>
-                            <td><a href="/dashboard/gebruikers/{{$user->id}}" class="btn btn-primary">Manage</a>
+                            <td><a href="/dashboard/admin/users/{{$user->id}}/edit" class="btn btn-primary">Manage</a>
                             </td>
                         </tr>
                         @endif

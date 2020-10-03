@@ -39,6 +39,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
         Route::prefix('users')->group(function () {
             Route::get('', [App\Http\Controllers\Admin\UserController::class, 'index']);
             Route::get('/{user}/edit', [App\Http\Controllers\Admin\UserController::class, 'edit']);
+            Route::post('/{user}/update', [App\Http\Controllers\Admin\UserController::class, 'update']);
         });
 
     });

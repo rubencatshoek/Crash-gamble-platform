@@ -61,30 +61,18 @@ class UserController extends Controller
      * @param Request $request
      * @return void
      */
-    public function store(Request $request)
+    public function update(Request $request, User $user)
     {
+        //
+        //stores the created article
 
         $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'phone_number' => 'nullable|string|max:255',
-            'email' => 'required|string|email|unique:users',
-            'role_id' => 'required|integer|exists:user_roles,id',
-            'organisations' => 'nullable|array',
-            'organisations.*' => 'integer|exists:organisations,id',
+            'name' => "required|unique:users",
         ]);
 
-        $generatedPassword = Str::random(12);
-        $data['password'] = Hash::make($generatedPassword);
+        $user->update($data);
 
-        $user = User::create($data);
-
-        $organisations = $data['organisations'] ?? null;
-        $user->organisations()->sync($organisations);
-
-        Mail::to($user)->send(new UserCreated($user, $generatedPassword));
-
-        return redirect("/dashboard/gebruikers/$user->id")->with('success', 'Gebruiker is aangemaakt én de logingegevens zijn verstuurd.');
+        return redirect()->back()->with('success', 'User succesfully edited');
     }
-
 
 }
