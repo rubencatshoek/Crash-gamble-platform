@@ -49,13 +49,13 @@
                 </tr>
                 </thead>
                 @foreach ($filteredUsers as $user)
-                    @if($user->role_id === 2)
+                    @if($user->role_id === 3)
                         <tbody>
                         <tr>
                             <th scope="row">{{$user->id}}</th>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
-                            <td>Admin</td>
+                            <td>Moderator</td>
                             <td><a href="/dashboard/admin/users/{{$user->id}}/edit" class="btn btn-primary">Manage</a></td>
                         </tr>
                     @endif

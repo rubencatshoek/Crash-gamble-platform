@@ -18,5 +18,6 @@ class UserRoleSeeder extends Seeder
     {
         UserRole::create(['name' => "USER"]);
         UserRole::create(['name' => "ADMIN"]);
+        UserRole::create(['name' => "MODERATOR"]);
     }
 }
