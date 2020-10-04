@@ -303,27 +303,27 @@
                         <tr>
                             <td>#1</td>
                             <td><a href="#">Mark</a></td>
-                            <td>₿50</td>
+                            <td class="color-green">₿50</td>
                         </tr>
                         <tr>
                             <td>#2</td>
                             <td><a href="#">Mark</a></td>
-                            <td>₿40</td>
+                            <td class="color-green">₿40</td>
                         </tr>
                         <tr>
                             <td>#3</td>
                             <td><a href="#">Mark</a></td>
-                            <td>₿30</td>
+                            <td class="color-green">₿30</td>
                         </tr>
                         <tr>
                             <td>#4</td>
                             <td><a href="#">Mark</a></td>
-                            <td>₿20</td>
+                            <td class="color-green">₿20</td>
                         </tr>
                         <tr>
                             <td>#5</td>
                             <td><a href="#">Mark</a></td>
-                            <td>₿10</td>
+                            <td class="color-green">₿10</td>
                         </tr>
                         </tbody>
                     </table>
@@ -343,27 +343,27 @@
                         <tr>
                             <td>#1</td>
                             <td><a href="#">Squad</a></td>
-                            <td>₿500</td>
+                            <td class="color-green">₿500</td>
                         </tr>
                         <tr>
                             <td>#2</td>
                             <td><a href="#">Squad</a></td>
-                            <td>₿400</td>
+                            <td class="color-green">₿400</td>
                         </tr>
                         <tr>
                             <td>#3</td>
                             <td><a href="#">Squad</a></td>
-                            <td>₿300</td>
+                            <td class="color-green">₿300</td>
                         </tr>
                         <tr>
                             <td>#4</td>
                             <td><a href="#">Squad</a></td>
-                            <td>₿200</td>
+                            <td class="color-green">₿200</td>
                         </tr>
                         <tr>
                             <td>#5</td>
                             <td><a href="#">Squad</a></td>
-                            <td>₿100</td>
+                            <td class="color-green">₿100</td>
                         </tr>
                         </tbody>
                     </table>

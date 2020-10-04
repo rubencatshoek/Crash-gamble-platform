@@ -41,7 +41,7 @@
                     <a class="nav-link" href="{{ route('play.index') }}">Play</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('welcome') }}">Leaderboards</a>
+                    <a class="nav-link" href="{{ route('leaderboards.index') }}">Leaderboards</a>
                 </li>
                 <li class="nav-item pr-2">
                     <a class="nav-link" href="{{ route('faq.index') }}">FAQ</a>

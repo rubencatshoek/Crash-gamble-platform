@@ -96,7 +96,11 @@ section {
     padding-top: 6%;
 }
 
-.footer a:hover {
+td a {
+    color: #82828a;
+}
+
+.footer a:hover, td a:hover {
     color: white !important;
     text-decoration: none;
 }

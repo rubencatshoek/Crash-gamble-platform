@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="background-main text-white">
+    <section class="background-secondary text-white">
         <div class="spacer pt-5 d-sm-none d-md-none">
         </div>
         <div class="container pt-4">
@@ -32,7 +32,7 @@
                         <a class="text-white text-decoration-none" data-toggle="collapse"
                            href="#collapseExample{{ $faq->id }}" role="button" aria-expanded="false"
                            aria-controls="collapseExample">
-                            <div class="background-secondary py-3">
+                            <div class="background-main py-3">
                                 {{ $faq->question }}
 
                                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16"
@@ -44,40 +44,13 @@
                             </div>
                         </a>
                         <div class="collapse" id="collapseExample{{ $faq->id }}">
-                            <div class="card card-body background-secondary">
+                            <div class="card card-body background-main">
                                 {{ $faq->answer }}
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-        </div>
-    </section>
-
-    <section class="background-secondary text-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center pb-4">
-                    <h2 class="font-weight-bold">Start playing</h2>
-                    <p class="lead pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
-                        laoreet.</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-3 text-center">
-
-                </div>
-                <div class="col-lg-6 text-center">
-                    <a class="btn background-brand btn-lg w-100 text-white" href="{{ route('play.index') }}">Play
-                        now</a>
-                </div>
-                <div class="col-lg-3 text-center">
-
-                </div>
-            </div>
-
         </div>
     </section>
     @include('layouts.footer')
