@@ -25,9 +25,12 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('
 Route::get('/profile/{username}', [App\Http\Controllers\UserController::class, 'index'])->name('profile');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
-Route::resource('faq', \App\Http\Controllers\FaqController::class);
-Route::resource('play', \App\Http\Controllers\PlayController::class);
-Route::resource('settings', \App\Http\Controllers\SettingController::class);
+Route::post('/balance/donate', [App\Http\Controllers\BalanceController::class, 'donate'])->name('balance.donate');
+
+Route::resource('faq', App\Http\Controllers\FaqController::class);
+Route::resource('play', App\Http\Controllers\PlayController::class);
+Route::resource('settings', App\Http\Controllers\SettingController::class);
+Route::resource('balance', App\Http\Controllers\BalanceController::class);
 
 //Admin routes within dashboard
 Route::middleware('auth.admin')->prefix('admin')->group(function () {

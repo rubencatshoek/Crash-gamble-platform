@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="pb-3">
-                        <a class="text-decoration-none" href="{{ route('settings.index') }}">
+                        <a class="text-decoration-none" href="{{ route('balance.index') }}">
                             Manage balance
                         </a>
                     </div>
