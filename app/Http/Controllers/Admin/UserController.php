@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -63,12 +65,32 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
-        //stores the created article
+        //stores the updates user data
 
-        $data = $request->validate([
-            'name' => "required|unique:users",
+        if (Auth::user()->role_id !== 2) {
+            return;
+        }
+
+
+        $data = $request->only('name', 'role_id');
+
+        $validator = Validator::make($data, [
+            'name' => [
+                'required',
+                Rule::unique('users')->ignore($user->id),
+                'max:15'
+            ],
+            'role_id' => [
+                'required',
+                'exists:user_roles,id'
+            ]
         ]);
+
+        if ($validator->fails()) {
+            return redirect::back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $user->update($data);
 
