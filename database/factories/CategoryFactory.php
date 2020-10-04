@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Balance;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class BalanceFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Balance::class;
+    protected $model = Category::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,7 @@ class BalanceFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name
         ];
     }
 }

@@ -43,16 +43,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('welcome') }}">Leaderboards</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item pr-2">
                     <a class="nav-link" href="{{ route('faq.index') }}">FAQ</a>
                 </li>
 
                 @if (Auth::guest())
-                    <li class="nav-item pl-4 pr-2">
+                    <li class="nav-item pr-2">
                         <a class="btn btn-outline-light px-4" href="{{ route('login') }}">
                             Login
                         </a>
                     </li>
+
+                    <div class="pt-2 d-lg-none">
+                    </div>
 
                     <li class="nav-item">
                         <a class="btn background-brand text-white px-4" href="{{ route('register') }}">

@@ -22,7 +22,9 @@ class FaqFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'category_id' => $this->faker->numberBetween(1, 10),
+            'question' => $this->faker->sentence,
+            'answer' => $this->faker->realText()
         ];
     }
 }
