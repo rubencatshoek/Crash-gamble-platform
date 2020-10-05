@@ -21,9 +21,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-// Resource example Laravel 7
-//Route::resource('application', ApplicationController::class);
+Route::resource('faq', \App\Http\Controllers\FaqController::class);
+Route::resource('play', \App\Http\Controllers\PlayController::class);
 
 //Dashboard routes
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
         Route::prefix('users')->group(function () {
             Route::get('', [App\Http\Controllers\Admin\UserController::class, 'index']);
             Route::get('/{user}/edit', [App\Http\Controllers\Admin\UserController::class, 'edit']);
+            Route::post('/{user}/update', [App\Http\Controllers\Admin\UserController::class, 'update']);
         });
 
     });
