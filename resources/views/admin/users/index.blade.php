@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary m-1">Filter users</button>
 
-                    <a href="/dashboard/admin/users" class="btn btn-danger m-1">Reset filters</a>
+                    <a href="{{route ('admin.user.index')}}" class="btn btn-danger m-1">Reset filters</a>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>Moderator</td>
-                            <td><a href="/dashboard/admin/users/{{$user->id}}/edit" class="btn btn-primary">Manage</a></td>
+                            <td><a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary">Manage</a></td>
                         </tr>
                     @endif
                 @endforeach
@@ -68,7 +68,7 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td> User</td>
-                            <td><a href="/dashboard/admin/users/{{$user->id}}/edit" class="btn btn-primary">Manage</a>
+                            <td><a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary">Manage</a>
                             </td>
                         </tr>
                         @endif

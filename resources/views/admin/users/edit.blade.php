@@ -20,13 +20,13 @@
             {{\Session::get('errorMsg')}}
         </div>
     @endif
-    <form action="/dashboard/admin/users/{{$user->id}}/update" method="post">
+    <form action="{{route ('admin.user.update', $user->id)}}" method="post">
         @csrf
         <div class="row">
             <div class="col-12 col-md-6">
                 <div>
                     <label for="name" class="col-form-label">Username </label>
-                    <input required name="name" class="form-control @error("name") alert-danger @enderror " type="text" maxlength="15"
+                    <input required class="form-control @error("name") alert-danger @enderror " type="text" maxlength="15"
                            value="{{old('name') ?? $user->name}}" placeholder="Geef hier een naam aan je thema."
                            name="name" id="name">
                     @error("name")
@@ -38,7 +38,7 @@
                 </div>
                 <div>
                     <label for="role_id" class="col-form-label">Role </label>
-                    <select required name="role_id" class="form-control @error("role_id") alert-danger @enderror" placeholder="Geef hier een naam aan je thema."
+                    <select required name="role_id" class="form-control @error("role_id") alert-danger @enderror"
                             name="role_id" id="role_id">
                         @if ($user->role_id == 1) <option name="role_id" value="1"> User</option> <option name="role_id" value="3"> Moderator</option>@endif
                         @if ($user->role_id == 3) <option name="role_id" value="3"> Moderator</option> <option name="role_id" value="1"> User</option>@endif
@@ -53,7 +53,7 @@
             </div>
         </div>
         <button class="btn btn-primary mt-4">Edit user</button>
-        <a class="btn btn-danger mt-4" href="/dashboard/admin/users">Cancel</a>
+        <a class="btn btn-danger mt-4" href="{{route ('admin.user.index')}}">Cancel</a>
     </form>
 @endsection
 
