@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Squad;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class LeaderboardController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('leaderboard.index', ['users' => $users]);
+        $squads = Squad::all();
+        return view('leaderboard.index', ['users' => $users, 'squads' => $squads]);
     }
 }

@@ -68,11 +68,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>#1</td>
-                            <td><a href="#">Squad</a></td>
-                            <td class="color-green">₿500</td>
-                        </tr>
+                        @foreach ($squads as $squad)
+                            <tr>
+                                <td>#{{ $squad->id }}</td>
+                                <td><a href="{{ route('profile', $squad->name) }}">{{ $squad->name }}</a></td>
+                                <td class="color-green">₿50</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
