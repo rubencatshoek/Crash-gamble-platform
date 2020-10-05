@@ -244,8 +244,9 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'User management',
-            'url'  => 'admin/users',
+            'url'  => 'dashboard/admin/users',
             'icon' => 'fas fa-fw fa-user',
+            'isAdminRoute' => true
         ],
         [
             'text' => 'change_password',
@@ -328,6 +329,7 @@ return [
         JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class,
+        App\Filters\MenuFilter::class,
     ],
 
     /*

@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->role->name === 'ADMIN';
     }
+
+    public function statuses()
+    {
+        return $this->belongsToMany(Status::class, 'user_statuses');
+    }
 }

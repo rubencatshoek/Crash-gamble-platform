@@ -37,5 +37,12 @@ class UserSeeder extends Seeder
             'paid_balance' => 500,
             'free_balance' => 100,
         ]);
+        DB::table('users')->insert([
+            'role_id' => '3',
+            'name' => 'mod',
+            'email' => 'mod@mod.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('mod'),
+        ]);
     }
 }
