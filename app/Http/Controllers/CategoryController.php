@@ -3,21 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Faq;
 use Illuminate\Http\Request;
 
-class FaqController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $categories = Category::all()->sortBy('id');
-        $faqs = Faq::all()->sortBy('category_id');
-        return view('faq.index', ['categories' => $categories, 'faqs' => $faqs]);
+        //
     }
 
     /**
@@ -44,10 +41,10 @@ class FaqController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Faq  $faq
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Faq $faq)
+    public function show(Category $category)
     {
         //
     }
@@ -55,10 +52,10 @@ class FaqController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Faq  $faq
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Faq $faq)
+    public function edit(Category $category)
     {
         //
     }
@@ -67,10 +64,10 @@ class FaqController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Faq  $faq
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Faq $faq)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -78,10 +75,10 @@ class FaqController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Faq  $faq
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Faq $faq)
+    public function destroy(Category $category)
     {
         //
     }

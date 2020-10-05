@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Faq;
+use App\Models\Squad;
 use Illuminate\Database\Seeder;
 
-class FaqSeeder extends Seeder
+class SquadSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class FaqSeeder extends Seeder
      */
     public function run()
     {
-        Faq::factory()->times(10)->create();
+        Squad::factory()->times(10)->create();
     }
 }

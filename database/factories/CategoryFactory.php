@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Faq;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class FaqFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Faq::class;
+    protected $model = Category::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,7 @@ class FaqFactory extends Factory
     public function definition()
     {
         return [
-            'category_id' => $this->faker->numberBetween(1, 10),
-            'question' => $this->faker->sentence,
-            'answer' => $this->faker->realText()
+            'name' => $this->faker->name
         ];
     }
 }

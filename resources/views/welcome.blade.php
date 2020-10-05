@@ -300,31 +300,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>#1</td>
-                            <td><a href="#">Mark</a></td>
-                            <td>₿50</td>
-                        </tr>
-                        <tr>
-                            <td>#2</td>
-                            <td><a href="#">Mark</a></td>
-                            <td>₿40</td>
-                        </tr>
-                        <tr>
-                            <td>#3</td>
-                            <td><a href="#">Mark</a></td>
-                            <td>₿30</td>
-                        </tr>
-                        <tr>
-                            <td>#4</td>
-                            <td><a href="#">Mark</a></td>
-                            <td>₿20</td>
-                        </tr>
-                        <tr>
-                            <td>#5</td>
-                            <td><a href="#">Mark</a></td>
-                            <td>₿10</td>
-                        </tr>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>#{{ $user->id }}</td>
+                                <td><a href="{{ route('profile', $user->name) }}">{{ $user->name }}</a></td>
+                                <td class="color-green">₿50</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -340,31 +322,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>#1</td>
-                            <td><a href="#">Squad</a></td>
-                            <td>₿500</td>
-                        </tr>
-                        <tr>
-                            <td>#2</td>
-                            <td><a href="#">Squad</a></td>
-                            <td>₿400</td>
-                        </tr>
-                        <tr>
-                            <td>#3</td>
-                            <td><a href="#">Squad</a></td>
-                            <td>₿300</td>
-                        </tr>
-                        <tr>
-                            <td>#4</td>
-                            <td><a href="#">Squad</a></td>
-                            <td>₿200</td>
-                        </tr>
-                        <tr>
-                            <td>#5</td>
-                            <td><a href="#">Squad</a></td>
-                            <td>₿100</td>
-                        </tr>
+                        @foreach ($squads as $squad)
+                            <tr>
+                                <td>#{{ $squad->id }}</td>
+                                <td><a href="{{ route('profile', $squad->name) }}">{{ $squad->name }}</a></td>
+                                <td class="color-green">₿50</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

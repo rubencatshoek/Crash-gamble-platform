@@ -20,14 +20,14 @@
             {{\Session::get('errorMsg')}}
         </div>
     @endif
-    <form action="/dashboard/admin/users/{{$user->id}}/update" method="post">
+    <form action="{{route ('admin.user.update', $user->id)}}" method="post">
         @csrf
         <div class="row">
             <div class="col-12 col-md-6">
                 <div>
                     <label for="name" class="col-form-label">Username </label>
-                    <input required name="name" class="form-control @error("name") alert-danger @enderror " type="text" maxlength="15"
-                           value="{{old('name') ?? $user->name}}" placeholder="Enter a username here..."
+                    <input required class="form-control @error("name") alert-danger @enderror " type="text" maxlength="15"
+                           value="{{old('name') ?? $user->name}}" placeholder="Geef hier een naam aan je thema."
                            name="name" id="name">
                     @error("name")
                     <p class="text-danger">
@@ -53,7 +53,7 @@
             </div>
         </div>
         <button class="btn btn-primary mt-4">Edit user</button>
-        <a class="btn btn-danger mt-4" href="/dashboard/admin/users">Cancel</a>
+        <a class="btn btn-danger mt-4" href="{{route ('admin.user.index')}}">Cancel</a>
     </form>
 @endsection
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Squad;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function welcome()
     {
-        return view('welcome');
+        $users = User::all()->take(5);
+        $squads = Squad::all()->take(5);
+        return view('welcome', ['users' => $users, 'squads' => $squads]);
     }
 }
