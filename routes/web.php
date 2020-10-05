@@ -27,6 +27,7 @@ Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout
 Route::get('/leaderboards', [App\Http\Controllers\LeaderboardController::class, 'index'])->name('leaderboards.index');
 
 Route::post('/balance/donate', [App\Http\Controllers\BalanceController::class, 'donate'])->name('balance.donate');
+Route::post('/settings/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 
 Route::resource('faq', App\Http\Controllers\FaqController::class);
 Route::resource('play', App\Http\Controllers\PlayController::class);

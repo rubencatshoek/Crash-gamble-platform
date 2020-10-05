@@ -23,7 +23,8 @@
                     </div>
 
                     <div class="pb-3">
-                        <a class="text-decoration-none" style="color: white !important;" href="{{ route('settings.index') }}">
+                        <a class="text-decoration-none" style="color: white !important;"
+                           href="{{ route('settings.index') }}">
                             Account settings
                         </a>
                     </div>
@@ -52,10 +53,10 @@
                     <br>
 
                     @if(!empty($user->email))
-                    <label for="email">Email</label>
-                    <input id="email" class="input-dark form-control" type="email"
-                           value=" {{ $user->email }}"
-                           disabled>
+                        <label for="email">Email</label>
+                        <input id="email" class="input-dark form-control" type="email"
+                               value=" {{ $user->email }}"
+                               disabled>
                     @else
                         <label for="email">Email</label>
                         <input id="email" class="input-dark form-control" type="email">
@@ -63,21 +64,25 @@
                         <button class="btn background-brand text-white px-4">Send email confirmation</button>
                     @endif
                     <h4 class="font-weight-bold pt-5 pb-3">Change password</h4>
-                    <label for="current_password">Current password</label>
-                    <input id="current_password" class="input-dark form-control" name="current_password"
-                           type="password">
-                    <br>
 
-                    <label for="new_password">New password</label>
-                    <input id="new_password" class="input-dark form-control" name="new_password" type="password">
-                    <br>
+                    <form method="POST" action="{{ route('user.update') }}">
+                        @csrf
+                        <label for="current_password">Current password</label>
+                        <input id="current_password" class="input-dark form-control" name="current_password"
+                               type="password">
+                        <br>
 
-                    <label for="confirm_new_password">Confirm new password</label>
-                    <input id="confirm_new_password" class="input-dark form-control" name="confirm_new_password"
-                           type="password">
-                    <br>
+                        <label for="new_password">New password</label>
+                        <input id="new_password" class="input-dark form-control" name="new_password" type="password">
+                        <br>
 
-                    <button class="btn background-brand text-white px-4">Change password</button>
+                        <label for="confirm_new_password">Confirm new password</label>
+                        <input id="confirm_new_password" class="input-dark form-control" name="confirm_new_password"
+                               type="password">
+                        <br>
+
+                        <button class="btn background-brand text-white px-4">Change password</button>
+                    </form>
                 </div>
             </div>
         </div>
