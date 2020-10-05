@@ -15,7 +15,15 @@ class CreateFaqsTable extends Migration
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('category_id')->default(1);
+            $table->string('question');
+            $table->longText('answer');
             $table->timestamps();
+
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('cascade');
         });
     }
 
