@@ -5,6 +5,9 @@
     <section class="background-secondary text-white">
         <div class="spacer pt-5 d-sm-none d-md-none">
         </div>
+
+        @include('layouts.message')
+
         <div class="container pt-4">
             <div class="row">
                 <div class="dropdown col-lg-2 pb-4">

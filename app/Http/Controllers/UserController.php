@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -40,13 +41,14 @@ class UserController extends Controller
         ]);
 
         if (!Hash::check($request->current_password, auth()->user()->password)) {
-            return back()->with('error', 'You have entered wrong password');
+            return back()->with(session()->flash('alert-danger', 'Current password is incorrect'));
         } else {
             $user = auth()->user();
             $user->update([
                 'password' => bcrypt($request->new_password)
             ]);
-            return redirect(route('welcome'))->with('message', 'Success message');
+
+            return back()->with(session()->flash('alert-success', 'Successfully changed password'));
         }
     }
 }

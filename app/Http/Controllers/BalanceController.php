@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Balance;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BalanceController extends Controller
 {
@@ -97,11 +98,11 @@ class BalanceController extends Controller
         $amount = $request->amount;
 
         if ($targetUser === null) {
-            return redirect(route('balance.index'))->with('message', 'User does not exist');
+            return back()->with(session()->flash('alert-danger', 'User does not exist'));
         }
 
         if ($amount > $currentUser->paid_balance) {
-            return redirect(route('balance.index'))->with('message', 'You do not have enough balance');
+            return back()->with(session()->flash('alert-danger', 'You do not have enough balance'));
         }
 
         $currentUser->update([
@@ -112,6 +113,6 @@ class BalanceController extends Controller
             'paid_balance' => $targetUser->paid_balance + $amount
         ]);
 
-        return redirect(route('balance.index'))->with('message', 'Success message');
+        return back()->with(session()->flash('alert-success', 'Successfully donated money to ' . $targetUser->name));
     }
 }
