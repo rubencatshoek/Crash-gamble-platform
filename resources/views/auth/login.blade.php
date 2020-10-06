@@ -23,10 +23,10 @@
                             @csrf
 
                             {{-- TODO: Change email to username --}}
-                            <label for="email">Email</label>
-                            <input placeholder="Your email" id="email" type="email"
-                                   class="form-control input-dark @error('email') is-invalid @enderror" name="email"
-                                   value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <label for="name">Username <span class="color-red">*</span></label>
+                            <input placeholder="Your username" id="name" type="text"
+                                   class="form-control input-dark @error('email') is-invalid @enderror" name="name"
+                                   value="{{ old('name') }}" required autofocus>
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
                                     </span>
                             @enderror
                             <br>
-                            <label for="password">Password</label>
+                            <label for="password">Password <span class="color-red">*</span></label>
                             <input placeholder="Your password" id="password" type="password"
                                    class="form-control input-dark @error('password') is-invalid @enderror"
                                    name="password" required
