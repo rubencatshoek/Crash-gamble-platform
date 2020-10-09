@@ -15,6 +15,12 @@
             {{\Session::get('success')}}
         </div>
     @endif
+    @if (\Session::has('error'))
+        <div class="alert alert-danger alert-dismissible mt-2">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{\Session::get('error')}}
+        </div>
+    @endif
     <form role="form">
         <div class="row">
             <div class="col-12 col-md-6">
@@ -62,25 +68,16 @@
                             <td>{{$user->free_balance}}</td>
                             <td>Moderator</td>
                             <td><a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary">Manage</a>
-                                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#confirm"
-                                   data-action="freeplay" data-id="{{ $user->id }}" data-user="{{ $user->name }}">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cash-stack"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M14 3H1a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1h-1z"/>
-                                        <path fill-rule="evenodd"
-                                              d="M15 5H1v8h14V5zM1 4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H1z"/>
-                                        <path
-                                            d="M13 5a2 2 0 0 0 2 2V5h-2zM3 5a2 2 0 0 1-2 2V5h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 13a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
-                                    </svg>
-                                </a>
-                                <a href="#" class="btn btn-warning">
+                                <a  class="btn btn-warning" data-toggle="modal" data-target="#confirm"
+                                   data-action="flag" data-id="{{ $user->id }}" data-user="{{ $user->name }}">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-flag-fill"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                              d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001"/>
-                                    </svg>
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001"/>
+                                </svg>
                                 </a>
-                                <a href="#" class="btn btn-warning">
+                                <a  class="btn btn-warning" data-toggle="modal" data-target="#confirm"
+                                   data-action="mute" data-id="{{ $user->id }}" data-user="{{ $user->name }}">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-volume-mute-fill"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
@@ -89,7 +86,8 @@
                                               d="M9.146 5.646a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0z"/>
                                     </svg>
                                 </a>
-                                <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-danger">
+                                <a  class="btn btn-danger" data-toggle="modal" data-target="#confirm"
+                                   data-action="ban" data-id="{{ $user->id }}" data-user="{{ $user->name }}">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hammer"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -138,6 +136,8 @@
                         <form id="confirm_form" method="POST">
                             @csrf
                             @method('post')
+                            <input type="hidden" name="id" id="id" readonly>
+                            <input type="hidden" name="action" id="action" readonly>
                             <button type="submit" class="btn btn-danger" id="confirm_formbtn"></button>
                         </form>
                     </div>
@@ -167,9 +167,9 @@
                 width: 'resolve',
             })
         });
-        </script>
+    </script>
 
-            <script>
+    <script>
         document.getElementById('userNameFilter').onchange = function () {
             localStorage.setItem('selectedName', document.getElementById('userNameFilter').value);
         };
@@ -177,7 +177,7 @@
             document.getElementById('user_' + localStorage.getItem('selectedName')).selected = true;
         }
         ;
-        </script>
+    </script>
 
     <script>
         $('#confirm').on('show.bs.modal', function (event) {
@@ -189,17 +189,12 @@
             let modal = $(this);
 
             //Set all default confirm modal/form values
-            modal.find('#confirm_formbtn').attr('data-action', `/dashboard/admin/projecten/${id}/bijwerken`);
+            modal.find('#confirm_form').attr('action', `/dashboard/admin/users/${id}/updateStatus`);
             modal.find('#action').val(`${action}`);
             modal.find('#id').val(id);
-            modal.find('#delete_contact_id').attr('action', "/dashboard/admin/contact/" + id);
 
             //Adjust modal content dynamically
             switch (action) {
-                case 'freeplay' :
-                    modal.find('#dynamicWarningText').html(`Are you sure you want to give <b>${user}</b> freeplay?`);
-                    $("#confirm_formbtn").html('Give freeplay');
-                    break;
                 case 'flag' :
                     modal.find('#dynamicWarningText').html(`Are you sure you want to flag <b>${user}</b>?`);
                     $("#confirm_formbtn").html('Flag user');

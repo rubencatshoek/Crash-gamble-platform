@@ -47,7 +47,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
             Route::get('', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.user.index');
             Route::get('/{user}/edit', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('admin.user.edit');
             Route::post('/{user}/update', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin.user.update');
-            Route::('/{user}/update', [App\Http\Controllers\Admin\UserController::class, 'create'])->name('admin.user.update');
+            Route::post('/{user}/updateStatus', [App\Http\Controllers\Admin\UserController::class, 'updateStatus'])->name('admin.user.updateStatus');
         });
 
     });
