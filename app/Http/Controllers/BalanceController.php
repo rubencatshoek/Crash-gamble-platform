@@ -113,6 +113,6 @@ class BalanceController extends Controller
             'paid_balance' => $targetUser->paid_balance + $amount
         ]);
 
-        return back()->with(session()->flash('alert-success', 'Successfully donated money to ' . $targetUser->name));
+        return back()->with(session()->flash('alert-success', 'Successfully donated ' . $amount .  ' balance to ' . $targetUser->name));
     }
 }
