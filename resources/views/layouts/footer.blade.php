@@ -14,16 +14,16 @@
 
                 <ul class="list-unstyled">
                     <li class="pb-1">
-                        <a class="text-grey" href="#">Home</a>
+                        <a class="text-grey" href="{{ route('welcome') }}">Home</a>
                     </li>
                     <li class="pb-1">
-                        <a class="text-grey" href="#">Play</a>
+                        <a class="text-grey" href="{{ route('play.index') }}">Play</a>
                     </li>
                     <li class="pb-1">
-                        <a class="text-grey" href="#">Leaderboards</a>
+                        <a class="text-grey" href="{{ route('leaderboards.index') }}">Leaderboards</a>
                     </li>
                     <li class="pb-1">
-                        <a class="text-grey" href="#">FAQ</a>
+                        <a class="text-grey" href="{{ route('faq.index') }}">FAQ</a>
                     </li>
                 </ul>
             </div>

@@ -20,16 +20,8 @@ class UserSeeder extends Seeder
     {
         User::factory()->times(50)->create();
         DB::table('users')->insert([
-            'role_id' => '2',
-            'name' => 'admin',
-            'email' => 'admin@admin.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('admin'),
-            'paid_balance' => 500,
-            'free_balance' => 100,
-        ]);
-        DB::table('users')->insert([
             'role_id' => '1',
+            'squad_id' => 1,
             'name' => 'user',
             'email' => 'user@user.com',
             'email_verified_at' => now(),
@@ -39,10 +31,21 @@ class UserSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             'role_id' => '3',
+            'squad_id' => 1,
             'name' => 'mod',
             'email' => 'mod@mod.com',
             'email_verified_at' => now(),
             'password' => Hash::make('mod'),
+        ]);
+        DB::table('users')->insert([
+            'role_id' => '2',
+            'squad_id' => 1,
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('admin'),
+            'paid_balance' => 500,
+            'free_balance' => 100,
         ]);
     }
 }

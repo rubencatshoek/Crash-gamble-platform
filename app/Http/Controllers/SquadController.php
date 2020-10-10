@@ -10,11 +10,17 @@ class SquadController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index($squad)
     {
-        //
+        $squad = Squad::where('name', $squad)->first();
+
+        if ($squad === null) {
+            return abort(404);
+        }
+
+        return view('squad.index', ['squad' => $squad]);
     }
 
     /**

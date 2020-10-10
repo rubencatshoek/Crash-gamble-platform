@@ -71,7 +71,7 @@
                         @foreach ($squads as $squad)
                             <tr>
                                 <td>#{{ $squad->id }}</td>
-                                <td><a href="{{ route('profile', $squad->name) }}">{{ $squad->name }}</a></td>
+                                <td><a href="{{ route('squad', $squad->name) }}">{{ $squad->name }}</a></td>
                                 <td class="color-green">₿50</td>
                             </tr>
                         @endforeach

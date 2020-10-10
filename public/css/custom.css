@@ -39,6 +39,10 @@ section {
     color: green !important;
 }
 
+.color-red {
+    color: #dc3545 !important;
+}
+
 /* NAV BAR ---------------------------------------------------------------------- */
 .dropdown-menu {
     background-color: #1b2029 !important;

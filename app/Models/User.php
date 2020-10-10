@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
@@ -46,6 +46,11 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(UserRole::class);
+    }
+
+    public function squad()
+    {
+        return $this->belongsTo(Squad::class);
     }
 
     /**
