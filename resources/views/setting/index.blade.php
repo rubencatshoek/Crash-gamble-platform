@@ -10,40 +10,7 @@
 
         <div class="container pt-4">
             <div class="row">
-                <div class="dropdown col-lg-2 pb-4">
-                    <h2 class="font-weight-bold pb-2">Menu</h2>
-
-                    <div class="pb-3">
-                        <a class="text-decoration-none" href="{{ route('home') }}">
-                            Admin panel
-                        </a>
-                    </div>
-
-                    <div class="pb-3">
-                        <a class="text-decoration-none" href="{{ route('profile', $user->name) }}">
-                            View profile
-                        </a>
-                    </div>
-
-                    <div class="pb-3">
-                        <a class="text-decoration-none" style="color: white !important;"
-                           href="{{ route('settings.index') }}">
-                            Account settings
-                        </a>
-                    </div>
-
-                    <div class="pb-3">
-                        <a class="text-decoration-none" href="{{ route('balance.index') }}">
-                            Manage balance
-                        </a>
-                    </div>
-
-                    <div class="pb-3">
-                        <a class="text-decoration-none" href="{{ url('/logout') }}">
-                            Logout
-                        </a>
-                    </div>
-                </div>
+                @include('layouts.user_menu')
 
                 <div class="col-lg-1 pb-4">
                 </div>
