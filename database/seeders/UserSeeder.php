@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             'free_balance' => 100,
         ]);
         DB::table('users')->insert([
-            'role_id' => '3',
+            'role_id' => '2',
             'squad_id' => 1,
             'name' => 'mod',
             'email' => 'mod@mod.com',
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('mod'),
         ]);
         DB::table('users')->insert([
-            'role_id' => '2',
+            'role_id' => '3',
             'squad_id' => 1,
             'name' => 'admin',
             'email' => 'admin@admin.com',

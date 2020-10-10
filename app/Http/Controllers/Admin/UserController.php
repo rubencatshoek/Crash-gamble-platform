@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\UserStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,7 @@ class UserController extends Controller
     /**
      * Displays the resource view
      *
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
     {
@@ -61,16 +62,81 @@ class UserController extends Controller
      * Stores the resource
      *
      * @param Request $request
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateStatus(Request $request)
+    {
+        $data = $request->only('id', 'action');
+        $user = User::find($data['id']);
+        $authUser = auth()->user();
+        $admin = 3;
+
+        if ($authUser->role_id !== $admin) {
+            return redirect()->back()->with('error', 'Something went wrong.');
+        }
+
+        if ($authUser->role_id <= $user->role_id) {
+            return redirect()->back()->with('error', 'Something went wrong.');
+        }
+
+        $validator = Validator::make($data, [
+            'id' => [
+                'required',
+                'exists:users,id'
+            ],
+            'action' => [
+                'required',
+            ]
+        ]);
+
+        if ($validator->fails()) {
+            return redirect::back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $status_id = null;
+        $action = '';
+
+        switch ($request['action']) {
+            case 'flag':
+                $status_id = 3;
+                $action = 'flagged';
+                break;
+            case 'mute':
+                $status_id = 2;
+                $action = 'muted';
+                break;
+            case 'ban':
+                $status_id = 1;
+                $action = 'banned';
+                break;
+            default:
+                return redirect()->back()->with('error', 'Something went wrong.');
+        }
+
+        UserStatus::create([
+            'status_id' => $status_id,
+            'user_id' => $user->id
+        ]);
+
+        return redirect()->back()->with('success', 'user: "' . $user->name . '" was successfully ' . $action);
+    }
+
+    /**
+     * Stores the resource
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, User $user)
     {
-        //stores the updates user data
+        $authUser = auth()->user();
+        $admin = 3;
 
-        if (Auth::user()->role_id !== 2) {
+        if ($authUser->role_id !== $admin) {
             return;
         }
-
 
         $data = $request->only('name', 'role_id');
 
@@ -96,5 +162,4 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'User succesfully edited');
     }
-
 }
