@@ -16,13 +16,13 @@
     </div>
 
     <div class="pb-3">
-        <a class="text-decoration-none" href="{{ route('settings.index') }}">
+        <a class="text-decoration-none" href="{{ route('settings.index') }}" style="@if(Request::is('settings')) color:white !important; @endif">
             Account settings
         </a>
     </div>
 
     <div class="pb-3">
-        <a class="text-decoration-none" href="{{ route('balance.index') }}">
+        <a class="text-decoration-none" href="{{ route('balance.index') }}" style="@if(Request::is('balance')) color:white !important; @endif">
             Manage balance
         </a>
     </div>

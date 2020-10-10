@@ -38,13 +38,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('play.index') }}">Play</a>
+                    <a class="nav-link" href="{{ route('play.index') }}" style="@if(Request::is('play')) color:white !important; @endif">Play</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('leaderboards.index') }}">Leaderboards</a>
+                    <a class="nav-link" href="{{ route('leaderboards.index') }}" style="@if(Request::is('leaderboards')) color:white !important; @endif">Leaderboards</a>
                 </li>
                 <li class="nav-item pr-2">
-                    <a class="nav-link" href="{{ route('faq.index') }}">FAQ</a>
+                    <a class="nav-link" href="{{ route('faq.index') }}" style="@if(Request::is('faq')) color:white !important; @endif">FAQ</a>
                 </li>
 
                 @if (Auth::guest())
