@@ -48,6 +48,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(UserRole::class);
     }
 
+    public function squad()
+    {
+        return $this->belongsTo(Squad::class);
+    }
+
     /**
      * Checks if the user is an admin
      *
