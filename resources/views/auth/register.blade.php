@@ -22,7 +22,7 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
-                            <label for="name">Username</label>
+                            <label for="name">Username <span class="color-red">*</span></label>
                             <input placeholder="Your username" id="name" type="text"
                                    class="form-control input-dark @error('name') is-invalid @enderror" name="name"
                                    value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -34,22 +34,25 @@
                             @enderror
                             <br>
 
-                            {{-- TODO: Change email to username registering  (INPUT FIELD WILL BE REMOVED) --}}
                             <label for="email">Email</label>
                             <input placeholder="Your email" id="email" type="email"
                                    class="form-control input-dark @error('email') is-invalid @enderror" name="email"
-                                   value="{{ old('email') }}" required autocomplete="email">
+                                   value="{{ old('email') }}" autocomplete="email">
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                             @enderror
-                            <br>
+
+                            <div class="py-3">
+                                <input type="checkbox" name="terms">
+                            <span>I accept bla bla bla.</span>
+                            </div>
 
                             <div class="row">
                                 <div class="col-md-6">
-                            <label for="password">Password</label>
+                            <label for="password">Password <span class="color-red">*</span></label>
                             <input placeholder="Your password" id="password" type="password"
                                    class="form-control input-dark @error('password') is-invalid @enderror"
                                    name="password"
@@ -63,7 +66,7 @@
 
                                 </div>
                                 <div class="col-md-6">
-                            <label for="password-confirm">Confirm password</label>
+                            <label for="password-confirm">Confirm password <span class="color-red">*</span></label>
                             <input placeholder="Your password" id="password-confirm" type="password"
                                    class="form-control input-dark"
                                    name="password_confirmation" required autocomplete="new-password">

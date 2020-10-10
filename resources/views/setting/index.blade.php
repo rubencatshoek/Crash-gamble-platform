@@ -5,6 +5,9 @@
     <section class="background-secondary text-white">
         <div class="spacer pt-5 d-sm-none d-md-none">
         </div>
+
+        @include('layouts.message')
+
         <div class="container pt-4">
             <div class="row">
                 <div class="dropdown col-lg-2 pb-4">
@@ -58,10 +61,14 @@
                                value=" {{ $user->email }}"
                                disabled>
                     @else
+                        <form method="POST" action="{{ route('settings.update', $user->id) }}">
+                        @csrf
+                        @method('PUT')
                         <label for="email">Email</label>
-                        <input id="email" class="input-dark form-control" type="email">
+                        <input id="email" class="input-dark form-control" type="email" name="email">
                         <br>
-                        <button class="btn background-brand text-white px-4">Send email confirmation</button>
+                        <button class="btn background-brand text-white px-4">Set email</button>
+                        </form>
                     @endif
                     <h4 class="font-weight-bold pt-5 pb-3">Change password</h4>
 
