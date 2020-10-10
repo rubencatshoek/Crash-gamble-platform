@@ -24,7 +24,7 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        //Validate incomming data
+        //Validate incoming data
         $data = $request->validate([
             //Let incoming data be nullable so
             'user_id' => ['nullable', 'exists:users,id'],
