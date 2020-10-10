@@ -14,10 +14,19 @@ class CreateUserStatusesTable extends Migration
     public function up()
     {
         Schema::create('user_statuses', function (Blueprint $table) {
-            $table->unsignedBigInteger('status_id')->onCascade('delete');
-            $table->unsignedBigInteger('user_id')->onCascade('delete');
+            $table->id();
+            $table->unsignedBigInteger('status_id');
+            $table->unsignedBigInteger('user_id');
+            $table->timestamps();
 
-            $table->primary(['status_id', 'user_id']);
+            $table->foreign('status_id')
+                ->references('id')
+                ->on('statuses')
+                ->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 
