@@ -12,21 +12,17 @@ class SquadController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index($squad)
+    public function index()
     {
-        $squad = Squad::where('name', $squad)->first();
+        $user = auth()->user();
 
-        if ($squad === null) {
-            return abort(404);
-        }
-
-        return view('squad.index', ['squad' => $squad]);
+        return view('squad.index', ['user' => $user]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -36,12 +32,28 @@ class SquadController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Squad $squad
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Squad $squad, Request $request)
     {
-        //
+        $currentUser = auth()->user();
+        $amount = 100;
+
+        if ($amount > $currentUser->paid_balance) {
+            return back()->with(session()->flash('alert-danger', 'You do not have enough balance'));
+        }
+
+        $currentUser->update([
+            'paid_balance' => $currentUser->paid_balance - $amount
+        ]);
+
+        $squad->create(request()->validate([
+            'name' => 'required|unique:squads'
+        ]));
+
+        return back()->with(session()->flash('alert-success', 'Squad successfully created'));
     }
 
     /**
@@ -87,5 +99,21 @@ class SquadController extends Controller
     public function destroy(Squad $squad)
     {
         //
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function profile($squad)
+    {
+        $squad = Squad::where('name', $squad)->first();
+
+        if ($squad === null) {
+            return abort(404);
+        }
+
+        return view('squad.profile', ['squad' => $squad]);
     }
 }

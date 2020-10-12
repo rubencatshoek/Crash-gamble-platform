@@ -17,6 +17,9 @@
 
                 <div class="col-lg-9 pb-2">
                     <h2 class="font-weight-bold pb-3">Manage balance</h2>
+                    <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in dignissim
+                        eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur laoreet.</p>
+
                     <label for="paid_balance">Paid balance</label>
                     <input id="paid_balance" class="input-dark form-control" type="text"
                            value="{{ $user->paid_balance }}"

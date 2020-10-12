@@ -16,6 +16,12 @@
     </div>
 
     <div class="pb-3">
+        <a class="text-decoration-none" href="{{ route('squad.index') }}" style="@if(Request::is('squad')) color:white !important; @endif">
+            Squad settings
+        </a>
+    </div>
+
+    <div class="pb-3">
         <a class="text-decoration-none" href="{{ route('settings.index') }}" style="@if(Request::is('settings')) color:white !important; @endif">
             Account settings
         </a>

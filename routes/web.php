@@ -22,7 +22,6 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
 Route::get('/profile/{username}', [App\Http\Controllers\UserController::class, 'index'])->name('profile');
-Route::get('/squad/{squad}', [App\Http\Controllers\SquadController::class, 'index'])->name('squad');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 Route::get('/leaderboards', [App\Http\Controllers\LeaderboardController::class, 'index'])->name('leaderboards.index');
 
@@ -33,6 +32,9 @@ Route::resource('faq', App\Http\Controllers\FaqController::class);
 Route::resource('play', App\Http\Controllers\PlayController::class);
 Route::resource('settings', App\Http\Controllers\SettingController::class);
 Route::resource('balance', App\Http\Controllers\BalanceController::class);
+Route::resource('squad', App\Http\Controllers\SquadController::class);
+
+Route::get('/squad/{squad}', [App\Http\Controllers\SquadController::class, 'profile'])->name('squad');
 
 //Dashboard routes
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
