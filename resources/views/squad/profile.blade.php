@@ -32,9 +32,7 @@
                         <span class="text-grey">Created: {{ $squad->created_at }}</span>
                         <br><br>
                         <span>Description</span>
-                        <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-                            dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
-                            laoreet.</p>
+                        <p class="text-grey">{{ $squad->description }}</p>
 
                         @if(empty(auth()->user()->squad_id))
                         <form method="POST">
