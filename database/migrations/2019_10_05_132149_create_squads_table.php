@@ -16,7 +16,7 @@ class CreateSquadsTable extends Migration
         Schema::create('squads', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->mediumText('description')->nullable();
+            $table->mediumText('description')->nullable()->default('This is a default description.');
             $table->timestamps();
         });
     }

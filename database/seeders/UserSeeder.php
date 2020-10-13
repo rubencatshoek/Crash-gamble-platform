@@ -44,7 +44,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),
             'password' => Hash::make('admin'),
-            'paid_balance' => 500,
+            'paid_balance' => 5000,
             'free_balance' => 100,
         ]);
     }

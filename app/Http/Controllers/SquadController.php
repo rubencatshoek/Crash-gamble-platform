@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Squad;
+use App\Models\SquadMember;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SquadController extends Controller
 {
@@ -32,11 +34,12 @@ class SquadController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param SquadMember $squadMember
      * @param Squad $squad
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Squad $squad, Request $request)
+    public function store(SquadMember $squadMember, Squad $squad, Request $request)
     {
         $currentUser = auth()->user();
         $amount = 100;
@@ -49,9 +52,19 @@ class SquadController extends Controller
             'paid_balance' => $currentUser->paid_balance - $amount
         ]);
 
-        $squad->create(request()->validate([
+        $squadCreate = $squad->create(request()->validate([
             'name' => 'required|unique:squads'
         ]));
+
+        $squadMember->create([
+            'squad_id' => $squadCreate->id,
+            'user_id' => $currentUser->id,
+            'role_id' => 1,
+        ]);
+
+        $currentUser->update([
+            'squad_id' => $squadCreate->id
+        ]);
 
         return back()->with(session()->flash('alert-success', 'Squad successfully created'));
     }
