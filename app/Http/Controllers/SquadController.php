@@ -137,4 +137,14 @@ class SquadController extends Controller
 
         return view('squad.profile', ['squad' => $squad, 'userSquad' => $user->getUserSquad($user->id)]);
     }
+
+    public function requestToJoin($squad) {
+        $currentUser = auth()->user();
+
+        $currentUser->update([
+            'join_squad_id' => $squad
+        ]);
+
+        return back()->with(session()->flash('alert-success', 'Description successfully updated'));
+    }
 }

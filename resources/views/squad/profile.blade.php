@@ -35,11 +35,16 @@
                         <p class="text-grey">{{ $squad->description }}</p>
 
                         @if(empty($userSquad->id))
-                        <form method="POST">
-                            @csrf
-                            <input type="hidden" value="{{ $squad->id }}">
-                            <button class="mt-2 px-4 btn background-brand text-white">Request join</button>
-                        </form>
+                            <form method="POST" action="{{ route('squadJoin', $squad->id) }}">
+                                @csrf
+                                @method('POST')
+                                <input type="hidden" name="join_squad_id" value="{{ $squad->id }}">
+                                @if(auth()->user()->join_squad_id !== $squad->id)
+                                    <button class="mt-2 px-4 btn background-brand text-white">Request join</button>
+                                @else
+                                    <button class="mt-2 px-4 btn background-brand text-white" disabled>You have already requested to join</button>
+                                @endif
+                            </form>
                         @endif
                     </div>
                 </div>
