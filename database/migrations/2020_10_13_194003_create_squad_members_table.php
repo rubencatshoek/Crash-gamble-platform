@@ -16,7 +16,7 @@ class CreateSquadMembersTable extends Migration
         Schema::create('squad_members', function (Blueprint $table) {
             $table->id();
             $table->unsignedbigInteger('squad_id');
-            $table->unsignedbigInteger('user_id');
+            $table->unsignedbigInteger('user_id')->unique();
             $table->unsignedbigInteger('role_id');
             $table->timestamps();
 

@@ -40,11 +40,11 @@
             <div class="row">
                 <div class="col-lg-12 pb-3">
                     <div class="p-4 input-dark">
-                        @if(!empty($user->squad->name))
+                        @if(!empty($squad->name))
                         <h5>
-                            <a class="text-white nav-link p-0" href="{{ route('squad', $user->squad->name) }}">{{ $user->squad->name }}</a>
+                            <a class="text-white nav-link p-0" href="{{ route('squad', $squad->name) }}">{{ $squad->name }}</a>
                         </h5>
-                        <span class="text-grey">Created: {{ $user->squad->created_at }}</span>
+                        <span class="text-grey">Created: {{ $squad->created_at }}</span>
                         @else
                             <span>This user does not have a squad.</span>
                         @endif

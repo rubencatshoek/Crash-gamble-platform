@@ -124,3 +124,12 @@ td a {
 .hover-link:hover {
     color: white !important;
 }
+
+textarea {
+    color: #495057;
+}
+
+input[type="text"]:disabled, input[type="email"]:disabled {
+    background: #10131a !important;
+    cursor: not-allowed;
+}

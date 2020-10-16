@@ -14,6 +14,6 @@ class SquadMemberSeeder extends Seeder
      */
     public function run()
     {
-        SquadMember::factory()->times(10)->create();
+        SquadMember::create(['squad_id' => 1, 'user_id' => 53, 'role_id' => 1]);
     }
 }

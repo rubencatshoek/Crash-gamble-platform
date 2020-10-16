@@ -18,7 +18,7 @@ class SquadController extends Controller
     {
         $user = auth()->user();
 
-        return view('squad.index', ['user' => $user]);
+        return view('squad.index', ['user' => $user, 'squad' => $user->getUserSquad($user->id)]);
     }
 
     /**
@@ -62,17 +62,13 @@ class SquadController extends Controller
             'role_id' => 1,
         ]);
 
-        $currentUser->update([
-            'squad_id' => $squadCreate->id
-        ]);
-
         return back()->with(session()->flash('alert-success', 'Squad successfully created'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Squad  $squad
+     * @param \App\Models\Squad $squad
      * @return \Illuminate\Http\Response
      */
     public function show(Squad $squad)
@@ -83,7 +79,7 @@ class SquadController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Squad  $squad
+     * @param \App\Models\Squad $squad
      * @return \Illuminate\Http\Response
      */
     public function edit(Squad $squad)
@@ -94,24 +90,35 @@ class SquadController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Squad  $squad
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Squad $squad
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Squad $squad)
+    public function update(Squad $squad)
     {
-        //
+        $squad->update(request()->validate([
+            'description' => 'required'
+        ]));
+
+        return back()->with(session()->flash('alert-success', 'Description successfully updated'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Squad  $squad
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Squad $squad
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(Squad $squad)
     {
-        //
+//        dd(request());
+//        request()->validate([
+//            'checkboxDelete' => 'accepted'
+//        ]);
+
+        $squad->delete();
+        return back()->with(session()->flash('alert-success', 'Your squad has been successfully disbanded'));
     }
 
     /**

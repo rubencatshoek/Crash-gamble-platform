@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -67,5 +68,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function statuses()
     {
         return $this->belongsToMany(Status::class, 'user_statuses');
+    }
+
+    public function getUserSquad($userId)
+    {
+        $squad = DB::table('squad_members')->where('user_id', $userId)->first();
+
+        if (!empty($squad))
+
+        return DB::table('squads')->where('id', $squad->squad_id)->first();
     }
 }
