@@ -34,7 +34,7 @@
                         <span>Description</span>
                         <p class="text-grey">{{ $squad->description }}</p>
 
-                        @if(empty(auth()->user()->squad_id))
+                        @if(empty($userSquad->id))
                         <form method="POST">
                             @csrf
                             <input type="hidden" value="{{ $squad->id }}">
@@ -89,12 +89,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($squad->users as $users)
-                            <tr>
-                                <td><a href="{{ route('profile', $users->name) }}">{{ $users->name }}</a></td>
-                                <td class="color-green">₿50</td>
-                            </tr>
-                        @endforeach
+{{--                        @foreach($squad->users as $users)--}}
+{{--                            <tr>--}}
+{{--                                <td><a href="{{ route('profile', $users->name) }}">{{ $users->name }}</a></td>--}}
+{{--                                <td class="color-green">₿50</td>--}}
+{{--                            </tr>--}}
+{{--                        @endforeach--}}
                         </tbody>
                     </table>
                 </div>

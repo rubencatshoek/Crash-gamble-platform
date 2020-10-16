@@ -112,10 +112,9 @@ class SquadController extends Controller
      */
     public function destroy(Squad $squad)
     {
-//        dd(request());
-//        request()->validate([
-//            'checkboxDelete' => 'accepted'
-//        ]);
+        request()->validate([
+            'deleteSquad' => 'accepted'
+        ]);
 
         $squad->delete();
         return back()->with(session()->flash('alert-success', 'Your squad has been successfully disbanded'));
@@ -128,12 +127,14 @@ class SquadController extends Controller
      */
     public function profile($squad)
     {
+        $user = auth()->user();
         $squad = Squad::where('name', $squad)->first();
+
 
         if ($squad === null) {
             return abort(404);
         }
 
-        return view('squad.profile', ['squad' => $squad]);
+        return view('squad.profile', ['squad' => $squad, 'userSquad' => $user->getUserSquad($user->id)]);
     }
 }

@@ -53,8 +53,8 @@
                         <form method="POST" action="{{ route('squad.destroy', $squad->id) }}">
                             @csrf
                             @method('DELETE')
-                            <input id="checkboxSure" type="checkbox" name="checkboxDelete" value="checkboxDelete">
-                            <label class="pb-2" for="checkboxSure">Yes, I want to delete my whole squad</label><br>
+                            <input id="deleteSquad" type="checkbox" name="deleteSquad">
+                            <label class="pb-2" for="deleteSquad">Yes, I want to delete my whole squad</label><br>
 
                             <button class="px-4 btn btn-danger text-white">Disband squad</button>
                         </form>
