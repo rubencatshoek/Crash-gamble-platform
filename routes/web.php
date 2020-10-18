@@ -35,8 +35,11 @@ Route::resource('balance', App\Http\Controllers\BalanceController::class);
 Route::resource('squad', App\Http\Controllers\SquadController::class);
 
 Route::get('/squad/{squad}', [App\Http\Controllers\SquadController::class, 'profile'])->name('squad');
-Route::post('/squad/join/{squad}', [App\Http\Controllers\SquadController::class, 'requestToJoin'])->name('squadJoin');
 Route::get('/squad/handle/{user}/{handle}', [App\Http\Controllers\SquadController::class, 'handleRequesToJoin'])->name('handleRequesToJoin');
+
+Route::post('/squad/join/{squad}', [App\Http\Controllers\SquadController::class, 'requestToJoin'])->name('squadJoin');
+Route::post('/squad/leave', [App\Http\Controllers\SquadController::class, 'leave'])->name('squad.leave');
+
 
 //Dashboard routes
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {

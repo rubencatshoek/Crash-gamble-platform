@@ -124,8 +124,25 @@ class SquadController extends Controller
             'deleteSquad' => 'accepted'
         ]);
 
+        // Get logged in user
+        $user = auth()->user();
+
+        // Check if logged in user actually has permissions
+        if (!$user->isLeader()) {
+            return abort(404);
+        }
+
         $squad->delete();
         return back()->with(session()->flash('alert-success', 'Your squad has been successfully disbanded'));
+    }
+
+    public function leave()
+    {
+        $user = auth()->user();
+
+        DB::table('squad_members')->where('user_id',  $user->id)->delete();
+
+        return back()->with(session()->flash('alert-success', 'You have successfully left your squad'));
     }
 
     /**
