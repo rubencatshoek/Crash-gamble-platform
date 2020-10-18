@@ -5,6 +5,9 @@
     <section class="background-secondary text-white">
         <div class="spacer pt-5 d-sm-none d-md-none">
         </div>
+
+        @include('layouts.message')
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 pb-2">
@@ -42,7 +45,7 @@
                                 @if(auth()->user()->join_squad_id !== $squad->id)
                                     <button class="mt-2 px-4 btn background-brand text-white">Request join</button>
                                 @else
-                                    <button class="mt-2 px-4 btn background-brand text-white" disabled>You have already requested to join</button>
+                                    <button class="mt-2 px-4 btn background-brand text-white" disabled>You already requested to join</button>
                                 @endif
                             </form>
                         @endif

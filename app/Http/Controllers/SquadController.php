@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Squad;
 use App\Models\SquadMember;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,8 +18,14 @@ class SquadController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $squad = $user->getUserSquad($user->id);
+        $usersRequestJoin = null;
 
-        return view('squad.index', ['user' => $user, 'squad' => $user->getUserSquad($user->id)]);
+        if (!empty($squad->id)) {
+            $usersRequestJoin = DB::table('users')->where('join_squad_id', $squad->id)->get();
+        }
+
+        return view('squad.index', ['user' => $user, 'squad' => $squad, 'usersRequestJoin' => $usersRequestJoin]);
     }
 
     /**
@@ -49,7 +56,8 @@ class SquadController extends Controller
         }
 
         $currentUser->update([
-            'paid_balance' => $currentUser->paid_balance - $amount
+            'paid_balance' => $currentUser->paid_balance - $amount,
+            'join_squad_id' => null
         ]);
 
         $squadCreate = $squad->create(request()->validate([
@@ -59,7 +67,7 @@ class SquadController extends Controller
         $squadMember->create([
             'squad_id' => $squadCreate->id,
             'user_id' => $currentUser->id,
-            'role_id' => 1,
+            'role_id' => 1
         ]);
 
         return back()->with(session()->flash('alert-success', 'Squad successfully created'));
@@ -138,13 +146,44 @@ class SquadController extends Controller
         return view('squad.profile', ['squad' => $squad, 'userSquad' => $user->getUserSquad($user->id)]);
     }
 
-    public function requestToJoin($squad) {
-        $currentUser = auth()->user();
-
-        $currentUser->update([
+    public function requestToJoin($squad)
+    {
+        auth()->user()->update([
             'join_squad_id' => $squad
         ]);
 
-        return back()->with(session()->flash('alert-success', 'Description successfully updated'));
+        return back()->with(session()->flash('alert-success', 'Successfully requested to join'));
+    }
+
+    public function handleRequesToJoin($userId, $handle)
+    {
+        // Get logged in user
+        $user = auth()->user();
+
+        // Get the user's squad
+        $squad = $user->getUserSquad($user->id);
+
+        // Check if logged in user actually has permissions
+        if (!$user->isLeader()) {
+            return abort(404);
+        }
+
+        // Empty so user can rejoin (later) if needed
+        $handledUser = User::findOrFail($userId);
+        $handledUser->update([
+            'join_squad_id' => null
+        ]);
+
+        // Handle if user has been accepted or not
+        if ($handle === "accept") {
+            SquadMember::create([
+                'squad_id' => $squad->id,
+                'user_id' => $userId,
+                'role_id' => 3
+            ]);
+            return back()->with(session()->flash('alert-success', 'Accepted ' . $handledUser->name . ' into your squad'));
+        } else if ($handle === "decline") {
+            return back()->with(session()->flash('alert-success', 'Declined ' . $handledUser->name));
+        }
     }
 }

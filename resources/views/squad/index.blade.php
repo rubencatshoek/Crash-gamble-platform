@@ -40,11 +40,34 @@
                             @method('PUT')
                             <label for="description">Description</label><br>
                             <textarea id="description"
-                                      class="input-dark form-control" name="description">{{ $squad->description }}</textarea>
+                                      class="input-dark form-control"
+                                      name="description">{{ $squad->description }}</textarea>
                             <br>
 
                             <button class="px-4 btn btn-success text-white">Change info</button>
                         </form>
+
+                        <h4 class="font-weight-bold pt-5 pb-3">Join requests</h4>
+                        @if($usersRequestJoin == '[]')
+                            <p class="text-grey">No users have requested to join.</p>
+                        @else
+                            <table class="table-landing table text-white background-main border-0">
+                                <tbody>
+                                @foreach($usersRequestJoin as $userJoin)
+                                    <tr>
+                                        <td>
+                                            <a href="{{ route('profile', $userJoin->name) }}"
+                                               class="pt-1">{{ $userJoin->name }}</a>
+                                        </td>
+                                        <td class="float-right">
+                                            <a href="{{ route('handleRequesToJoin', ['user' => $userJoin->id, 'handle' => "accept"]) }}" class="px-4 btn btn-sm btn-success text-white">Accept</a>
+                                            <a href="{{ route('handleRequesToJoin', ['user' => $userJoin->id, 'handle' => "decline"]) }}" class="px-4 btn btn-sm btn-danger text-white">Decline</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        @endif
 
                         <h4 class="font-weight-bold pt-5 pb-3">Disband squad</h4>
                         <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
