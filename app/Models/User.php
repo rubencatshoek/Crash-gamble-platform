@@ -55,6 +55,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Squad::class);
     }
 
+    public function squadRole()
+    {
+        return $this->belongsTo(SquadRole::class);
+    }
+
     /**
      * Checks if the user is an admin
      *
@@ -81,6 +86,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isLeader()
     {
+        // TODO ADD THE RIGHT ROLE ID?
         $squad = DB::table('squad_members')->where('user_id', $this->id)->first();
         if ($squad->role_id === 1 || $squad->role_id === 2) {
             return true;

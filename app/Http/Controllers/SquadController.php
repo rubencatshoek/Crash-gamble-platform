@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Squad;
 use App\Models\SquadMember;
+use App\Models\SquadRole;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -198,9 +199,48 @@ class SquadController extends Controller
                 'user_id' => $userId,
                 'role_id' => 3
             ]);
+            // Return to view
             return back()->with(session()->flash('alert-success', 'Accepted ' . $handledUser->name . ' into your squad'));
         } else if ($handle === "decline") {
+            // Return to view
             return back()->with(session()->flash('alert-success', 'Declined ' . $handledUser->name));
         }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function manage()
+    {
+        // Get logged in user
+        $user = auth()->user();
+
+        // Get the user's squad
+        $squad = $user->getUserSquad($user->id);
+
+        // Check if logged in user actually has permissions
+        if (!$user->isLeader()) {
+            return abort(404);
+        }
+
+        // Get all user id's in squad
+        $usersInSquad = DB::table('squad_members')->where('squad_id', $squad->id)->get();
+
+        // Foreach into the array
+        foreach ($usersInSquad as $userInSquad) {
+            // Put into the squadUsers array
+            $squadMembers[] = $userInSquad;
+
+            // Add the user in array
+            $userInSquad->user = User::findOrFail($userInSquad->user_id);
+
+            // Add the squad role in array
+            $userInSquad->squadRole = DB::table('squad_roles')->where('id', $userInSquad->role_id)->first();
+        }
+
+        // Return to view
+        return view('squad.manage', ['user' => $user, 'squad' => $squad, 'squadMembers' => $squadMembers, 'squadRoles' => SquadRole::all()]);
     }
 }

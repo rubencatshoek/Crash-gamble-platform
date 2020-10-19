@@ -19,6 +19,9 @@
                     <h2 class="font-weight-bold pb-3">Squad settings</h2>
                     <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in dignissim
                         eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur laoreet.</p>
+                    <a class="btn btn-primary" href="{{ route('squad.manage') }}">Manage users</a>
+                    <a class="text-grey hover-link ml-3" href="{{ route('squad', $squad->name) }}">View squad profile</a>
+
                     @if(empty($squad->id))
                         <form method="POST" action="{{ route('squad.store') }}">
                             @csrf
@@ -29,6 +32,7 @@
                             <button class="px-4 btn background-brand text-white">Create Squad</button>
                         </form>
                     @else
+                        <h4 class="font-weight-bold pt-5 pb-3">About</h4>
                         <label for="squad_name">Squad name</label>
                         <input id="squad_name" type="text" class="input-dark form-control"
                                value=" {{ $squad->name }}"
@@ -85,7 +89,7 @@
 
                                 <button class="px-4 btn btn-danger text-white">Disband squad</button>
                             </form>
-                            @else
+                        @else
                             <h4 class="font-weight-bold pt-5 pb-3">Leave</h4>
                             <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
                                 dignissim
