@@ -7,12 +7,12 @@
         <div class="container pt-5">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="landing-page-header">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</h1>
-                    <p class="lead pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
-                        laoreet.</p>
+                    <h1 class="landing-page-header">Digital Phase: The New Name in Cryptocurrency Gambling</h1>
+                    <p class="lead pt-3 text-grey">Digital Phase’s gambling provides users with a verifiably safe,
+                        anonymous, and exciting experience in the world of online cryptocurrency gambling.</p>
                     <div class="pt-3">
-                        <a class="btn background-brand btn-lg w-100 text-white" href="{{ route('play.index') }}">Play now</a>
+                        <a class="btn background-brand btn-lg w-100 text-white" href="{{ route('play.index') }}">Play
+                            now</a>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -100,9 +100,9 @@
             <div class="row">
                 <div class="col-lg-12 text-center pb-4">
                     <h2 class="font-weight-bold">Featured in</h2>
-                    <p class="lead pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
-                        laoreet.</p>
+                    <p class="lead pt-3 text-grey">Do not just take our word for it, we have been featured in dozens of
+                        newspapers all over the world that have praised our casino, our provably fair rolls, and our
+                        award-winning customer service.</p>
                 </div>
             </div>
 
@@ -135,23 +135,25 @@
             <div class="row">
                 <div class="col-lg-12 text-center pb-4">
                     <h2 class="font-weight-bold">Provably fair</h2>
-                    <p class="lead pt-3 text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
-                        laoreet.</p>
+                    <p class="lead pt-3 text-grey">At Digital Phase, we want our customers to have the best possible
+                        experience! That is why we have taken every step possible to ensure that our casino meets the
+                        most rigorous standards and can stand up to the highest amount of scrutiny.</p>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-3 text-center">
                     <div class="pb-3">
-                        <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-gem" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785l-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004l.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495l5.062-.005L8 13.366 5.47 5.495zm-1.371-.999l-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l2.92-.003 2.193 6.82L1.5 5.5zm7.889 6.817l2.194-6.828 2.929-.003-5.123 6.831z"/>
+                        <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-gem" fill="currentColor"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                  d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785l-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004l.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495l5.062-.005L8 13.366 5.47 5.495zm-1.371-.999l-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l2.92-.003 2.193 6.82L1.5 5.5zm7.889 6.817l2.194-6.828 2.929-.003-5.123 6.831z"/>
                         </svg>
                     </div>
                     <h5 class="font-weight-bold">0.5% house edge</h5>
-                    <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
-                        laoreet</p>
+                    <p class="text-grey">Digital Phase is proud to announce that we have the lowest house edge currency
+                        found in cryptocurrency gambling (lower than most in person casinos too)! This translates to
+                        more big wins for our players.</p>
                 </div>
 
                 <div class="col-md-3 text-center">
@@ -165,9 +167,9 @@
                         </svg>
                     </div>
                     <h5 class="font-weight-bold">Provably fairness</h5>
-                    <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
-                        laoreet</p>
+                    <p class="text-grey">Our rolls are backed by independently verified math, and we can prove it too!
+                        We use XXXXX to guarantee that every roll is fair and accurate, giving our players the best odds
+                        possible!</p>
                 </div>
 
                 <div class="col-md-3 text-center">
@@ -179,21 +181,23 @@
                         </svg>
                     </div>
                     <h5 class="font-weight-bold">Cryptogambling approved</h5>
-                    <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
-                        laoreet</p>
+                    <p class="text-grey">Due to our rigorous fairness and customer service standards, Digital Phase has
+                        been awarded the seal of approval from the largest cryptocurrency regulator agency:
+                        Cryptogambling.org! </p>
                 </div>
 
                 <div class="col-md-3 text-center">
                     <div class="pb-3">
-                        <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-dice-6-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M3 0a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V3a3 3 0 0 0-3-3H3zm1 5.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm1.5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM12 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM4 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                        <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-dice-6-fill" fill="currentColor"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                  d="M3 0a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V3a3 3 0 0 0-3-3H3zm1 5.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm1.5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM12 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM4 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
                         </svg>
                     </div>
                     <h5 class="font-weight-bold">Random.org API</h5>
-                    <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-                        dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
-                        laoreet</p>
+                    <p class="text-grey">Another measure that we have implemented to help guarantee provably fair rolls
+                        that no user (including Digital Phase) is able to predict the next roll, we have partnered with
+                        Random.org API in order to guarantee even further provable randomization.</p>
                 </div>
             </div>
 
@@ -352,7 +356,8 @@
 
                 </div>
                 <div class="col-lg-6 text-center">
-                    <a class="btn background-brand btn-lg w-100 text-white" href="{{ route('play.index') }}">Play now</a>
+                    <a class="btn background-brand btn-lg w-100 text-white" href="{{ route('play.index') }}">Play
+                        now</a>
                 </div>
                 <div class="col-lg-3 text-center">
 
