@@ -17,6 +17,5 @@ class StatusSeeder extends Seeder
         Status::create(['name' => "BANNED"]);
         Status::create(['name' => "MUTED"]);
         Status::create(['name' => "FLAGGED"]);
-        Status::create(['name' => "FREEPLAY"]);
     }
 }

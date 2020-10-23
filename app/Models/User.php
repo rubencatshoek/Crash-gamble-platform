@@ -63,6 +63,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->role->name === 'ADMIN';
     }
 
+    public function isMod()
+    {
+        return $this->role->name === 'MODERATOR';
+    }
+
+    public function isUser()
+    {
+        return $this->role->name === 'USER';
+    }
+
     public function statuses()
     {
         return $this->belongsToMany(Status::class, 'user_statuses');

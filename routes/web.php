@@ -49,6 +49,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
             Route::get('/{user}/edit', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('admin.user.edit');
             Route::post('/{user}/update', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin.user.update');
             Route::post('/{user}/updateStatus', [App\Http\Controllers\Admin\UserController::class, 'updateStatus'])->name('admin.user.updateStatus');
+            Route::delete('/{user}/deleteStatus', [App\Http\Controllers\Admin\UserController::class, 'deleteStatus'])->name('admin.user.deleteStatus');
         });
 
     });

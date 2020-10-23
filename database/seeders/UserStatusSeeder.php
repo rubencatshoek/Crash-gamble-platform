@@ -14,13 +14,21 @@ class UserStatusSeeder extends Seeder
      */
     public function run()
     {
-       UserStatus::create([
-           'status_id' => 2,
-           'user_id' => 6
-      ]);
+        UserStatus::create([
+            'status_id' => 2,
+            'user_id' => 6
+        ]);
         UserStatus::create([
             'status_id' => 1,
             'user_id' => 6
+        ]);
+        UserStatus::create([
+            'status_id' => 3,
+            'user_id' => 5
+        ]);
+        UserStatus::create([
+            'status_id' => 1,
+            'user_id' => 5
         ]);
     }
 }
