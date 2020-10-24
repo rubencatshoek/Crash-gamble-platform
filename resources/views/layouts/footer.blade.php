@@ -34,13 +34,13 @@
 
                 <ul class="list-unstyled">
                     <li class="pb-1">
-                        <a class="text-grey" href="#">Legal</a>
+                        <a class="text-grey" href="{{ route('legal.index') }}">Legal</a>
                     </li>
                     <li class="pb-1">
-                        <a class="text-grey" href="#">Help docs</a>
+                        <a class="text-grey" href="{{ route('legal.help') }}">Help docs</a>
                     </li>
                     <li class="pb-1">
-                        <a class="text-grey" href="#">Terms of Service</a>
+                        <a class="text-grey" href="{{ route('legal.tos') }}">Terms of Service</a>
                     </li>
                 </ul>
             </div>

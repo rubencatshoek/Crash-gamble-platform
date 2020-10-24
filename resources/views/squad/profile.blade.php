@@ -37,6 +37,7 @@
                         <span>Description</span>
                         <p class="text-grey">{{ $squad->description }}</p>
 
+                        @if(!empty(auth()->user()))
                         @if(empty($userSquad->id))
                             <form method="POST" action="{{ route('squadJoin', $squad->id) }}">
                                 @csrf
@@ -48,6 +49,7 @@
                                     <button class="mt-2 px-4 btn background-brand text-white" disabled>You already requested to join</button>
                                 @endif
                             </form>
+                        @endif
                         @endif
                     </div>
                 </div>
@@ -97,12 +99,12 @@
                         </tr>
                         </thead>
                         <tbody>
-{{--                        @foreach($squad->users as $users)--}}
-{{--                            <tr>--}}
-{{--                                <td><a href="{{ route('profile', $users->name) }}">{{ $users->name }}</a></td>--}}
-{{--                                <td class="color-green">₿50</td>--}}
-{{--                            </tr>--}}
-{{--                        @endforeach--}}
+                        @foreach ($squadMembers as $squadMember)
+                            <tr>
+                                <td><a href="{{ route('profile', $squadMember->user->name) }}">{{ $squadMember->user->name }}</a></td>
+                                <td class="color-green">₿50</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

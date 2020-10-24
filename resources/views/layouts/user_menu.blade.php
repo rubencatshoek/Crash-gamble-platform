@@ -16,10 +16,18 @@
     </div>
 
     <div class="pb-3">
-        <a class="text-decoration-none" href="{{ route('squad.index') }}" style="@if(Request::is('squad') || Request::is('manage/squad')) color:white !important; @endif">
+        <a class="text-decoration-none" href="{{ route('squad.index') }}" style="@if(Request::is('squad')) color:white !important; @endif">
             Squad settings
         </a>
     </div>
+
+    @if($user->isLeader())
+    <div class="pb-3">
+        <a class="text-decoration-none" href="{{ route('squad.manage') }}" style="@if(Request::is('manage/squad')) color:white !important; @endif">
+            Manage squad
+        </a>
+    </div>
+    @endif
 
     <div class="pb-3">
         <a class="text-decoration-none" href="{{ route('settings.index') }}" style="@if(Request::is('settings')) color:white !important; @endif">

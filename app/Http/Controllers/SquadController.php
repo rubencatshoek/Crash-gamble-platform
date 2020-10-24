@@ -156,12 +156,31 @@ class SquadController extends Controller
         $user = auth()->user();
         $squad = Squad::where('name', $squad)->first();
 
-
+        // Send to 404 page if squad does not exist
         if ($squad === null) {
             return abort(404);
         }
 
-        return view('squad.profile', ['squad' => $squad, 'userSquad' => $user->getUserSquad($user->id)]);
+        // Get all user id's in squad
+        $usersInSquad = DB::table('squad_members')->where('squad_id', $squad->id)->get();
+
+        $squadMembers = [];
+
+        // Foreach into the array
+        foreach ($usersInSquad as $userInSquad) {
+            // Put into the squadUsers array
+            $squadMembers[] = $userInSquad;
+
+            // Add the user in array
+            $userInSquad->user = User::findOrFail($userInSquad->user_id);
+        }
+
+        // User can apply to squad if logged in
+        if (!empty($user)) {
+            return view('squad.profile', ['squadMembers' => $squadMembers, 'squad' => $squad, 'userSquad' => $user->getUserSquad($user->id)]);
+        } else {
+            return view('squad.profile', ['squadMembers' => $squadMembers, 'squad' => $squad]);
+        }
     }
 
     public function requestToJoin($squad)

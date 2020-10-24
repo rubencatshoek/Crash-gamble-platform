@@ -133,3 +133,7 @@ input[type="text"]:disabled, input[type="email"]:disabled {
     background: #10131a !important;
     cursor: not-allowed;
 }
+
+.text-responsive {
+    font-size: calc(200% + 1vw + 1vh);
+}

@@ -17,10 +17,8 @@
 
                 <div class="col-lg-9 pb-2">
                     <h2 class="font-weight-bold pb-3">Squad settings | Manage users</h2>
-                    <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in dignissim
+                    <p class="text-grey pb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in dignissim
                         eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur laoreet.</p>
-                    <a class="btn btn-primary" href="{{ route('squad.index') }}">Squad settings</a>
-                    <a class="text-grey hover-link ml-3" href="{{ route('squad', $squad->name) }}">View squad profile</a><br><br>
 
                     <table class="table-landing table text-white background-main border-0">
                         <thead class="bg-dark">

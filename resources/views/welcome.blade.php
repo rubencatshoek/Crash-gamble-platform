@@ -7,7 +7,9 @@
         <div class="container pt-5">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="landing-page-header">Digital Phase: The New Name in Cryptocurrency Gambling</h1>
+                    <div class="spacer d-block d-sm-none">
+                    </div>
+                    <h1 class="landing-page-header text-responsive">Digital Phase: <br>The New Name in Cryptocurrency Gambling</h1>
                     <p class="lead pt-3 text-grey">Digital Phase’s gambling provides users with a verifiably safe,
                         anonymous, and exciting experience in the world of online cryptocurrency gambling.</p>
                     <div class="pt-3">
@@ -18,7 +20,7 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-12 pb-5">
-                            <img alt="crash gif" class="img-fluid" src="{{ asset('img/crash.gif') }}">
+                            <img alt="crash gif" class="img-fluid d-none d-sm-none d-md-block" src="{{ asset('img/crash.gif') }}">
                         </div>
                         <div class="col-md-4 text-center">
                             <div class="pb-3">

@@ -25,8 +25,13 @@ Route::get('/profile/{username}', [App\Http\Controllers\UserController::class, '
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 Route::get('/leaderboards', [App\Http\Controllers\LeaderboardController::class, 'index'])->name('leaderboards.index');
 
+Route::get('/legal', [App\Http\Controllers\LegalController::class, 'indexLegal'])->name('legal.index');
+Route::get('/tos', [App\Http\Controllers\LegalController::class, 'indexTos'])->name('legal.tos');
+Route::get('/help', [App\Http\Controllers\LegalController::class, 'indexHelp'])->name('legal.help');
+
 Route::post('/balance/donate', [App\Http\Controllers\BalanceController::class, 'donate'])->name('balance.donate');
 Route::post('/settings/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+
 
 Route::resource('faq', App\Http\Controllers\FaqController::class);
 Route::resource('play', App\Http\Controllers\PlayController::class);
