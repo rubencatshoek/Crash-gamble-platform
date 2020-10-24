@@ -31,29 +31,37 @@
                         </thead>
                         <tbody>
                         @foreach ($squadMembers as $squadMember)
-                            <tr>
-                                @if($squadMember->user->id !== $user->id)
-                                    <td>
-                                        <a href="{{ route('profile', $squadMember->user->name) }}">{{ $squadMember->user->name }}</a>
-                                    </td>
-                                    <td>
-                                        <select class="form-control" name="squadRole">
-                                            @foreach($squadRoles as $role)
-                                                <option @if($squadMember->squadRole->id === $role->id) selected
-                                                        @endif value="{{ $role->name }}">{{ $role->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
+                            <form method="POST" action="{{ route('squad.update.role') }}">
+                                @csrf
+                                <tr>
+                                    @if($squadMember->user->id !== $user->id)
 
-                                    <td>
-                                        <button type="submit" class="btn btn-light">Update</button>
-                                        <a href="{{ route('squad.kick', $squadMember->user->id) }}"
-                                           class="btn btn-danger">Kick</a>
-                                    </td>
-                                @endif
-                            </tr>
+                                        <td>
+                                            <a href="{{ route('profile', $squadMember->user->name) }}">{{ $squadMember->user->name }}</a>
+                                            <input type="hidden" value="{{ $squadMember->user->id }}"
+                                                   name="squadMemberId">
+                                        </td>
+
+                                        <td>
+                                            <select class="form-control" name="squadRole">
+                                                @foreach($squadRoles as $role)
+                                                    @if($role->id !== 1)
+                                                        <option @if($squadMember->squadRole->id === $role->id) selected
+                                                                @endif value="{{ $role->id }}">{{ $role->name }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </td>
+
+                                        <td>
+                                            <button type="submit" class="btn btn-light">Update</button>
+                                            <a href="{{ route('squad.kick', $squadMember->user->id) }}"
+                                               class="btn btn-danger">Kick</a>
+                                        </td>
+                                    @endif
+                                </tr>
+                            </form>
                         @endforeach
-
                         </tbody>
                     </table>
                 </div>

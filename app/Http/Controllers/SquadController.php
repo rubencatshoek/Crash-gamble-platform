@@ -105,10 +105,12 @@ class SquadController extends Controller
      */
     public function update(Squad $squad)
     {
+        // Update the description
         $squad->update(request()->validate([
             'description' => 'required'
         ]));
 
+        // Return back
         return back()->with(session()->flash('alert-success', 'Description successfully updated'));
     }
 
@@ -121,6 +123,7 @@ class SquadController extends Controller
      */
     public function destroy(Squad $squad)
     {
+        // Validate if checkbox is checked
         request()->validate([
             'deleteSquad' => 'accepted'
         ]);
@@ -133,16 +136,22 @@ class SquadController extends Controller
             return abort(404);
         }
 
+        // Delete squad
         $squad->delete();
+
+        // Return back
         return back()->with(session()->flash('alert-success', 'Your squad has been successfully disbanded'));
     }
 
     public function leave()
     {
+        // Get logged in user
         $user = auth()->user();
 
-        DB::table('squad_members')->where('user_id',  $user->id)->delete();
+        // Leave the squad by removing the field from the squad member table
+        DB::table('squad_members')->where('user_id', $user->id)->delete();
 
+        // Return back
         return back()->with(session()->flash('alert-success', 'You have successfully left your squad'));
     }
 
@@ -153,7 +162,10 @@ class SquadController extends Controller
      */
     public function profile($squad)
     {
+        // Get logged in user
         $user = auth()->user();
+
+        // Get the user's squad
         $squad = Squad::where('name', $squad)->first();
 
         // Send to 404 page if squad does not exist
@@ -164,6 +176,7 @@ class SquadController extends Controller
         // Get all user id's in squad
         $usersInSquad = DB::table('squad_members')->where('squad_id', $squad->id)->get();
 
+        // Set empty variable to foreach into
         $squadMembers = [];
 
         // Foreach into the array
@@ -185,10 +198,12 @@ class SquadController extends Controller
 
     public function requestToJoin($squad)
     {
+        // Update the join request id
         auth()->user()->update([
             'join_squad_id' => $squad
         ]);
 
+        // Return back
         return back()->with(session()->flash('alert-success', 'Successfully requested to join'));
     }
 
@@ -207,6 +222,8 @@ class SquadController extends Controller
 
         // Empty so user can rejoin (later) if needed
         $handledUser = User::findOrFail($userId);
+
+        // Update the user
         $handledUser->update([
             'join_squad_id' => null
         ]);
@@ -275,8 +292,45 @@ class SquadController extends Controller
 
         // Check if Id is not empty
         if (!empty($userId))
-        SquadMember::where('user_id', $userId)->delete();
+            SquadMember::where('user_id', $userId)->delete();
 
         return back()->with(session()->flash('alert-success', 'Successfully kicked user'));
+    }
+
+    public function updateSquadMemberRole(Request $request)
+    {
+        // Get logged in user
+        $user = auth()->user();
+
+        // Check if logged in user actually has permissions
+        if (!$user->isLeader()) {
+            return abort(404);
+        }
+
+        // Get the user's squad
+        $squad = $user->getUserSquad($user->id);
+
+        // Get the squad member and make sure he is in the same squad as the logged in user
+        $result = SquadMember::where('squad_id', $squad->id)->where('user_id', $request->squadMemberId)->first();
+
+        // Abort if is nothing is found
+        if (empty($result)) {
+            return abort(404);
+        }
+
+        // Get the squad from logged in user
+        $squadMemberAuth = DB::table('squad_members')->where('user_id', $user->id)->first();
+
+        // Set the role id
+        if ($result->role_id <= $squadMemberAuth->role_id) {
+            return back()->with(session()->flash('alert-danger', 'You cannot edit a member with the same or a higher role'));
+        } else {
+            $result->update([
+                'role_id' => $request->squadRole
+            ]);
+        }
+
+        // Return back
+        return back()->with(session()->flash('alert-success', 'Successfully updated role'));
     }
 }

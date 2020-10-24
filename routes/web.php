@@ -32,7 +32,6 @@ Route::get('/help', [App\Http\Controllers\LegalController::class, 'indexHelp'])-
 Route::post('/balance/donate', [App\Http\Controllers\BalanceController::class, 'donate'])->name('balance.donate');
 Route::post('/settings/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 
-
 Route::resource('faq', App\Http\Controllers\FaqController::class);
 Route::resource('play', App\Http\Controllers\PlayController::class);
 Route::resource('settings', App\Http\Controllers\SettingController::class);
@@ -43,6 +42,7 @@ Route::get('/squad/{squad}', [App\Http\Controllers\SquadController::class, 'prof
 Route::get('/squad/handle/{user}/{handle}', [App\Http\Controllers\SquadController::class, 'handleRequesToJoin'])->name('handleRequesToJoin');
 Route::get('/manage/squad', [App\Http\Controllers\SquadController::class, 'manage'])->name('squad.manage');
 Route::get('/manage/squad/kick/{id}', [App\Http\Controllers\SquadController::class, 'kickSquadMember'])->name('squad.kick');
+Route::post('/manage/squad/updateRole', [App\Http\Controllers\SquadController::class, 'updateSquadMemberRole'])->name('squad.update.role');
 
 Route::post('/squad/join/{squad}', [App\Http\Controllers\SquadController::class, 'requestToJoin'])->name('squadJoin');
 Route::post('/squad/leave', [App\Http\Controllers\SquadController::class, 'leave'])->name('squad.leave');
