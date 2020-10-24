@@ -262,4 +262,21 @@ class SquadController extends Controller
         // Return to view
         return view('squad.manage', ['user' => $user, 'squad' => $squad, 'squadMembers' => $squadMembers, 'squadRoles' => SquadRole::all()]);
     }
+
+    public function kickSquadMember($userId)
+    {
+        // Get logged in user
+        $user = auth()->user();
+
+        // Check if logged in user actually has permissions
+        if (!$user->isLeader()) {
+            return abort(404);
+        }
+
+        // Check if Id is not empty
+        if (!empty($userId))
+        SquadMember::where('user_id', $userId)->delete();
+
+        return back()->with(session()->flash('alert-success', 'Successfully kicked user'));
+    }
 }

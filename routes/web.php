@@ -42,6 +42,7 @@ Route::resource('squad', App\Http\Controllers\SquadController::class);
 Route::get('/squad/{squad}', [App\Http\Controllers\SquadController::class, 'profile'])->name('squad');
 Route::get('/squad/handle/{user}/{handle}', [App\Http\Controllers\SquadController::class, 'handleRequesToJoin'])->name('handleRequesToJoin');
 Route::get('/manage/squad', [App\Http\Controllers\SquadController::class, 'manage'])->name('squad.manage');
+Route::get('/manage/squad/kick/{id}', [App\Http\Controllers\SquadController::class, 'kickSquadMember'])->name('squad.kick');
 
 Route::post('/squad/join/{squad}', [App\Http\Controllers\SquadController::class, 'requestToJoin'])->name('squadJoin');
 Route::post('/squad/leave', [App\Http\Controllers\SquadController::class, 'leave'])->name('squad.leave');
