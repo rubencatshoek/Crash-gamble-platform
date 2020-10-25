@@ -233,7 +233,7 @@ class SquadController extends Controller
             SquadMember::create([
                 'squad_id' => $squad->id,
                 'user_id' => $userId,
-                'role_id' => 3
+                'role_id' => 4
             ]);
             // Return to view
             return back()->with(session()->flash('alert-success', 'Accepted ' . $handledUser->name . ' into your squad'));
