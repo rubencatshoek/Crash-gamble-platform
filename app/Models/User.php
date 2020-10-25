@@ -98,6 +98,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $squad = DB::table('squad_members')->where('user_id', $this->id)->first();
 
+        if(empty($squad)) {
+            return false;
+        }
+
         if ($squad->role_id === 1 || $squad->role_id === 2) {
             return true;
         }
