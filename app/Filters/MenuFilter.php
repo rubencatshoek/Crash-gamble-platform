@@ -6,7 +6,7 @@ use JeroenNoten\LaravelAdminLte\Menu\Builder;
 use JeroenNoten\LaravelAdminLte\Menu\Filters\FilterInterface;
 use Illuminate\Support\Facades\Auth;
 
-class MenuFilter implements FilterInterface
+class MenuFilter extends FilterInterface
 {
 
     /**
