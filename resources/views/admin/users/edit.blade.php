@@ -27,27 +27,48 @@
                 <div>
                     <label for="name" class="col-form-label">Username </label>
                     <input required class="form-control @error("name") alert-danger @enderror " type="text" maxlength="15"
-                           value="{{old('name') ?? $user->name}}" placeholder="Geef hier een naam aan je thema."
+                           value="{{old('name') ?? $user->name}}"
                            name="name" id="name">
                     @error("name")
-                    <p class="text-danger">
-
-                        This username is already taken.
-                    </p>
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div>
+                    <label for="email" class="col-form-label">Email </label>
+                    <input class="form-control @error("email") alert-danger @enderror " type="email" maxlength="40"
+                           value="{{old('email') ?? $user->email}}"
+                           name="email" id="email">
+                    @error("email")
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div>
+                    <label for="paid_balance" class="col-form-label">Paid balance </label>
+                    <input required class="form-control @error("paid_balance") alert-danger @enderror " type="number"
+                           value="{{old('paid_balance') ?? $user->paid_balance}}"
+                           name="paid_balance" id="paid_balance">
+                    @error("paid_balance")
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div>
+                    <label for="free_balance" class="col-form-label">Free balance </label>
+                    <input required class="form-control @error("free_balance") alert-danger @enderror " type="number"
+                           value="{{old('free_balance') ?? $user->free_balance}}"
+                           name="free_balance" id="free_balance">
+                    @error("free_balance")
+                    <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div>
                     <label for="role_id" class="col-form-label">Role </label>
                     <select required name="role_id" class="form-control @error("role_id") alert-danger @enderror"
                             name="role_id" id="role_id">
-                        @if ($user->role_id == 1) <option name="role_id" value="1"> User</option> <option name="role_id" value="3"> Moderator</option>@endif
-                        @if ($user->role_id == 3) <option name="role_id" value="3"> Moderator</option> <option name="role_id" value="1"> User</option>@endif
+                        @if ($user->isUser()) <option name="role_id" value="1"> User</option> <option name="role_id" value="2"> Moderator</option>@endif
+                        @if ($user->isMod()) <option name="role_id" value="2"> Moderator</option> <option name="role_id" value="1"> User</option>@endif
                     </select>
                     @error("role_id")
-                    <p class="text-danger">
-
-                        Please select one of the options from the dropdown menu.
-                    </p>
+                    <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>

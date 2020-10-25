@@ -63,8 +63,49 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->role->name === 'ADMIN';
     }
 
+    public function isMod()
+    {
+        return $this->role->name === 'MODERATOR';
+    }
+
+    public function isUser()
+    {
+        return $this->role->name === 'USER';
+    }
+
     public function statuses()
     {
         return $this->belongsToMany(Status::class, 'user_statuses');
     }
+
+    public function isBanned()
+    {
+        foreach ($this->statuses as $status) {
+            if ($status->name === "BANNED") {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function isFlagged()
+    {
+        foreach ($this->statuses as $status) {
+            if ($status->name === "FLAGGED") {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function isMuted()
+    {
+        foreach ($this->statuses as $status) {
+            if ($status->name === "MUTED") {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

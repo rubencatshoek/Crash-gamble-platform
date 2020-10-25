@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Status;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Models\UserStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -23,34 +25,29 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $users = User::all();
+        $usersAll = User::all();
+        $statuses = Status::all();
+        $filteredUsers = (new User())->newQuery()->select('users.*');
 
-        //Validate incomming data
+        //Validate incoming data
         $data = $request->validate([
-            //Let incoming data be nullable so
             'user_id' => ['nullable', 'exists:users,id'],
+            'status_id' => ['nullable', 'exists:statuses,id'],
         ]);
 
-        // Grab all articles sorted by publication date.
-//        $users = Article::latest()->paginate(8);
-
-        // Create a new query to search for specific articles.
-        $query = (new User())->newQuery();
-
-        // Grab all articles where given "article_id" in the request matches "id" on the articles table
-        if (isset($data['user_id'])) {
-            $query->where('id', '=', $data['user_id']);
+        if (isset($data['user_id']) || isset($data['status_id'])) {
+            if (isset($data['user_id'])) {
+                $filteredUsers->where('users.id', '=', $data['user_id']);
+            }
+            if (isset($data['status_id'])) {
+                $filteredUsers->join('user_statuses', 'users.id', '=', 'user_statuses.user_id')
+                ->where('user_statuses.status_id', '=', $data['status_id']);
+            }
+            $users = $filteredUsers->get()->all();
         }
 
-        // Grab all articles where given "created_at" in the request matches "created_at" on the articles table
-//        if (isset($data['created_at'])) {
-//            $query->where('created_at', '=', $data['created_at']);
-//        }
-
-        // Sort all filtered articles by publication date.
-        $filteredUsers = $query->latest()->get();
-
         // Return all gathered data to the admin users index.
-        return view('admin.users.index', compact('users', 'filteredUsers'));
+        return view('admin.users.index', compact('users', 'statuses', 'usersAll'));
     }
 
     public function edit(User $user)
@@ -111,14 +108,35 @@ class UserController extends Controller
                 $status_id = 1;
                 $action = 'banned';
                 break;
+            case 'unflag':
+                $status_id = 3;
+                $action = 'unflagged';
+                break;
+            case 'unmute':
+                $status_id = 2;
+                $action = 'unmuted';
+                break;
+            case 'unban':
+                $status_id = 1;
+                $action = 'unbanned';
+                break;
             default:
                 return redirect()->back()->with('error', 'Something went wrong.');
         }
 
-        UserStatus::create([
-            'status_id' => $status_id,
-            'user_id' => $user->id
-        ]);
+        $status = null;
+
+        if ($data['action'] === 'unban' || $data['action'] === 'unflag' || $data['action'] === 'unmute') {
+            $status = UserStatus::where('status_id', $status_id)->where('user_id', $user->id)->first();
+            UserStatus::destroy($status->id);
+        }
+
+        if ($data['action'] === 'ban' || $data['action'] === 'flag' || $data['action'] === 'mute') {
+            UserStatus::create([
+                'status_id' => $status_id,
+                'user_id' => $user->id
+            ]);
+        };
 
         return redirect()->back()->with('success', 'user: "' . $user->name . '" was successfully ' . $action);
     }
@@ -132,19 +150,33 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $authUser = auth()->user();
-        $admin = 3;
 
-        if ($authUser->role_id !== $admin) {
+        if (!$authUser->isAdmin()) {
             return;
         }
 
-        $data = $request->only('name', 'role_id');
+        $data = $request->only('name', 'email', 'role_id', 'paid_balance', 'free_balance');
 
         $validator = Validator::make($data, [
             'name' => [
                 'required',
                 Rule::unique('users')->ignore($user->id),
                 'max:15'
+            ],
+            'email' => [
+                'nullable',
+                Rule::unique('users')->ignore($user->id),
+                'email'
+            ],
+            'paid_balance' => [
+                'required',
+                'numeric',
+                'min:0'
+            ],
+            'free_balance' => [
+                'required',
+                'numeric',
+                'min:0'
             ],
             'role_id' => [
                 'required',
