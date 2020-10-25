@@ -10,46 +10,16 @@
 
         <div class="container pt-4">
             <div class="row">
-                <div class="dropdown col-lg-2 pb-4">
-                    <h2 class="font-weight-bold pb-2">Menu</h2>
-
-                    <div class="pb-3">
-                        <a class="text-decoration-none" href="{{ route('home') }}">
-                            Admin panel
-                        </a>
-                    </div>
-
-                    <div class="pb-3">
-                        <a class="text-decoration-none" href="{{ route('profile', $user->name) }}">
-                            View profile
-                        </a>
-                    </div>
-
-                    <div class="pb-3">
-                        <a class="text-decoration-none" style="color: white !important;"
-                           href="{{ route('settings.index') }}">
-                            Account settings
-                        </a>
-                    </div>
-
-                    <div class="pb-3">
-                        <a class="text-decoration-none" href="{{ route('balance.index') }}">
-                            Manage balance
-                        </a>
-                    </div>
-
-                    <div class="pb-3">
-                        <a class="text-decoration-none" href="{{ url('/logout') }}">
-                            Logout
-                        </a>
-                    </div>
-                </div>
+                @include('layouts.user_menu')
 
                 <div class="col-lg-1 pb-4">
                 </div>
 
                 <div class="col-lg-9 pb-2">
                     <h2 class="font-weight-bold pb-3">Settings</h2>
+                    <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in dignissim
+                        eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur laoreet.</p>
+
                     <label for="username">Username</label>
                     <input id="username" class="input-dark form-control" type="text" value="{{ $user->name }}"
                            disabled>

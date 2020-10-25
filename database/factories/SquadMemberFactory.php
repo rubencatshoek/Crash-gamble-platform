@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Squad;
+use App\Models\SquadMember;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SquadFactory extends Factory
+class SquadMemberFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Squad::class;
+    protected $model = SquadMember::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,9 @@ class SquadFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'description' => $this->faker->slug
+            'squad_id' => $this->faker->numberBetween(1, 10),
+            'user_id' => $this->faker->numberBetween(1, 10),
+            'role_id' => $this->faker->numberBetween(1, 3)
         ];
     }
 }

@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
-class Squad extends Model
+class SquadMember extends Model
 {
     use HasFactory;
 
@@ -16,7 +15,8 @@ class Squad extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'description'
+        'squad_id',
+        'user_id',
+        'role_id',
     ];
 }

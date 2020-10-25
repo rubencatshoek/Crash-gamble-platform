@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSquadsTable extends Migration
+class CreateSquadRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateSquadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('squads', function (Blueprint $table) {
+        Schema::create('squad_roles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->mediumText('description')->nullable()->default('This is a default description.');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateSquadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('squads');
+        Schema::dropIfExists('squad_roles');
     }
 }
