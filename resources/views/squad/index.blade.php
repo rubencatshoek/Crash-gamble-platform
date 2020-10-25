@@ -5,80 +5,101 @@
     <section class="background-secondary text-white">
         <div class="spacer pt-5 d-sm-none d-md-none">
         </div>
+
+        @include('layouts.message')
+
         <div class="container pt-4">
             <div class="row">
-                <div class="col-lg-12 pb-2">
-                    <h2 class="font-weight-bold text-center">Squad profile</h2>
-                    <h5>Squad stats</h5>
-                </div>
-            </div>
+                @include('layouts.user_menu')
 
-            <div class="row">
-                <div class="col-lg-12 pb-3">
-                    <div class="p-4 input-dark">
-                        <h5>
-                            Squad: {{ $squad->name }}
-                        </h5>
-                        <span class="text-grey">Created: {{ $squad->created_at }}</span>
-                        <br><br>
-                        <span class="text-grey">Description:</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in dignissim eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur laoreet.</p>
-                    </div>
+                <div class="col-lg-1 pb-4">
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-lg-12 pb-3 pt-3">
-                    <h5>Betting stats</h5>
-                </div>
-            </div>
+                <div class="col-lg-9 pb-2">
+                    <h2 class="font-weight-bold pb-3">Squad settings</h2>
+                    <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in dignissim
+                        eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur laoreet.</p>
 
-            <div class="row">
-                <div class="col-lg-12 pb-3">
-                    <table class="table-landing table text-white background-main border-0">
-                        <thead class="bg-dark">
-                        <tr>
-                            <th class="w-50">Type</th>
-                            <th class="w-50">Amount</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-grey">Total bets</td>
-                                <td>100.000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-grey">Total profit</td>
-                                <td class="color-green">₿50</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                    @if(empty($squad->id))
+                        <form method="POST" action="{{ route('squad.store') }}">
+                            @csrf
+                            <label for="name">Create a squad</label>
+                            <input id="name" class="input-dark form-control" name="name" type="text">
+                            <br>
 
-            <div class="row">
-                <div class="col-lg-12 pb-3 pt-3">
-                    <h5>User stats</h5>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 pb-3">
-                    <table class="table-landing table text-white background-main border-0">
-                        <thead class="bg-dark">
-                        <tr>
-                            <th class="w-50">User</th>
-                            <th class="w-50">Profit</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($squad->users as $users)
-                            <tr>
-                                <td><a href="{{ route('profile', $users->name) }}">{{ $users->name }}</a></td>
-                                <td class="color-green">₿50</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                            <button class="px-4 btn background-brand text-white">Create Squad</button>
+                        </form>
+                    @else
+                        <h4 class="font-weight-bold pt-4 pb-3">About</h4>
+                        <label for="squad_name">Squad name</label>
+                        <input id="squad_name" type="text" class="input-dark form-control"
+                               value=" {{ $squad->name }}"
+                               disabled>
+                        <br>
+
+                        @if($user->isLeader() === true)
+                            <form method="POST" action="{{ route('squad.update', $squad->id) }}">
+                                @csrf
+                                @method('PUT')
+                                <label for="description">Description</label><br>
+                                <textarea id="description"
+                                          class="input-dark form-control"
+                                          name="description">{{ $squad->description }}</textarea>
+                                <br>
+
+                                <button class="px-4 btn btn-success text-white">Change info</button>
+                            </form>
+
+                            <h4 class="font-weight-bold pt-5 pb-3">Join requests</h4>
+                            @if($usersRequestJoin == '[]')
+                                <p class="text-grey">No users have requested to join.</p>
+                            @else
+                                <table class="table-landing table text-white background-main border-0">
+                                    <tbody>
+                                    @foreach($usersRequestJoin as $userJoin)
+                                        <tr>
+                                            <td>
+                                                <a href="{{ route('profile', $userJoin->name) }}"
+                                                   class="pt-1">{{ $userJoin->name }}</a>
+                                            </td>
+                                            <td class="float-right">
+                                                <a href="{{ route('handleRequesToJoin', ['user' => $userJoin->id, 'handle' => "accept"]) }}"
+                                                   class="px-4 btn btn-sm btn-success text-white">Accept</a>
+                                                <a href="{{ route('handleRequesToJoin', ['user' => $userJoin->id, 'handle' => "decline"]) }}"
+                                                   class="px-4 btn btn-sm btn-danger text-white">Decline</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
+
+                            <h4 class="font-weight-bold pt-5 pb-3">Disband squad</h4>
+                            <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                                dignissim
+                                eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                                laoreet.</p>
+                            <form method="POST" action="{{ route('squad.destroy', $squad->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <input id="deleteSquad" type="checkbox" name="deleteSquad">
+                                <label class="pb-2" for="deleteSquad">Yes, I want to delete my whole squad</label><br>
+
+                                <button class="px-4 btn btn-danger text-white">Disband squad</button>
+                            </form>
+                        @else
+                            <h4 class="font-weight-bold pt-5 pb-3">Leave</h4>
+                            <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+                                dignissim
+                                eros, vitae blandit orci. Suspendisse elementum sapien at lectus consectetur
+                                laoreet.</p>
+                            <form method="POST" action="{{ route('squad.leave') }}">
+                                @csrf
+                                @method('POST')
+                                <button class="px-4 btn btn-danger text-white">Leave squad</button>
+                            </form>
+                        @endif
+                    @endif
                 </div>
             </div>
         </div>

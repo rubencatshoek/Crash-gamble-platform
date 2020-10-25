@@ -115,3 +115,25 @@ td a {
     height: 100px; /* fixed header height*/
     margin: -100px 0 0; /* negative fixed header height */
 }
+
+.hover-link {
+    color: #82828a !important;
+    text-decoration: none !important;
+}
+
+.hover-link:hover {
+    color: white !important;
+}
+
+textarea {
+    color: #495057;
+}
+
+input[type="text"]:disabled, input[type="email"]:disabled {
+    background: #10131a !important;
+    cursor: not-allowed;
+}
+
+.text-responsive {
+    font-size: calc(200% + 1vw + 1vh);
+}

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -21,7 +22,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'role_id',
-        'paid_balance'
+        'paid_balance',
+        'join_squad_id'
     ];
 
     /**
@@ -53,6 +55,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Squad::class);
     }
 
+    public function squadRole()
+    {
+        return $this->belongsTo(SquadRole::class);
+    }
+
     /**
      * Checks if the user is an admin
      *
@@ -76,6 +83,25 @@ class User extends Authenticatable implements MustVerifyEmail
     public function statuses()
     {
         return $this->belongsToMany(Status::class, 'user_statuses');
+    }
+
+    public function getUserSquad($userId)
+    {
+        $squad = DB::table('squad_members')->where('user_id', $userId)->first();
+
+        if (!empty($squad))
+
+            return DB::table('squads')->where('id', $squad->squad_id)->first();
+    }
+
+    public function isLeader()
+    {
+        $squad = DB::table('squad_members')->where('user_id', $this->id)->first();
+
+        if ($squad->role_id === 1 || $squad->role_id === 2) {
+            return true;
+        }
+        return false;
     }
 
     public function isBanned()
