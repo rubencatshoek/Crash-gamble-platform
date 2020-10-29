@@ -38,7 +38,7 @@
                         <p class="text-grey">{{ $squad->description }}</p>
 
                         @if(!empty(auth()->user()))
-                        @if(empty($userSquad->id))
+                        @if(empty($userSquad->id) && !auth()->user()->isAdmin())
                             <form method="POST" action="{{ route('squadJoin', $squad->id) }}">
                                 @csrf
                                 @method('POST')

@@ -21,8 +21,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin_custom.css') }}" rel="stylesheet">
 @stop
 
 @section('js')

@@ -47,11 +47,13 @@
                         </thead>
                         <tbody>
                         @foreach ($users as $user)
+                            @if(!$user->isAdmin())
                             <tr>
                                 <td>#{{ $user->id }}</td>
                                 <td><a href="{{ route('profile', $user->name) }}">{{ $user->name }}</a></td>
                                 <td class="color-green">₿50</td>
                             </tr>
+                            @endif
                         @endforeach
                         </tbody>
                     </table>
