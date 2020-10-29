@@ -1,0 +1,85 @@
+/* OVERALL ---------------------------------------------------------------------- */
+body {
+    overflow-y: scroll;
+}
+
+.spacer {
+    padding-bottom: 7%;
+}
+
+/* BRANDING ---------------------------------------------------------------------- */
+.input-dark {
+    background-color: #151921 !important;
+    border: none !important;
+}
+
+.background-brand {
+    background-color: #2b6ecf !important;
+}
+
+.color-brand {
+    color: #2b6ecf !important;
+}
+
+.background-main {
+    background-color: #151921 !important;
+}
+
+.background-secondary {
+    background-color: #1b2029 !important;
+}
+
+.color-green {
+    color: green !important;
+}
+
+.color-red {
+    color: #dc3545 !important;
+}
+
+/* ADMIN SIDE CHANGES ---------------------------------------------------------------------- */
+.main-sidebar {
+    background-color: #151921;
+}
+
+.main-header, .brand-link {
+    background-color: #151921;
+    border-bottom: 1px solid #4b545c;
+!important;
+}
+
+.content-wrapper {
+    background-color: #1b2029;
+    color: white;
+}
+
+.table thead th {
+    border-bottom: 1px solid #4b545c;
+}
+
+.table td, .table th {
+    border-top: 1px solid #4b545c;
+}
+
+.table tbody + tbody {
+    border-top: 2px solid #4b545c;
+}
+
+.nav-link {
+    color: white !important
+}
+
+.dropdown-menu .dropdown-menu-lg .dropdown-menu-right .show {
+    background-color: #1b2029 !important;
+    color: white;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer {
+    background-color: #151921;
+    color: white;
+    padding: 0 !important;
+}
+
+.user-footer > .btn-block {
+    background-color: #151921;
+}

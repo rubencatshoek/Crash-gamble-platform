@@ -52,7 +52,7 @@ Route::post('/squad/leave', [App\Http\Controllers\SquadController::class, 'leave
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
 
     //Frontpage of the dashboard
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Admin routes within dashboard
     Route::middleware('auth.admin')->prefix('admin')->group(function () {

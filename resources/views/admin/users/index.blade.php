@@ -59,11 +59,10 @@
                     </div>
                 </div>
             </div>
-        </div>
     </form>
     <div class="row">
         <div class="col-12">
-            <table class="table table-striped">
+            <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -219,7 +218,7 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="/css/main.css">
+    <link href="{{ asset('css/admin_custom.css') }}" rel="stylesheet">
 @endsection
 
 @section('plugins.Select2')
