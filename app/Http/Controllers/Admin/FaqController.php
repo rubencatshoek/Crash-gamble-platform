@@ -44,7 +44,7 @@ class FaqController extends Controller
             'question' => 'required',
             'answer' => 'required',
         ]));
-        return redirect(route('faq.index'));
+        return redirect(route('faq.index'))->with('success', 'Faq succesfully created');
     }
 
     /**
@@ -83,7 +83,7 @@ class FaqController extends Controller
             'question' => 'required',
             'answer' => 'required',
         ]));
-        return redirect(route('faq.index'));
+        return redirect(route('faq.index'))->with('success', 'Faq succesfully edited');
     }
 
     /**
@@ -96,6 +96,6 @@ class FaqController extends Controller
     public function destroy(Faq $faq)
     {
         $faq->delete();
-        return redirect(route('faq.index'));
+        return redirect(route('faq.index'))->with('success', 'Faq succesfully deleted');
     }
 }
