@@ -46,7 +46,7 @@
                        style="@if(Request::is('leaderboards')) color:white !important; @endif">Leaderboards</a>
                 </li>
                 <li class="nav-item pr-2">
-                    <a class="nav-link" href="{{ route('faq.index') }}"
+                    <a class="nav-link" href="{{ route('user.faq.index') }}"
                        style="@if(Request::is('faq')) color:white !important; @endif">FAQ</a>
                 </li>
 

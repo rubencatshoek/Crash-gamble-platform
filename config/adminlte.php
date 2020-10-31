@@ -252,6 +252,11 @@ return [
             'url'  => 'dashboard/admin/users',
             'icon' => 'fas fa-fw fa-user',
         ],
+        [
+            'text' => 'FAQ management',
+            'url'  => 'dashboard/admin/faq',
+            'icon' => 'fas fa-fw fa-question-circle',
+        ],
                 ['header' => 'FRONTEND'],
         [
             'text' => 'Homepage',
