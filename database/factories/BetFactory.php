@@ -22,7 +22,10 @@ class BetFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => $this->faker->numberBetween(1, 150),
+            'crash_id' => $this->faker->numberBetween(1, 150),
+            'amount_bet' => $this->faker->randomFloat(10, 0, '10'),
+            'user_crashed_at' => $this->faker->numberBetween(10, 50),
         ];
     }
 }

@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->times(150)->create();
+        User::factory()->times(1500)->create();
         DB::table('users')->insert([
             'role_id' => '1',
             'name' => 'user',

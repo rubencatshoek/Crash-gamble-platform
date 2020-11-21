@@ -15,6 +15,7 @@ class LeaderboardController extends Controller
      */
     public function index()
     {
+        // Get required data
         $users = User::all();
         $squads = Squad::all();
         $bets = Bet::all();
@@ -28,42 +29,48 @@ class LeaderboardController extends Controller
             }
         }
 
-        // Calculate profit
+        // Set profit array
+        $profit[] = array();
+
+        // Set default profit to zero
         foreach ($users as $user) {
-            foreach ($bets as $bet) {
-                if ($user->id === $bet->user_id) {
-                    if ($bet->win === false) {
-                        $user->profit -= $bet->amount_bet;
-                    } else {
-                        $user->profit += ($bet->amount_bet * $bet->user_crashed_at);
-                    }
-                }
-            }
-            if ($user->profit === null) {
-                $user->profit = 0;
+            $profit[$user->id] = 0;
+        }
+
+        // Calculate profit and put it in the profit variable
+        foreach ($bets as $bet) {
+            if ($bet->win === false) {
+                $profit[$bet->user_id] -= $bet->amount_bet;
+            } else {
+                $profit[$bet->user_id] += ($bet->amount_bet * $bet->user_crashed_at);
             }
         }
 
-        // Sort by user profit
-        $users = $users->sortByDesc('profit');
-
-        // Set empty rank
+        // Get the user rank
         $rank = '';
 
-        if (!empty(auth()->user())) {
-            $i = 0;
-            foreach ($users as $user) {
-                $i++;
+        // Put the profit per user as attribute
+        foreach ($users as $user) {
+            $user->profit = $profit[$user->id];
+        }
 
-                if ($user->id === auth()->user()->id) {
+        // Sort the users by profit
+        $users = $users->sortByDesc('profit');
+
+        // Get the user logged in rank
+        $i = 0;
+        if (!empty(auth()->user())) {
+            foreach($users as $user) {
+                $i++;
+                if(auth()->user()->id === $user->id) {
                     $rank = $i;
                 }
             }
         }
 
-        // Take top 100
+        // Take 100 users to the leaderboard
         $users = $users->take(100);
 
-        return view('leaderboard.index', ['users' => $users, 'squads' => $squads, 'rank' => $rank]);
+        return view('leaderboard.index', ['users' => $users, 'squads' => $squads, 'rank' => $rank, 'profit' => $profit]);
     }
 }

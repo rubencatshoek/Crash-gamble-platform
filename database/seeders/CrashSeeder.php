@@ -14,6 +14,6 @@ class CrashSeeder extends Seeder
      */
     public function run()
     {
-        Crash::create(['crashed_at' => 2]);
+        Crash::factory()->times(1500)->create();
     }
 }

@@ -14,6 +14,6 @@ class BetSeeder extends Seeder
      */
     public function run()
     {
-        Bet::create(['user_id' => 1, 'crash_id' => '1', 'amount_bet' => 100.000, 'user_crashed_at' => 2]);
+        Bet::factory()->times(1500)->create();
     }
 }

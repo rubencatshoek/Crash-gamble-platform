@@ -22,7 +22,7 @@ class CrashFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'crashed_at' => $this->faker->numberBetween(1, 12),
         ];
     }
 }
