@@ -35,6 +35,7 @@ Route::post('/settings/update', [App\Http\Controllers\UserController::class, 'up
 Route::get('/faq', [App\Http\Controllers\FaqController::class, 'index'])->name('user.faq.index');
 
 Route::resource('play', App\Http\Controllers\PlayController::class);
+Route::resource('bet', App\Http\Controllers\BetController::class);
 Route::resource('settings', App\Http\Controllers\SettingController::class);
 Route::resource('balance', App\Http\Controllers\BalanceController::class);
 Route::resource('squad', App\Http\Controllers\SquadController::class);
