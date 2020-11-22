@@ -17,7 +17,7 @@
                 <div class="col-lg-6 pb-3">
                     <div class="p-3 input-dark">
                         <div class="form-inline">
-                            <h3 class="pr-3">#1</h3>
+                            <h3 class="pr-3">#{{ $rank }}</h3>
                             <span class="text-grey">Personal ranked</span>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                 <div class="col-lg-6 pb-3">
                     <div class="p-3 input-dark">
                         <div class="form-inline">
-                            <h3 class="pr-3">#5</h3>
+                            <h3 class="pr-3"># WIP</h3>
                             <span class="text-grey">Squad ranked</span>
                         </div>
                     </div>
@@ -48,11 +48,16 @@
                         <tbody>
                         @foreach ($users as $user)
                             @if(!$user->isAdmin())
-                            <tr>
-                                <td>#{{ $user->id }}</td>
-                                <td><a href="{{ route('profile', $user->name) }}">{{ $user->name }}</a></td>
-                                <td class="color-green">₿50</td>
-                            </tr>
+                                <tr>
+                                    <td>#{{ $loop->iteration }}</td>
+                                    <td><a href="{{ route('profile', $user->name) }}">{{ $user->name }}</a></td>
+
+                                    @if($user->profit >= 0)
+                                        <td class="color-green">₿{{ $user->profit }}</td>
+                                    @else
+                                        <td class="color-red">₿{{ $user->profit * -1 }}</td>
+                                    @endif
+                                </tr>
                             @endif
                         @endforeach
                         </tbody>
@@ -74,7 +79,7 @@
                             <tr>
                                 <td>#{{ $squad->id }}</td>
                                 <td><a href="{{ route('squad', $squad->name) }}">{{ $squad->name }}</a></td>
-                                <td class="color-green">₿50</td>
+                                <td class="color-green">₿ WIP</td>
                             </tr>
                         @endforeach
                         </tbody>

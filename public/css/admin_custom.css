@@ -83,3 +83,9 @@ body {
 .user-footer > .btn-block {
     background-color: #151921;
 }
+
+.input-dark {
+    background-color: #151921 !important;
+    border: none !important;
+    color: #bdbdbd !important;
+}

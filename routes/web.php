@@ -32,8 +32,10 @@ Route::get('/help', [App\Http\Controllers\LegalController::class, 'indexHelp'])-
 Route::post('/balance/donate', [App\Http\Controllers\BalanceController::class, 'donate'])->name('balance.donate');
 Route::post('/settings/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 
-Route::resource('faq', App\Http\Controllers\FaqController::class);
+Route::get('/faq', [App\Http\Controllers\FaqController::class, 'index'])->name('user.faq.index');
+
 Route::resource('play', App\Http\Controllers\PlayController::class);
+Route::resource('bet', App\Http\Controllers\BetController::class);
 Route::resource('settings', App\Http\Controllers\SettingController::class);
 Route::resource('balance', App\Http\Controllers\BalanceController::class);
 Route::resource('squad', App\Http\Controllers\SquadController::class);
@@ -66,6 +68,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
             Route::delete('/{user}/deleteStatus', [App\Http\Controllers\Admin\UserController::class, 'deleteStatus'])->name('admin.user.deleteStatus');
         });
 
+        Route::resource('faq', App\Http\Controllers\Admin\FaqController::class);
     });
 
 });

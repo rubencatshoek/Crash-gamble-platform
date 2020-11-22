@@ -85,6 +85,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Status::class, 'user_statuses');
     }
 
+    public function bets()
+    {
+        return $this->hasMany(Bet::class, 'user_id');
+    }
+
+    public function crashes()
+    {
+        return $this->belongsToMany(Crash::class, 'bets', 'crash_id');
+    }
+
     public function getUserSquad($userId)
     {
         $squad = DB::table('squad_members')->where('user_id', $userId)->first();
