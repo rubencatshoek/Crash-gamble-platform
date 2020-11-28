@@ -49,6 +49,8 @@ Route::post('/manage/squad/updateRole', [App\Http\Controllers\SquadController::c
 Route::post('/squad/join/{squad}', [App\Http\Controllers\SquadController::class, 'requestToJoin'])->name('squadJoin');
 Route::post('/squad/leave', [App\Http\Controllers\SquadController::class, 'leave'])->name('squad.leave');
 
+Route::get('/leaderboards/users/{takeAmountOfUsers}', [App\Http\Controllers\LeaderboardController::class, 'leaderboardByProfitAJAX']);
+
 
 //Dashboard routes
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {

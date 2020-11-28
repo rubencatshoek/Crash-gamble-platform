@@ -13,7 +13,8 @@
                 </div>
             </div>
 
-            <div class="row">
+            @if(!empty(auth()->user()))
+            <div class="row pb-5">
                 <div class="col-lg-6 pb-3">
                     <div class="p-3 input-dark">
                         <div class="form-inline">
@@ -32,8 +33,9 @@
                     </div>
                 </div>
             </div>
+            @endif
 
-            <div class="row pt-5">
+            <div class="row">
                 <div class="col-lg-6 text-center">
                     <h3 class="font-weight-bold">Individual</h3>
                     <br>
@@ -53,9 +55,9 @@
                                     <td><a href="{{ route('profile', $user->name) }}">{{ $user->name }}</a></td>
 
                                     @if($user->profit >= 0)
-                                        <td class="color-green">₿{{ $user->profit }}</td>
+                                        <td class="color-green">{{ $user->profit }}</td>
                                     @else
-                                        <td class="color-red">₿{{ $user->profit * -1 }}</td>
+                                        <td class="color-red">{{ $user->profit * -1 }}</td>
                                     @endif
                                 </tr>
                             @endif
@@ -79,7 +81,7 @@
                             <tr>
                                 <td>#{{ $squad->id }}</td>
                                 <td><a href="{{ route('squad', $squad->name) }}">{{ $squad->name }}</a></td>
-                                <td class="color-green">₿ WIP</td>
+                                <td class="color-green">WIP</td>
                             </tr>
                         @endforeach
                         </tbody>

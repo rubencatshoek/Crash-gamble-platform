@@ -77,20 +77,20 @@
 
             <div class="row">
                 <div class="col-lg-3 text-center">
-                    <h1 class="font-weight-bold">1000K</h1>
+                    <h1 class="font-weight-bold">{{ $totalWagered }}</h1>
                     <p class="text-uppercase">Total wagered</p>
                 </div>
                 <div class="col-lg-3 text-center">
-                    <h1 class="font-weight-bold">10K</h1>
+                    <h1 class="font-weight-bold">{{ $highestBetToday }}</h1>
                     <p class="text-uppercase">Highest bet today</p>
                 </div>
                 <div class="col-lg-3 text-center">
-                    <h1 class="font-weight-bold">25K</h1>
+                    <h1 class="font-weight-bold">{{ $highestBet }}</h1>
                     <p class="text-uppercase">Highest bet</p>
                 </div>
                 <div class="col-lg-3 text-center">
-                    <h1 class="font-weight-bold">15K</h1>
-                    <p class="text-uppercase">Players</p>
+                    <h1 class="font-weight-bold">{{ $totalPlayers }}</h1>
+                    <p class="text-uppercase">Total players</p>
                 </div>
             </div>
 
@@ -306,13 +306,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($users as $user)
+                            @for($i = 1; $i <= 5; $i++)
                             <tr>
-                                <td>#{{ $user->id }}</td>
-                                <td><a href="{{ route('profile', $user->name) }}">{{ $user->name }}</a></td>
-                                <td class="color-green">₿50</td>
+                                <td id="rankId{{ $i }}">#{{ $i }}</td>
+                                <td id="userId{{ $i }}">Loading name</td>
+                                <td id="profitId{{ $i }}" class="color-green">Loading profit</td>
                             </tr>
-                        @endforeach
+                            @endfor
                         </tbody>
                     </table>
                 </div>
@@ -332,7 +332,7 @@
                             <tr>
                                 <td>#{{ $squad->id }}</td>
                                 <td><a href="{{ route('squad', $squad->name) }}">{{ $squad->name }}</a></td>
-                                <td class="color-green">₿50</td>
+                                <td class="color-green">WIP</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -370,3 +370,19 @@
     </section>
     @include('layouts.footer')
 @endsection
+{{-- TODO: non-online jQuery call --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        $.ajax({
+            url: './leaderboards/users/5',
+            type: "GET",
+            success: function (data) {
+                for($i = 1; $i <= 5; $i++) {
+                    document.getElementById("userId" + $i).innerHTML = "<a href='./profile/" + data[$i].name + "'>" + data[$i].name + "</a>"
+                    document.getElementById("profitId" + $i).innerText = data[$i].profit;
+                }
+            }
+        });
+    });
+</script>
