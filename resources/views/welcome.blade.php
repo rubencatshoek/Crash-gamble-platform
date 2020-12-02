@@ -370,12 +370,11 @@
     </section>
     @include('layouts.footer')
 @endsection
-{{-- TODO: non-online jQuery call --}}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./js/jquery.min.js"></script>
 <script>
     $(function () {
         $.ajax({
-            url: './leaderboards/users/5',
+            url: './leaderboards/users',
             type: "GET",
             success: function (data) {
                 for($i = 1; $i <= 5; $i++) {

@@ -49,7 +49,7 @@ Route::post('/manage/squad/updateRole', [App\Http\Controllers\SquadController::c
 Route::post('/squad/join/{squad}', [App\Http\Controllers\SquadController::class, 'requestToJoin'])->name('squadJoin');
 Route::post('/squad/leave', [App\Http\Controllers\SquadController::class, 'leave'])->name('squad.leave');
 
-Route::get('/leaderboards/users/{takeAmountOfUsers}', [App\Http\Controllers\LeaderboardController::class, 'leaderboardByProfitAJAX']);
+Route::get('/leaderboards/users', [App\Http\Controllers\LeaderboardController::class, 'leaderboardTopFiveUsers']);
 
 
 //Dashboard routes
