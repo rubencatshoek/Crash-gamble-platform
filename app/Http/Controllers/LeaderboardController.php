@@ -16,7 +16,7 @@ class LeaderboardController extends Controller
     public function index()
     {
         // Get all squads
-        $squads = Squad::all();
+        $squads = $this->leaderboardBySquadProfit();
 
         // Get all users by profit
         $users = $this->leaderboardByProfit('');
@@ -35,8 +35,25 @@ class LeaderboardController extends Controller
             }
         }
 
+        // Get the user's squad
+        $userSquad = auth()->user()->getUserSquad(auth()->user()->id);
+
+        // Set empty rank variable
+        $squadRank = '';
+
+        // Get the user logged in rank
+        $j = 0;
+        if (!empty(auth()->user())) {
+            foreach ($squads as $squad) {
+                $j++;
+                if ($userSquad->id === $squad->id) {
+                    $squadRank = $j;
+                }
+            }
+        }
+
         // Return to view
-        return view('leaderboard.index', ['users' => $users, 'squads' => $squads, 'rank' => $rank]);
+        return view('leaderboard.index', ['users' => $users, 'squads' => $squads, 'rank' => $rank, 'squadRank' => $squadRank]);
     }
 
     public function leaderboardByProfit($takeAmountOfUsers)
@@ -107,6 +124,64 @@ class LeaderboardController extends Controller
 
         // Return the user data which everyone can see
         return $allUsers;
+    }
+
+    public function leaderboardBySquadProfit()
+    {
+        $squads = Squad::all();
+        $users = User::all();
+        $bets = Bet::all();
+
+        // Calculate if bet has been won or lost
+        foreach ($bets as $bet) {
+            if ($bet->user_crashed_at === null || $bet->user_crashed_at > $bet->crashes->crashed_at) {
+                $bet->win = false;
+            } else {
+                $bet->win = true;
+            }
+        }
+
+        // Set profit array
+        $profit[] = array();
+
+        // Set default profit to zero
+        foreach ($users as $user) {
+            $profit[$user->id] = 0;
+        }
+
+        // Calculate profit and put it in the profit variable
+        foreach ($bets as $bet) {
+            if ($bet->win === false) {
+                $profit[$bet->user_id] -= $bet->amount_bet;
+            } else {
+                $profit[$bet->user_id] += ($bet->amount_bet * $bet->user_crashed_at);
+            }
+        }
+
+
+        // Put the profit and squad per user as attribute
+        foreach ($users as $user) {
+            $user->profit = $profit[$user->id];
+
+            $user->squad = $user->getUserSquad($user->id);
+        }
+
+        foreach ($squads as $squad) {
+            $squad->profit = 0;
+            foreach ($users as $user) {
+                if (!empty($user->squad)) {
+                    if($squad->id === $user->squad->id) {
+                        $squad->profit += $user->profit;
+                    }
+                }
+            }
+        }
+
+        // Sort the users by profit
+        $squads = $squads->sortByDesc('profit');
+        
+        // Return all squads by profit
+        return $squads;
     }
 
     public function leaderboardTopFiveUsers()

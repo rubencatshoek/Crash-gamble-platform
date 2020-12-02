@@ -27,7 +27,7 @@
                 <div class="col-lg-6 pb-3">
                     <div class="p-3 input-dark">
                         <div class="form-inline">
-                            <h3 class="pr-3"># WIP</h3>
+                            <h3 class="pr-3">#{{ $squadRank }}</h3>
                             <span class="text-grey">Squad ranked</span>
                         </div>
                     </div>
@@ -79,9 +79,14 @@
                         <tbody>
                         @foreach ($squads as $squad)
                             <tr>
-                                <td>#{{ $squad->id }}</td>
+                                <td>#{{ $loop->iteration }}</td>
                                 <td><a href="{{ route('squad', $squad->name) }}">{{ $squad->name }}</a></td>
-                                <td class="color-green">WIP</td>
+
+                                @if($squad->profit >= 0)
+                                    <td class="color-green">{{ $squad->profit }}</td>
+                                @else
+                                    <td class="color-red">{{ $squad->profit * -1 }}</td>
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>
