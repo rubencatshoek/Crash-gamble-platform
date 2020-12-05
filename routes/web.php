@@ -49,6 +49,14 @@ Route::post('/manage/squad/updateRole', [App\Http\Controllers\SquadController::c
 Route::post('/squad/join/{squad}', [App\Http\Controllers\SquadController::class, 'requestToJoin'])->name('squadJoin');
 Route::post('/squad/leave', [App\Http\Controllers\SquadController::class, 'leave'])->name('squad.leave');
 
+Route::get('/leaderboards/users', [App\Http\Controllers\LeaderboardController::class, 'leaderboardTopFiveUsers']);
+Route::get('/leaderboards/squads', [App\Http\Controllers\LeaderboardController::class, 'leaderboardTopFiveSquads']);
+
+Route::get('/leaderboards/users/hundred', [App\Http\Controllers\LeaderboardController::class, 'leaderboardTopHundredUsers']);
+Route::get('/leaderboards/squads/hundred', [App\Http\Controllers\LeaderboardController::class, 'leaderboardTopHundredSquads']);
+
+Route::get('/leaderboards/user/rank', [App\Http\Controllers\LeaderboardController::class, 'personalUserRank']);
+Route::get('/leaderboards/squad/rank', [App\Http\Controllers\LeaderboardController::class, 'personalSquadRank']);
 
 //Dashboard routes
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
