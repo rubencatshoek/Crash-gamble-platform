@@ -309,8 +309,8 @@
                             @for($i = 1; $i <= 5; $i++)
                             <tr>
                                 <td id="rankId{{ $i }}">#{{ $i }}</td>
-                                <td id="userId{{ $i }}">Loading name</td>
-                                <td id="profitId{{ $i }}" class="color-green">Loading profit</td>
+                                <td id="userId{{ $i }}"><img class="img-fluid" alt="loading" height="20px" width="20px" src="{{ asset('img/load.svg') }}"></td>
+                                <td id="profitId{{ $i }}" class="color-green"><img class="img-fluid" alt="loading" height="20px" width="20px" src="{{ asset('img/load.svg') }}"></td>
                             </tr>
                             @endfor
                         </tbody>
@@ -328,13 +328,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($squads as $squad)
+                        @for($j = 1; $j <= 5; $j++)
                             <tr>
-                                <td>#{{ $squad->id }}</td>
-                                <td><a href="{{ route('squad', $squad->name) }}">{{ $squad->name }}</a></td>
-                                <td class="color-green">WIP</td>
+                                <td id="rankId{{ $j }}">#{{ $j }}</td>
+                                <td id="squadId{{ $j }}"><img class="img-fluid" alt="loading" height="20px" width="20px" src="{{ asset('img/load.svg') }}"></td>
+                                <td id="squadProfitId{{ $j }}" class="color-green"><img class="img-fluid" alt="loading" height="20px" width="20px" src="{{ asset('img/load.svg') }}"></td>
                             </tr>
-                        @endforeach
+                        @endfor
                         </tbody>
                     </table>
                 </div>
@@ -380,6 +380,19 @@
                 for($i = 1; $i <= 5; $i++) {
                     document.getElementById("userId" + $i).innerHTML = "<a href='./profile/" + data[$i].name + "'>" + data[$i].name + "</a>"
                     document.getElementById("profitId" + $i).innerText = data[$i].profit;
+                }
+            }
+        });
+    });
+
+    $(function () {
+        $.ajax({
+            url: './leaderboards/squads',
+            type: "GET",
+            success: function (data) {
+                for($i = 1; $i <= 5; $i++) {
+                    document.getElementById("squadId" + $i).innerHTML = "<a href='./squad/" + data[$i].name + "'>" + data[$i].name + "</a>"
+                    document.getElementById("squadProfitId" + $i).innerText = data[$i].profit;
                 }
             }
         });

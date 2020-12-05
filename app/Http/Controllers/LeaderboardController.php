@@ -15,45 +15,8 @@ class LeaderboardController extends Controller
      */
     public function index()
     {
-        // Get all squads
-        $squads = $this->leaderboardBySquadProfit();
-
-        // Get all users by profit
-        $users = $this->leaderboardByProfit('');
-
-        // Set empty rank variable
-        $rank = '';
-
-        // Get the user logged in rank
-        $i = 0;
-        if (!empty(auth()->user())) {
-            foreach ($users as $user) {
-                $i++;
-                if (auth()->user()->id === $user->id) {
-                    $rank = $i;
-                }
-            }
-        }
-
-        // Get the user's squad
-        $userSquad = auth()->user()->getUserSquad(auth()->user()->id);
-
-        // Set empty rank variable
-        $squadRank = '';
-
-        // Get the user logged in rank
-        $j = 0;
-        if (!empty(auth()->user())) {
-            foreach ($squads as $squad) {
-                $j++;
-                if ($userSquad->id === $squad->id) {
-                    $squadRank = $j;
-                }
-            }
-        }
-
         // Return to view
-        return view('leaderboard.index', ['users' => $users, 'squads' => $squads, 'rank' => $rank, 'squadRank' => $squadRank]);
+        return view('leaderboard.index');
     }
 
     public function leaderboardByProfit($takeAmountOfUsers)
@@ -126,7 +89,13 @@ class LeaderboardController extends Controller
         return $allUsers;
     }
 
-    public function leaderboardBySquadProfit()
+    public function leaderboardTopFiveUsers()
+    {
+        // Take top 5 from the leaderboard
+        return $this->leaderboardByProfitAJAX(5);
+    }
+
+    public function leaderboardBySquadProfit($takeAmountOfSquads)
     {
         $squads = Squad::all();
         $users = User::all();
@@ -177,16 +146,99 @@ class LeaderboardController extends Controller
             }
         }
 
-        // Sort the users by profit
+        // Sort the squads by profit
         $squads = $squads->sortByDesc('profit');
-        
+
+        // If empty, count all users
+        if (!empty($takeAmountOfSquads)) {
+            $squads = $squads->take($takeAmountOfSquads);
+        }
+
         // Return all squads by profit
         return $squads;
     }
 
-    public function leaderboardTopFiveUsers()
+    public function leaderboardBySquadProfitAJAX($takeAmountOfSquads)
+    {
+        // Take users to the leaderboard
+        $squads = $this->leaderboardBySquadProfit($takeAmountOfSquads);
+
+        // Set the array
+        $allSquads = array();
+
+        // Set the iterator
+        $i = 1;
+        foreach ($squads as $loop => $squad) {
+            $allSquads[$i]['rank'] = $i;
+            $allSquads[$i]['name'] = $squad->name;
+            $allSquads[$i]['profit'] = round($squad->profit);
+            $i++;
+        }
+
+        // Return the user data which everyone can see
+        return $allSquads;
+    }
+
+    public function leaderboardTopFiveSquads()
     {
         // Take top 5 from the leaderboard
-        return $this->leaderboardByProfitAJAX(5);
+        return $this->leaderboardBySquadProfitAJAX(5);
+    }
+
+    public function leaderboardTopHundredUsers()
+    {
+        // Take top 5 from the leaderboard
+        return $this->leaderboardByProfitAJAX(100);
+    }
+
+    public function leaderboardTopHundredSquads()
+    {
+        // Take top 5 from the leaderboard
+        return $this->leaderboardBySquadProfitAJAX(100);
+    }
+
+    public function personalUserRank()
+    {
+        // Get all users by profit
+        $users = $this->leaderboardByProfit('');
+
+        // Set empty rank variable
+        $rank = '';
+
+        // Get the user logged in rank
+        $i = 0;
+        if (!empty(auth()->user())) {
+            foreach ($users as $user) {
+                $i++;
+                if (auth()->user()->id === $user->id) {
+                    $rank = $i;
+                }
+            }
+        }
+        return $rank;
+    }
+
+    public function personalSquadRank()
+    {
+        // Get all squads
+        $squads = $this->leaderboardBySquadProfit('');
+
+        // Get the user's squad
+        $userSquad = auth()->user()->getUserSquad(auth()->user()->id);
+
+        // Set empty rank variable
+        $squadRank = '';
+
+        // Get the user logged in rank
+        $j = 0;
+        if (!empty(auth()->user())) {
+            foreach ($squads as $squad) {
+                $j++;
+                if ($userSquad->id === $squad->id) {
+                    $squadRank = $j;
+                }
+            }
+        }
+        return $squadRank;
     }
 }
