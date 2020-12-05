@@ -81,7 +81,7 @@ class LeaderboardController extends Controller
         foreach ($users as $loop => $user) {
             $allUsers[$i]['rank'] = $i;
             $allUsers[$i]['name'] = $user->name;
-            $allUsers[$i]['profit'] = round($user->profit);
+            $allUsers[$i]['profit'] = round($user->profit, 2);
             $i++;
         }
 
@@ -240,5 +240,43 @@ class LeaderboardController extends Controller
             }
         }
         return $squadRank;
+    }
+
+    public function userRank($username)
+    {
+        // Get the user
+        $userProfile = User::where('name', $username)->first();
+
+        // Get all users by profit
+        $users = $this->leaderboardByProfit('');
+
+        // Set empty rank variable
+        $rank = '';
+
+        // Get the user logged in rank
+        $i = 0;
+        if (!empty($userProfile)) {
+            foreach ($users as $user) {
+                $i++;
+                if ($userProfile->id === $user->id) {
+                    $rank = $i;
+                }
+            }
+        }
+        return $rank;
+    }
+
+    public function userProfit($username)
+    {
+        // Get the user
+        $user = User::where('name', $username)->first();
+
+        // Get all users by profit
+        $users = $this->leaderboardByProfit('');
+
+        // Get the profit by user from the leaderboard list. Minus one because an array starts at zero
+        $userProfit = $users[$user->id - 1]->profit;
+
+        return $userProfit;
     }
 }

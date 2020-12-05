@@ -24,6 +24,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('
 Route::get('/profile/{username}', [App\Http\Controllers\UserController::class, 'index'])->name('profile');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 Route::get('/leaderboards', [App\Http\Controllers\LeaderboardController::class, 'index'])->name('leaderboards.index');
+Route::get('/faq', [App\Http\Controllers\FaqController::class, 'index'])->name('user.faq.index');
 
 Route::get('/legal', [App\Http\Controllers\LegalController::class, 'indexLegal'])->name('legal.index');
 Route::get('/tos', [App\Http\Controllers\LegalController::class, 'indexTos'])->name('legal.tos');
@@ -31,8 +32,6 @@ Route::get('/help', [App\Http\Controllers\LegalController::class, 'indexHelp'])-
 
 Route::post('/balance/donate', [App\Http\Controllers\BalanceController::class, 'donate'])->name('balance.donate');
 Route::post('/settings/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
-
-Route::get('/faq', [App\Http\Controllers\FaqController::class, 'index'])->name('user.faq.index');
 
 Route::resource('play', App\Http\Controllers\PlayController::class);
 Route::resource('bet', App\Http\Controllers\BetController::class);
@@ -57,6 +56,7 @@ Route::get('/leaderboards/squads/hundred', [App\Http\Controllers\LeaderboardCont
 
 Route::get('/leaderboards/user/rank', [App\Http\Controllers\LeaderboardController::class, 'personalUserRank']);
 Route::get('/leaderboards/squad/rank', [App\Http\Controllers\LeaderboardController::class, 'personalSquadRank']);
+Route::get('/leaderboards/user/{username}', [App\Http\Controllers\LeaderboardController::class, 'userProfit']);
 
 //Dashboard routes
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {

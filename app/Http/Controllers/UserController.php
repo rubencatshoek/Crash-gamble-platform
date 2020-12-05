@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bet;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,6 +21,8 @@ class UserController extends Controller
         if ($user === null) {
             return abort(404);
         }
+
+        $user->bets = Bet::where('user_id', $user->id)->count();
 
         return view('profile.index', ['user' => $user, 'squad' => $user->getUserSquad($user->id)]);
     }
