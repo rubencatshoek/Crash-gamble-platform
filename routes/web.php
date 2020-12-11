@@ -55,6 +55,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
 
     //Frontpage of the dashboard
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/bet/{betId}', [App\Http\Controllers\BetController::class, 'show'])->name('bet.user.id');
 
 //Admin routes within dashboard
     Route::middleware('auth.admin')->prefix('admin')->group(function () {
