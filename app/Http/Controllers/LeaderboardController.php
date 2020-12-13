@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bet;
 use App\Models\Squad;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class LeaderboardController extends Controller
 {
@@ -139,7 +140,7 @@ class LeaderboardController extends Controller
             $squad->profit = 0;
             foreach ($users as $user) {
                 if (!empty($user->squad)) {
-                    if($squad->id === $user->squad->id) {
+                    if ($squad->id === $user->squad->id) {
                         $squad->profit += $user->profit;
                     }
                 }
@@ -171,7 +172,7 @@ class LeaderboardController extends Controller
         foreach ($squads as $loop => $squad) {
             $allSquads[$i]['rank'] = $i;
             $allSquads[$i]['name'] = $squad->name;
-            $allSquads[$i]['profit'] = round($squad->profit);
+            $allSquads[$i]['profit'] = round($squad->profit, 2);
             $i++;
         }
 
@@ -270,7 +271,7 @@ class LeaderboardController extends Controller
     {
         // Get the user
         $user = User::where('name', $username)->first();
-        
+
         // Get required data
         $bets = Bet::where('user_id', $user->id)->get();
 
@@ -295,5 +296,80 @@ class LeaderboardController extends Controller
         }
 
         return $user->profit;
+    }
+
+    public function userProfitById($id)
+    {
+        // Get the user
+        $user = User::where('id', $id)->first();
+
+        // Get required data
+        $bets = Bet::where('user_id', $user->id)->get();
+
+        $user->profit = 0;
+
+        // Calculate if bet has been won or lost
+        foreach ($bets as $bet) {
+            if ($bet->user_crashed_at === null || $bet->user_crashed_at > $bet->crashes->crashed_at) {
+                $bet->win = false;
+            } else {
+                $bet->win = true;
+            }
+        }
+
+        // Calculate profit and put it in the profit variable
+        foreach ($bets as $bet) {
+            if ($bet->win === false) {
+                $user->profit -= $bet->amount_bet;
+            } else {
+                $user->profit += ($bet->amount_bet * $bet->user_crashed_at);
+            }
+        }
+
+        return $user->profit;
+    }
+
+    public function squadProfit($squad)
+    {
+        // Get the user
+        $squad = Squad::where('name', $squad)->first();
+
+        // Get all user id's in squad
+        $usersInSquad = DB::table('squad_members')->where('squad_id', $squad->id)->get();
+
+        // Set squad profit to zero
+        $squad->profit = 0;
+
+        foreach ($usersInSquad as $user) {
+            $squad->profit += $this->userProfitById($user->user_id);
+        }
+
+        return $squad->profit;
+    }
+
+    public function squadProfitPerMember($squad)
+    {
+        // Get the user
+        $squad = Squad::where('name', $squad)->first();
+
+        // Get all user id's in squad
+        $usersInSquad = DB::table('squad_members')->where('squad_id', $squad->id)->get();
+
+        //
+        foreach ($usersInSquad as $user) {
+            $user->profit = $this->userProfitById($user->user_id);
+        }
+
+        // Set the array
+        $squadProfitPerMember = array();
+
+        // Set the iterator
+        $i = 1;
+        foreach ($usersInSquad as $user) {
+            $squadProfitPerMember[$i]['profit'] = round($user->profit, 2);
+            $i++;
+        }
+
+        return $squadProfitPerMember;
     }
 }

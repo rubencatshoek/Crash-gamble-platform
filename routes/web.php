@@ -37,13 +37,17 @@ Route::resource('play', App\Http\Controllers\PlayController::class);
 Route::resource('bet', App\Http\Controllers\BetController::class);
 Route::resource('settings', App\Http\Controllers\SettingController::class);
 Route::resource('balance', App\Http\Controllers\BalanceController::class);
-Route::resource('squad', App\Http\Controllers\SquadController::class);
 
-Route::get('/squad/{squad}', [App\Http\Controllers\SquadController::class, 'profile'])->name('squad');
-Route::get('/squad/handle/{user}/{handle}', [App\Http\Controllers\SquadController::class, 'handleRequesToJoin'])->name('handleRequesToJoin');
-Route::get('/manage/squad', [App\Http\Controllers\SquadController::class, 'manage'])->name('squad.manage');
-Route::get('/manage/squad/kick/{id}', [App\Http\Controllers\SquadController::class, 'kickSquadMember'])->name('squad.kick');
-Route::post('/manage/squad/updateRole', [App\Http\Controllers\SquadController::class, 'updateSquadMemberRole'])->name('squad.update.role');
+
+//Dashboard routes
+Route::middleware(['auth'])->group(function () {
+    Route::resource('squad', App\Http\Controllers\SquadController::class);
+    Route::get('/squad/{squad}', [App\Http\Controllers\SquadController::class, 'profile'])->name('squad');
+    Route::get('/squad/handle/{user}/{handle}', [App\Http\Controllers\SquadController::class, 'handleRequesToJoin'])->name('handleRequesToJoin');
+    Route::get('/manage/squad', [App\Http\Controllers\SquadController::class, 'manage'])->name('squad.manage');
+    Route::get('/manage/squad/kick/{id}', [App\Http\Controllers\SquadController::class, 'kickSquadMember'])->name('squad.kick');
+    Route::post('/manage/squad/updateRole', [App\Http\Controllers\SquadController::class, 'updateSquadMemberRole'])->name('squad.update.role');
+});
 
 Route::post('/squad/join/{squad}', [App\Http\Controllers\SquadController::class, 'requestToJoin'])->name('squadJoin');
 Route::post('/squad/leave', [App\Http\Controllers\SquadController::class, 'leave'])->name('squad.leave');
@@ -57,6 +61,9 @@ Route::get('/leaderboards/squads/hundred', [App\Http\Controllers\LeaderboardCont
 Route::get('/leaderboards/user/rank', [App\Http\Controllers\LeaderboardController::class, 'personalUserRank']);
 Route::get('/leaderboards/squad/rank', [App\Http\Controllers\LeaderboardController::class, 'personalSquadRank']);
 Route::get('/leaderboards/user/{username}', [App\Http\Controllers\LeaderboardController::class, 'userProfit']);
+Route::get('/leaderboards/squad/{squad}', [App\Http\Controllers\LeaderboardController::class, 'squadProfit']);
+
+Route::get('/leaderboards/profit/squad/{squad}', [App\Http\Controllers\LeaderboardController::class, 'squadProfitPerMember']);
 
 //Dashboard routes
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
