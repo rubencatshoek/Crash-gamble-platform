@@ -270,13 +270,30 @@ class LeaderboardController extends Controller
     {
         // Get the user
         $user = User::where('name', $username)->first();
+        
+        // Get required data
+        $bets = Bet::where('user_id', $user->id)->get();
 
-        // Get all users by profit
-        $users = $this->leaderboardByProfit('');
+        $user->profit = 0;
 
-        // Get the profit by user from the leaderboard list. Minus one because an array starts at zero
-        $userProfit = $users[$user->id - 1]->profit;
+        // Calculate if bet has been won or lost
+        foreach ($bets as $bet) {
+            if ($bet->user_crashed_at === null || $bet->user_crashed_at > $bet->crashes->crashed_at) {
+                $bet->win = false;
+            } else {
+                $bet->win = true;
+            }
+        }
 
-        return $userProfit;
+        // Calculate profit and put it in the profit variable
+        foreach ($bets as $bet) {
+            if ($bet->win === false) {
+                $user->profit -= $bet->amount_bet;
+            } else {
+                $user->profit += ($bet->amount_bet * $bet->user_crashed_at);
+            }
+        }
+
+        return $user->profit;
     }
 }
