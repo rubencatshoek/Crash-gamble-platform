@@ -9,56 +9,126 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 col-6">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>{{$userCount}}</h3>
 
-                        <p>Total sign-ups</p>
+            <div class="col-lg-2 col-md-2 col-6">
+                <div class="card background-main">
+                    <div class="card-body">
+                        Total sign-ups
+
+                        <h1 class="font-weight-bold">{{$userCount}}</h1>
+                        <a class="text-sm light-grey" href="{{ route('admin.user.index') }}">View users</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-6">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>{{$highestBetWithBetId->amount_bet}}</h3>
-                        <a href="bet/{{$highestBetWithBetId->id}}"><p>Highest bet</p></a>
+            <div class="col-lg-2 col-md-2 col-6">
+                <div class="card background-main">
+                    <div class="card-body">
+                        Highest bet all time
 
+                        <h1 class="font-weight-bold">{{$highestBetWithBetId->amount_bet}}</h1>
+                        <a class="text-sm light-grey" href="{{ route('bet.user.id', $highestBetWithBetId->id) }}">View
+                            highest bet all time</a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-6">
-                <div class="small-box bg-warning">
-                    <div class="inner">
+
+            <div class="col-lg-2 col-md-2 col-6">
+                <div class="card background-main">
+                    <div class="card-body">
+                        Highest bet today
+
                         @if($highestBetToday !== null)
-                            <h3>{{$highestBetToday}}</h3>
+                            <h1 class="font-weight-bold">{{$highestBetToday}}</h1>
                         @else
-                            <h3>-</h3>
+                            <h1 class="font-weight-bold">N/A</h1>
                         @endif
-                        <p>Highest bet today</p>
+                        <a class="text-sm light-grey" href="#">N/A</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-6">
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>{{$totalProfit}}</h3>
-                        <p>Total profit</p>
+            <div class="col-lg-2 col-md-2 col-6">
+                <div class="card background-main">
+                    <div class="card-body">
+                        Total casino profit
+
+                        <h1 class="font-weight-bold">{{$totalProfit}}</h1>
+                        <a class="text-sm light-grey" href="#">N/A</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-6">
+                <div class="card background-main">
+                    <div class="card-body">
+                        Total wagered
+
+                        <h1 class="font-weight-bold">{{$totalWagered}}</h1>
+                        <a class="text-sm light-grey" href="#">N/A</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-6">
+                <div class="card background-main">
+                    <div class="card-body">
+                        Coming soon
+
+                        <h1 class="font-weight-bold">N/A</h1>
+                        <a class="text-sm light-grey" href="#">N/A</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        @foreach($latestGames as $game)
-            {{ $game->crashed_at }}<br>
-            {{ $game->bets }}<br>
-        @endforeach
         <div class="row">
-
+            <div class="col-12 col-lg-12 col-md-12">
+                <table class="table background-main">
+                    <thead>
+                    <tr>
+                        <th scope="col">Game ID</th>
+                        <th scope="col">Crashed at</th>
+                        <th scope="col">User id</th>
+                        <th scope="col">User crashed at</th>
+                        <th scope="col">Amount bet</th>
+                        <th scope="col">Creation date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($latestGames as $game)
+                        <tr>
+                            <td>{{ $game->id }}</td>
+                            <td>{{ $game->crashed_at }}</td>
+                            <td>
+                                @foreach($game->bets as $bet)
+                                    <a class="light-grey"
+                                       href="{{ route('admin.user.edit', $bet->user_id) }}">{{ $bet->user_id }}</a>
+                                    <br>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($game->bets as $bet)
+                                    <span>{{ $bet->user_crashed_at}}</span>
+                                    <br>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($game->bets as $bet)
+                                    @if($game->crashed_at < $bet->user_crashed_at  || $bet->user_crashed_at === null)
+                                        <span class="text-green">{{ $bet->amount_bet}}</span>
+                                    @else
+                                        <span class="text-red">{{ $bet->amount_bet}}</span>
+                                    @endif
+                                    <br>
+                                @endforeach
+                            </td>
+                            <td>{{ $game->created_at }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @stop

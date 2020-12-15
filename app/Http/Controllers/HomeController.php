@@ -23,8 +23,9 @@ class HomeController extends Controller
         $highestBetToday = $this->highestBetToday();
         $totalProfit = $this->totalProfit();
         $latestGames = $this->retrieveAmountOfGames(5);
+        $totalWagered = $this->totalWagered();
         $highestBetWithBetId = $this->highestBetWithBetId();
-        return view('admin.dashboard.home', compact('userCount', 'highestBet', 'highestBetToday', 'totalProfit', 'latestGames', 'highestBetWithBetId'));
+        return view('admin.dashboard.home', compact('userCount', 'highestBet', 'highestBetToday', 'totalProfit', 'latestGames', 'highestBetWithBetId', 'totalWagered'));
     }
 
     /**

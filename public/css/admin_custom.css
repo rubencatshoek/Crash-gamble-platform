@@ -96,3 +96,7 @@ body {
     border-left: 1px solid;
     height: 90px
 }
+
+.light-grey {
+    color: #82828a !important;
+}
