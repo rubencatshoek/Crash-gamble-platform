@@ -19,11 +19,18 @@ class HomeController extends Controller
         $userCount = $this->totalPlayers();
         $highestBet = $this->highestBet();
         $highestBetToday = $this->highestBetToday();
-        $totalProfit = $this->totalProfit();
+        $totalProfit = round($this->totalProfit());
         $latestGames = $this->retrieveAmountOfGames(5);
-        $totalWagered = $this->totalWagered();
+        $totalWagered = round($this->totalWagered());
         $highestBetWithBetId = $this->highestBetWithBetId();
-        return view('admin.dashboard.home', compact('userCount', 'highestBet', 'highestBetToday', 'totalProfit', 'latestGames', 'highestBetWithBetId', 'totalWagered'));
+        $highestCrash = $this->highestCrash();
+        $highestCrashToday = $this->highestCrashToday();
+        $totalBets = $this->totalBets();
+        $totalCrashes = $this->totalCrashes();
+
+        return view('admin.dashboard.home', compact('userCount', 'highestBet', 'highestBetToday',
+            'totalProfit', 'latestGames', 'highestBetWithBetId', 'totalWagered', 'highestCrash', 'highestCrashToday',
+            'totalBets', 'totalCrashes'));
     }
 
     /**
@@ -102,12 +109,42 @@ class HomeController extends Controller
         return $profit;
     }
 
-    public function highestBetWithBetId(){
+    public function highestBetWithBetId()
+    {
         return Bet::orderBy('amount_bet', 'desc')->first();
     }
 
     public function retrieveAmountOfGames($amount)
     {
-        return Crash::orderBy('id')->take($amount)->get();
+        return Crash::orderBy('id', 'desc')->take($amount)->get();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function highestCrash()
+    {
+        return Crash::max('crashed_at');
+    }
+
+    public function highestCrashToday()
+    {
+        return Crash::whereDate('created_at', Carbon::today())->get()->max('crashed_at');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function totalBets()
+    {
+        return Bet::all()->count();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function totalCrashes()
+    {
+        return Crash::all()->count();
     }
 }
