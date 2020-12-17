@@ -81,7 +81,13 @@
                     <p class="text-uppercase">Total wagered</p>
                 </div>
                 <div class="col-lg-3 text-center">
-                    <h1 class="font-weight-bold">{{ $highestBetToday }}</h1>
+                    <h1 class="font-weight-bold">
+                        @if(!empty($highestBetToday))
+                            {{ $highestBetToday }}
+                        @else
+                            -
+                        @endif
+                    </h1>
                     <p class="text-uppercase">Highest bet today</p>
                 </div>
                 <div class="col-lg-3 text-center">

@@ -46,9 +46,15 @@
                             @enderror
 
                             <div class="py-3">
-                                <input type="checkbox" name="terms">
+                                <input class="@error('terms') is-invalid @enderror" type="checkbox" name="terms" required>
                             <span>I accept bla bla bla.</span>
                             </div>
+
+                            @error('terms')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
 
                             <div class="row">
                                 <div class="col-md-6">

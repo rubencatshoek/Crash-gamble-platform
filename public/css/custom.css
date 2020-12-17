@@ -65,6 +65,16 @@ section {
     color: #ffffff !important;
 }
 
+.dropdown a:active {
+    color: #ffffff !important;
+    background-color: #151921 !important;
+}
+
+.dropdown a:visited {
+    color: #82828a;
+    background-color: #151921;
+}
+
 .navbar .nav-link:hover {
     color: #ffffff !important;
 }
