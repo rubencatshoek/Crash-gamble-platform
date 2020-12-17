@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Crash;
 use App\Models\Bet;
-use App\Models\Squad;
 use App\Models\User;
-use App\Models\Bet;
-use Illuminate\Support\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 class HomeController extends Controller
@@ -113,37 +109,5 @@ class HomeController extends Controller
     public function retrieveAmountOfGames($amount)
     {
         return Crash::orderBy('id')->take($amount)->get();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function totalWagered()
-    {
-        return Bet::sum('amount_bet');
-    }
-
-    /**
-     * @return mixed
-     */
-    public function highestBet()
-    {
-        return Bet::max('amount_bet');
-    }
-
-    /**
-     * @return mixed
-     */
-    public function totalPlayers()
-    {
-        return User::all()->count();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function highestBetToday()
-    {
-        return Bet::whereDate('created_at', Carbon::today())->get()->max('amount_bet');
     }
 }
