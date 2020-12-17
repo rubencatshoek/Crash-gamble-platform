@@ -10,7 +10,7 @@
     <div class="container-fluid">
         <div class="row">
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Total sign-ups
@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Highest bet all time
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Highest bet today
@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Total casino profit
@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Total wagered
@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Total bets
@@ -83,7 +83,7 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Highest crash all time
@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Highest crash today
@@ -109,7 +109,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Total crash games
@@ -120,7 +120,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Coming soon
@@ -131,7 +131,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Coming soon
@@ -142,7 +142,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Coming soon
@@ -210,5 +210,5 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+
 @stop

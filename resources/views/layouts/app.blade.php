@@ -130,6 +130,7 @@
                                 </a>
                             @endif
 
+                            @if(!$user->isAdmin())
                             <a class="dropdown-item py-2" href="{{ route('profile', $user->name) }}">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill"
                                      fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -138,6 +139,7 @@
                                 </svg>
                                 View profile
                             </a>
+                            @endif
 
                             @if(!$user->isAdmin())
                                 <a class="dropdown-item py-2" href="{{ route('squad.index') }}">

@@ -9,11 +9,13 @@
         </div>
     @endif
 
+    @if(!$user->isAdmin())
     <div class="pb-3">
         <a class="text-decoration-none" href="{{ route('profile', $user->name) }}">
             View profile
         </a>
     </div>
+    @endif
 
     @if(!$user->isAdmin())
         <div class="pb-3">
