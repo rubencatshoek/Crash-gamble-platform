@@ -24,7 +24,7 @@
                 <div class="col-lg-12 pb-3">
                     <div class="p-4 input-dark">
                         <h5>
-                            {{ $user->name }}
+                            <span id="name">{{ $user->name }}</span>
                         </h5>
                         <span class="text-grey">Joined: {{ $user->created_at }}</span>
                     </div>
@@ -70,11 +70,11 @@
                         <tbody>
                         <tr>
                             <td class="text-grey">Total bets</td>
-                            <td>100.000</td>
+                            <td>{{ $user->bets }}</td>
                         </tr>
                         <tr>
                             <td class="text-grey">Total profit</td>
-                            <td class="color-green">₿50</td>
+                            <td id="profitId"><img class="img-fluid" alt="loading" height="20px" width="20px" src="{{ asset('img/load.svg') }}"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -84,3 +84,21 @@
     </section>
     @include('layouts.footer')
 @endsection
+<script src="../js/jquery.min.js"></script>
+<script>
+    $(function () {
+        var user = document.getElementById('name').innerText;
+        $.ajax({
+            url: '../leaderboards/user/' + user,
+            type: "GET",
+            success: function (data) {
+                    if(data < 0) {
+                        document.getElementById("profitId").classList.add("color-red");
+                    } else {
+                        document.getElementById("profitId").classList.add("color-green");
+                    }
+                    document.getElementById("profitId").innerText = data;
+            }
+        });
+    });
+</script>

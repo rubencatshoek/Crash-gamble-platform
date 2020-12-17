@@ -4,8 +4,8 @@
             <div class="col-lg-3">
                 <h5 class="font-weight-bold">About us</h5>
 
-                <p class="text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-                    dignissim eros, vitae blandit orci.</p>
+                <p class="text-grey">Digital Phase’s gambling provides users with a verifiably safe, anonymous, and
+                    exciting experience in the world of online cryptocurrency gambling.</p>
             </div>
 
             <div class="col-lg-3">
@@ -23,7 +23,7 @@
                         <a class="text-grey" href="{{ route('leaderboards.index') }}">Leaderboards</a>
                     </li>
                     <li class="pb-1">
-                        <a class="text-grey" href="{{ route('faq.index') }}">FAQ</a>
+                        <a class="text-grey" href="{{ route('user.faq.index') }}">FAQ</a>
                     </li>
                 </ul>
             </div>

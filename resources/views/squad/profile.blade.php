@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-lg-12 pb-3">
                     <div class="p-4 input-dark">
-                        <h5>
+                        <h5 id="squad">
                             {{ $squad->name }}
                         </h5>
                         <span class="text-grey">Created: {{ $squad->created_at }}</span>
@@ -38,18 +38,20 @@
                         <p class="text-grey">{{ $squad->description }}</p>
 
                         @if(!empty(auth()->user()))
-                        @if(empty($userSquad->id) && !auth()->user()->isAdmin())
-                            <form method="POST" action="{{ route('squadJoin', $squad->id) }}">
-                                @csrf
-                                @method('POST')
-                                <input type="hidden" name="join_squad_id" value="{{ $squad->id }}">
-                                @if(auth()->user()->join_squad_id !== $squad->id)
-                                    <button class="mt-2 px-4 btn background-brand text-white">Request join</button>
-                                @else
-                                    <button class="mt-2 px-4 btn background-brand text-white" disabled>You already requested to join</button>
-                                @endif
-                            </form>
-                        @endif
+                            @if(empty($userSquad->id) && !auth()->user()->isAdmin())
+                                <form method="POST" action="{{ route('squadJoin', $squad->id) }}">
+                                    @csrf
+                                    @method('POST')
+                                    <input type="hidden" name="join_squad_id" value="{{ $squad->id }}">
+                                    @if(auth()->user()->join_squad_id !== $squad->id)
+                                        <button class="mt-2 px-4 btn background-brand text-white">Request join</button>
+                                    @else
+                                        <button class="mt-2 px-4 btn background-brand text-white" disabled>You already
+                                            requested to join
+                                        </button>
+                                    @endif
+                                </form>
+                            @endif
                         @endif
                     </div>
                 </div>
@@ -73,11 +75,12 @@
                         <tbody>
                         <tr>
                             <td class="text-grey">Total bets</td>
-                            <td>100.000</td>
+                            <td>{{ $squad->bets }}</td>
                         </tr>
                         <tr>
                             <td class="text-grey">Total profit</td>
-                            <td class="color-green">₿50</td>
+                            <td id="profitId"><img class="img-fluid" alt="loading" height="20px" width="20px"
+                                                   src="{{ asset('img/load.svg') }}"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -101,8 +104,12 @@
                         <tbody>
                         @foreach ($squadMembers as $squadMember)
                             <tr>
-                                <td><a href="{{ route('profile', $squadMember->user->name) }}">{{ $squadMember->user->name }}</a></td>
-                                <td class="color-green">₿50</td>
+                                <td><a id="userName{{ $loop->iteration }}"
+                                       href="{{ route('profile', $squadMember->user->name) }}">{{ $squadMember->user->name }}</a>
+                                </td>
+                                <td id="userProfitId{{ $loop->iteration }}"><img class="img-fluid" alt="loading"
+                                                                                 height="20px" width="20px"
+                                                                                 src="{{ asset('img/load.svg') }}"></td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -113,3 +120,39 @@
     </section>
     @include('layouts.footer')
 @endsection
+<script src="../js/jquery.min.js"></script>
+<script>
+    $(function () {
+        var squad = document.getElementById('squad').innerText;
+        $.ajax({
+            url: '../leaderboards/squad/' + squad,
+            type: "GET",
+            success: function (data) {
+                if (data < 0) {
+                    document.getElementById("profitId").classList.add("color-red");
+                } else {
+                    document.getElementById("profitId").classList.add("color-green");
+                }
+                document.getElementById("profitId").innerText = data;
+            }
+        });
+    });
+
+    $(function () {
+        var squad = document.getElementById('squad').innerText;
+        $.ajax({
+            url: '../leaderboards/profit/squad/' + squad,
+            type: "GET",
+            success: function (userData) {
+                for ($i = 1; $i <= Object.keys(userData).length; $i++) {
+                    if (userData[$i].profit < 0) {
+                        document.getElementById('userProfitId' + [$i]).classList.add("color-red");
+                    } else {
+                        document.getElementById('userProfitId' + [$i]).classList.add("color-green");
+                    }
+                    document.getElementById('userProfitId' + [$i]).innerText = userData[$i].profit;
+                }
+            }
+        });
+    });
+</script>

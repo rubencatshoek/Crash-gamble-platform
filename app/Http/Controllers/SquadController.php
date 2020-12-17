@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bet;
 use App\Models\Squad;
 use App\Models\SquadMember;
 use App\Models\SquadRole;
@@ -186,6 +187,19 @@ class SquadController extends Controller
 
             // Add the user in array
             $userInSquad->user = User::findOrFail($userInSquad->user_id);
+        }
+
+        // Get all user id's in squad
+        $usersInSquad = DB::table('squad_members')->where('squad_id', $squad->id)->get();
+
+        // Empty total bets
+        $squad->bets = 0;
+
+        // Foreach into the array
+        foreach ($usersInSquad as $userInSquad) {
+            $user = User::findOrFail($userInSquad->user_id);
+
+            $squad->bets += Bet::where('user_id', $user->id)->count();
         }
 
         // User can apply to squad if logged in

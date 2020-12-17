@@ -13,11 +13,12 @@
                 </div>
             </div>
 
-            <div class="row">
+            @if(!empty(auth()->user()))
+            <div class="row pb-5">
                 <div class="col-lg-6 pb-3">
                     <div class="p-3 input-dark">
                         <div class="form-inline">
-                            <h3 class="pr-3">#{{ $rank }}</h3>
+                            <h3 id="userRank" class="pr-3"><img class="img-fluid" alt="loading" height="33px" width="33px" src="{{ asset('img/load.svg') }}"></h3>
                             <span class="text-grey">Personal ranked</span>
                         </div>
                     </div>
@@ -26,14 +27,15 @@
                 <div class="col-lg-6 pb-3">
                     <div class="p-3 input-dark">
                         <div class="form-inline">
-                            <h3 class="pr-3"># WIP</h3>
+                            <h3 id="squadRank" class="pr-3"><img class="img-fluid" alt="loading" height="33px" width="33px" src="{{ asset('img/load.svg') }}"></h3>
                             <span class="text-grey">Squad ranked</span>
                         </div>
                     </div>
                 </div>
             </div>
+            @endif
 
-            <div class="row pt-5">
+            <div class="row">
                 <div class="col-lg-6 text-center">
                     <h3 class="font-weight-bold">Individual</h3>
                     <br>
@@ -46,20 +48,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($users as $user)
-                            @if(!$user->isAdmin())
-                                <tr>
-                                    <td>#{{ $loop->iteration }}</td>
-                                    <td><a href="{{ route('profile', $user->name) }}">{{ $user->name }}</a></td>
-
-                                    @if($user->profit >= 0)
-                                        <td class="color-green">₿{{ $user->profit }}</td>
-                                    @else
-                                        <td class="color-red">₿{{ $user->profit * -1 }}</td>
-                                    @endif
-                                </tr>
-                            @endif
-                        @endforeach
+                        @for($i = 1; $i <= 100; $i++)
+                            <tr>
+                                <td id="rankId{{ $i }}">#{{ $i }}</td>
+                                <td id="userId{{ $i }}"><img class="img-fluid" alt="loading" height="20px" width="20px" src="{{ asset('img/load.svg') }}"></td>
+                                <td id="profitId{{ $i }}" class="color-green"><img class="img-fluid" alt="loading" height="20px" width="20px" src="{{ asset('img/load.svg') }}"></td>
+                            </tr>
+                        @endfor
                         </tbody>
                     </table>
                 </div>
@@ -75,13 +70,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($squads as $squad)
+                        @for($j = 1; $j <= 100; $j++)
                             <tr>
-                                <td>#{{ $squad->id }}</td>
-                                <td><a href="{{ route('squad', $squad->name) }}">{{ $squad->name }}</a></td>
-                                <td class="color-green">₿ WIP</td>
+                                <td id="rankId{{ $j }}">#{{ $j }}</td>
+                                <td id="squadId{{ $j }}"><img class="img-fluid" alt="loading" height="20px" width="20px" src="{{ asset('img/load.svg') }}"></td>
+                                <td id="squadProfitId{{ $j }}" class=""><img class="img-fluid" alt="loading" height="20px" width="20px" src="{{ asset('img/load.svg') }}"></td>
                             </tr>
-                        @endforeach
+                        @endfor
                         </tbody>
                     </table>
                 </div>
@@ -90,3 +85,61 @@
     </section>
     @include('layouts.footer')
 @endsection
+<script src="./js/jquery.min.js"></script>
+<script>
+    $(function () {
+        $.ajax({
+            url: './leaderboards/users/hundred',
+            type: "GET",
+            success: function (data) {
+                for($i = 1; $i <= 100; $i++) {
+                    document.getElementById("userId" + $i).innerHTML = "<a href='./profile/" + data[$i].name + "'>" + data[$i].name + "</a>"
+                    if(data[$i].profit < 0) {
+                        document.getElementById("profitId" + $i).classList.add("color-red");
+                    } else {
+                        document.getElementById("profitId" + $i).classList.add("color-green");
+                    }
+                    document.getElementById("profitId" + $i).innerText = data[$i].profit;
+                }
+            }
+        });
+    });
+
+    $(function () {
+        $.ajax({
+            url: './leaderboards/squads/hundred',
+            type: "GET",
+            success: function (data) {
+                for($i = 1; $i <= 100; $i++) {
+                    document.getElementById("squadId" + $i).innerHTML = "<a href='./squad/" + data[$i].name + "'>" + data[$i].name + "</a>"
+                    if(data[$i].profit < 0) {
+                        document.getElementById("squadProfitId" + $i).classList.add("color-red");
+                    } else {
+                        document.getElementById("squadProfitId" + $i).classList.add("color-green");
+                    }
+                    document.getElementById("squadProfitId" + $i).innerText = data[$i].profit;
+                }
+            }
+        });
+    });
+
+    $(function () {
+        $.ajax({
+            url: './leaderboards/user/rank',
+            type: "GET",
+            success: function (data) {
+                document.getElementById("userRank").innerText = "#" + data;
+            }
+        });
+    });
+
+    $(function () {
+        $.ajax({
+            url: './leaderboards/squad/rank',
+            type: "GET",
+            success: function (data) {
+                document.getElementById("squadRank").innerText = "#" + data;
+            }
+        });
+    });
+</script>
