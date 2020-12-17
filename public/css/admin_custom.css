@@ -89,3 +89,14 @@ body {
     border: none !important;
     color: #bdbdbd !important;
 }
+
+/* DASHBOARD ------------------------------------------------------------------------- */
+
+.vertical-line {
+    border-left: 1px solid;
+    height: 90px
+}
+
+.light-grey {
+    color: #82828a !important;
+}

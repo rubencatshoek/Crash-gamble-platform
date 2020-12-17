@@ -80,6 +80,10 @@ section {
     color: #82828a;
 }
 
+.light-grey {
+    color: #82828a !important;
+}
+
 .table-landing td, .table th {
     border: none !important;
 }
