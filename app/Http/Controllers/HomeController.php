@@ -27,14 +27,12 @@ class HomeController extends Controller
      */
     public function welcome()
     {
-        $users = (new LeaderboardController)->leaderboardByProfit(5);
-        $squads = Squad::all()->take(5);
         $highestBet = $this->highestBet();
         $highestBetToday = $this->highestBetToday();
         $totalPlayers = $this->totalPlayers();
         $totalWagered = $this->totalWagered();
 
-        return view('welcome', compact('users', 'squads', 'highestBet', 'totalPlayers', 'totalWagered', 'highestBetToday'));
+        return view('welcome', compact('highestBet', 'totalPlayers', 'totalWagered', 'highestBetToday'));
     }
 
     /**
