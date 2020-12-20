@@ -15,8 +15,14 @@ class AchievementSeeder extends Seeder
     public function run()
     {
         DB::table('achievements')->insert([
-            'name' => 'Bet 100',
-            'description' => 'Bet atleast 100 currency in the casino',
+            'name' => 'Betting started',
+            'description' => 'Bet atleast 10 times in the casino',
+            'logic_added' => 1,
+        ]);
+
+        DB::table('achievements')->insert([
+            'name' => 'Bet 500',
+            'description' => 'Bet atleast 500 currency in the casino',
         ]);
     }
 }

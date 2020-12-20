@@ -257,6 +257,11 @@ return [
             'url'  => 'dashboard/admin/faq',
             'icon' => 'fas fa-fw fa-question-circle',
         ],
+        [
+            'text' => 'Achievement management',
+            'url'  => 'dashboard/admin/achievement',
+            'icon' => 'fas fa-check-circle',
+        ],
                 ['header' => 'FRONTEND'],
         [
             'text' => 'Homepage',

@@ -90,6 +90,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Bet::class, 'user_id');
     }
 
+
+    public function achievements() {
+        return $this->hasMany(UserAchievement::class, 'user_id');
+    }
+
     public function crashes()
     {
         return $this->belongsToMany(Crash::class, 'bets', 'crash_id');

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', "Create FAQ")
+@section('title', "Edit FAQ")
 
 @section('content_header')
     <h1>Edit FAQ <a class="ml-2 btn btn-primary btn-sm" href="{{ route('faq.index') }}">Back</a></h1>

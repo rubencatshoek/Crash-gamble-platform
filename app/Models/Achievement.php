@@ -11,6 +11,9 @@ class Achievement extends Model
 
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'logic_added',
     ];
+
+
 }

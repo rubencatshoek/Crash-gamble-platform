@@ -30,12 +30,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($achievements as $achievement)
-                            <tr>
-                                <td>{{ $achievement->name }}</td>
-                                <td>{{ $achievement->description }}</td>
-                                <td><span class="badge badge-warning">Unavailable</span></td>
-                            </tr>
+                        @foreach($allAchievements as $achievement)
+                            @if($achievement->logic_added === 1)
+                                <tr>
+                                    <td>{{ $achievement->name }}</td>
+                                    <td>{{ $achievement->description }}</td>
+                                    <td>
+
+                                        @if($achievement->achieved === 1)
+                                            <span class="badge badge-success">Completed</span>
+                                        @else
+                                            <span class="badge badge-danger">Incomplete</span>
+                                        @endif
+
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
                         </tbody>
                     </table>
