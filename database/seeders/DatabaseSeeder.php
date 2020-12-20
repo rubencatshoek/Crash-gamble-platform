@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SquadMemberSeeder::class);
         $this->call(CrashSeeder::class);
         $this->call(BetSeeder::class);
+        $this->call(AchievementSeeder::class);
     }
 }

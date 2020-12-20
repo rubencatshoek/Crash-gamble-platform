@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('bet', App\Http\Controllers\BetController::class);
     Route::resource('settings', App\Http\Controllers\SettingController::class);
     Route::resource('balance', App\Http\Controllers\BalanceController::class);
+    Route::resource('achievement', App\Http\Controllers\AchievementController::class);
 
     Route::resource('squad', App\Http\Controllers\SquadController::class);
     Route::get('/squad/{squad}', [App\Http\Controllers\SquadController::class, 'profile'])->name('squad');
