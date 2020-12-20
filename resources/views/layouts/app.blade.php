@@ -186,7 +186,7 @@
                             @endif
 
                                 @if(!$user->isAdmin())
-                                    <a class="dropdown-item py-2" href="{{ route('achievement.index') }}">
+                                    <a class="dropdown-item py-2" href="{{ route('frontAchievementPage') }}">
 
 
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
