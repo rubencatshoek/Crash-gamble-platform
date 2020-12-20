@@ -17,7 +17,7 @@ class AchievementSeeder extends Seeder
         DB::table('achievements')->insert([
             'name' => 'Betting started',
             'description' => 'Bet atleast 10 times in the casino',
-            'logic_added' => 1,
+            'logic_added' => true,
         ]);
 
         DB::table('achievements')->insert([
