@@ -31,7 +31,9 @@ Route::get('/tos', [App\Http\Controllers\LegalController::class, 'indexTos'])->n
 Route::get('/help', [App\Http\Controllers\LegalController::class, 'indexHelp'])->name('legal.help');
 
 Route::resource('play', App\Http\Controllers\PlayController::class);
+
 Route::get('/profile/{username}', [App\Http\Controllers\UserController::class, 'index'])->name('profile');
+Route::get('/squad/{squad}', [App\Http\Controllers\SquadController::class, 'profile'])->name('squad');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
@@ -46,7 +48,6 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::resource('squad', App\Http\Controllers\SquadController::class);
-    Route::get('/squad/{squad}', [App\Http\Controllers\SquadController::class, 'profile'])->name('squad');
     Route::get('/squad/handle/{user}/{handle}', [App\Http\Controllers\SquadController::class, 'handleRequesToJoin'])->name('handleRequesToJoin');
     Route::get('/manage/squad', [App\Http\Controllers\SquadController::class, 'manage'])->name('squad.manage');
     Route::get('/manage/squad/kick/{id}', [App\Http\Controllers\SquadController::class, 'kickSquadMember'])->name('squad.kick');
