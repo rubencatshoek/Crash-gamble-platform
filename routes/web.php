@@ -38,9 +38,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/balance/donate', [App\Http\Controllers\BalanceController::class, 'donate'])->name('balance.donate');
     Route::post('/settings/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 
+    Route::get('/achievements', [App\Http\Controllers\AchievementController::class, 'frontAchievementPage'])->name('frontAchievementPage');
+
     Route::resource('bet', App\Http\Controllers\BetController::class);
     Route::resource('settings', App\Http\Controllers\SettingController::class);
     Route::resource('balance', App\Http\Controllers\BalanceController::class);
+
 
     Route::resource('squad', App\Http\Controllers\SquadController::class);
     Route::get('/squad/{squad}', [App\Http\Controllers\SquadController::class, 'profile'])->name('squad');
@@ -86,6 +89,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
         });
 
         Route::resource('faq', App\Http\Controllers\Admin\FaqController::class);
+        Route::resource('achievement', App\Http\Controllers\AchievementController::class);
     });
 
 });

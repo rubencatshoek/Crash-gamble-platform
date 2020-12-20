@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Digital</b> Phase',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -256,6 +256,11 @@ return [
             'text' => 'FAQ management',
             'url'  => 'dashboard/admin/faq',
             'icon' => 'fas fa-fw fa-question-circle',
+        ],
+        [
+            'text' => 'Achievement management',
+            'url'  => 'dashboard/admin/achievement',
+            'icon' => 'fas fa-check-circle',
         ],
                 ['header' => 'FRONTEND'],
         [

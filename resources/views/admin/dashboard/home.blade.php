@@ -10,7 +10,7 @@
     <div class="container-fluid">
         <div class="row">
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Total sign-ups
@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Highest bet all time
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Highest bet today
@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Total casino profit
@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Total wagered
@@ -70,7 +70,79 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-6">
+            <div class="col-lg-2 col-md-6 col-6">
+                <div class="card background-main">
+                    <div class="card-body">
+                        Total bets
+
+                        <h1 class="font-weight-bold">{{ $totalBets }}</h1>
+                        <a class="text-sm light-grey" href="#">N/A</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2 col-md-6 col-6">
+                <div class="card background-main">
+                    <div class="card-body">
+                        Highest crash all time
+
+                        <h1 class="font-weight-bold">{{$highestCrash}}</h1>
+                        <a class="text-sm light-grey" href="#">N/A</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 col-6">
+                <div class="card background-main">
+                    <div class="card-body">
+                        Highest crash today
+
+                        @if($highestCrashToday !== null)
+                            <h1 class="font-weight-bold">{{$highestCrashToday}}</h1>
+                        @else
+                            <h1 class="font-weight-bold">N/A</h1>
+                        @endif
+                        <a class="text-sm light-grey" href="#">N/A</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 col-6">
+                <div class="card background-main">
+                    <div class="card-body">
+                        Total crash games
+
+                        <h1 class="font-weight-bold">{{ $totalCrashes }}</h1>
+                        <a class="text-sm light-grey" href="#">N/A</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 col-6">
+                <div class="card background-main">
+                    <div class="card-body">
+                        Coming soon
+
+                        <h1 class="font-weight-bold">N/A</h1>
+                        <a class="text-sm light-grey" href="#">N/A</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 col-6">
+                <div class="card background-main">
+                    <div class="card-body">
+                        Coming soon
+
+                        <h1 class="font-weight-bold">N/A</h1>
+                        <a class="text-sm light-grey" href="#">N/A</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 col-6">
                 <div class="card background-main">
                     <div class="card-body">
                         Coming soon
@@ -138,5 +210,5 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+
 @stop

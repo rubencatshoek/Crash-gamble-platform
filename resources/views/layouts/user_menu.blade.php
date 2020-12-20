@@ -9,11 +9,13 @@
         </div>
     @endif
 
+    @if(!$user->isAdmin())
     <div class="pb-3">
         <a class="text-decoration-none" href="{{ route('profile', $user->name) }}">
             View profile
         </a>
     </div>
+    @endif
 
     @if(!$user->isAdmin())
         <div class="pb-3">
@@ -47,6 +49,15 @@
                 Manage balance
             </a>
         </div>
+    @endif
+
+    @if(!$user->isAdmin())
+    <div class="pb-3">
+        <a class="text-decoration-none" href="{{ route('achievement.index') }}"
+           style="@if(Request::is('achievement')) color:white !important; @endif">
+            Achievements
+        </a>
+    </div>
     @endif
 
     <div class="pb-3">

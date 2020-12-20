@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Crash;
 use Illuminate\Database\Seeder;
 
-class CrashSeeder extends Seeder
+class UserAchievementSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +13,6 @@ class CrashSeeder extends Seeder
      */
     public function run()
     {
-        Crash::factory()->times(150)->create();
+        //
     }
 }

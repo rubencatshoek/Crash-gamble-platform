@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $user = User::where('name', $username)->first();
 
-        if ($user === null) {
+        if ($user === null || $user->name === 'admin') {
             return abort(404);
         }
 
