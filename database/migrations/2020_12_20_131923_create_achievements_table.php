@@ -17,7 +17,7 @@ class CreateAchievementsTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description');
-            $table->boolean('logic_added')->default(0);
+            $table->boolean('logic_added')->default(false);
             $table->timestamps();
         });
     }

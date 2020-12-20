@@ -31,13 +31,13 @@
                         </thead>
                         <tbody>
                         @foreach($allAchievements as $achievement)
-                            @if($achievement->logic_added === 1)
+                            @if($achievement->logic_added == true)
                                 <tr>
                                     <td>{{ $achievement->name }}</td>
                                     <td>{{ $achievement->description }}</td>
                                     <td>
 
-                                        @if($achievement->achieved === 1)
+                                        @if($achievement->achieved == true)
                                             <span class="badge badge-success">Completed</span>
                                         @else
                                             <span class="badge badge-danger">Incomplete</span>

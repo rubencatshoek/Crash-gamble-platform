@@ -49,7 +49,7 @@
                             @endif
                         </td>
                         <td>
-                            @if($achievement->logic_added === 0)
+                            @if($achievement->logic_added == false)
                                 <form class="form-check-inline" method="POST"
                                       action="{{ route('achievement.destroy', $achievement->id) }}">
                                     @csrf
