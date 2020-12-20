@@ -54,7 +54,7 @@ class AchievementController extends Controller
             UserAchievement::firstOrCreate([
                 'user_id' => $user->id,
                 'achievement_id' => 1,
-                'achieved' => 1,
+                'achieved' => true,
             ]);
         }
 

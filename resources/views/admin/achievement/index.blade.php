@@ -42,7 +42,7 @@
                         <td>{{ $achievement->name }}</td>
                         <td>{{ $achievement->description }}</td>
                         <td>
-                            @if($achievement->logic_added === 1)
+                            @if($achievement->logic_added == true)
                                 <p>Yes</p>
                             @else
                                 <p>No</p>
