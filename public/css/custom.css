@@ -149,5 +149,14 @@ input[type="text"]:disabled, input[type="email"]:disabled {
 }
 
 .text-responsive {
-    font-size: calc(200% + 1vw + 1vh);
+    font-size: calc(200% + 1vw + 0.5vh);
+}
+
+.padding-footer {
+    padding-top: 6%;
+    padding-bottom: 1%;
+}
+
+.line-height {
+    line-height: 185%;
 }
