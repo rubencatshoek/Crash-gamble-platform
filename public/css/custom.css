@@ -160,3 +160,10 @@ input[type="text"]:disabled, input[type="email"]:disabled {
 .line-height {
     line-height: 185%;
 }
+
+@media only screen and (max-width: 600px) {
+    .mobile-spacer {
+        padding-top: 8%;
+        padding-bottom: 8%;
+    }
+}

@@ -62,9 +62,11 @@
         </div>
         <div class="spacer">
         </div>
+        <div class="mobile-spacer"></div>
     </div>
 
     <section class="background-secondary text-white">
+        <div class="mobile-spacer"></div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center pb-4">
@@ -101,9 +103,11 @@
             </div>
 
         </div>
+        <div class="mobile-spacer"></div>
     </section>
 
     <section class="background-main text-white">
+        <div class="mobile-spacer"></div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center pb-4">
@@ -136,9 +140,11 @@
                 </div>
             </div>
         </div>
+        <div class="mobile-spacer"></div>
     </section>
 
     <section class="background-secondary text-white">
+        <div class="mobile-spacer"></div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center pb-4">
@@ -148,7 +154,8 @@
                         most rigorous standards and can stand up to the highest amount of scrutiny.</p>
                 </div>
             </div>
-
+        </div>
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3 text-center">
                     <div class="pb-3">
@@ -208,11 +215,12 @@
                         Random.org API in order to guarantee even further provable randomization.</p>
                 </div>
             </div>
-
         </div>
+        <div class="mobile-spacer"></div>
     </section>
 
     <section class="background-main text-white">
+        <div class="mobile-spacer"></div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center pb-4">
@@ -246,11 +254,12 @@
                     </p>
                 </div>
             </div>
-
         </div>
+        <div class="mobile-spacer"></div>
     </section>
 
     <section class="background-secondary text-white">
+        <div class="mobile-spacer"></div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center pb-4">
@@ -284,8 +293,8 @@
                     <img alt="crash gif" class="img-fluid" src="{{ asset('img/crash.gif') }}">
                 </div>
             </div>
-
         </div>
+        <div class="mobile-spacer"></div>
     </section>
 
     <section class="background-main text-white">
@@ -346,9 +355,11 @@
                 </div>
             </div>
         </div>
+        <div class="mobile-spacer"></div>
     </section>
 
     <section class="background-secondary text-white">
+        <div class="mobile-spacer"></div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center pb-4">
@@ -373,6 +384,7 @@
             </div>
 
         </div>
+        <div class="mobile-spacer"></div>
     </section>
     @include('layouts.footer')
 @endsection
