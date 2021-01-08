@@ -1,6 +1,4 @@
 <div class="footer background-main text-white padding-footer">
-    <div class="spacer">
-    </div>
     <div class="container">
         <div class="row pb-4">
             <div class="col-lg-6">
