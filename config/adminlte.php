@@ -46,11 +46,11 @@ return [
     */
 
     'logo' => '<b>Digital</b> Phase',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => './img/logo-small.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'Digital Phase',
 
     /*
     |--------------------------------------------------------------------------
@@ -188,7 +188,7 @@ return [
 
     'use_route_url' => false,
 
-    'dashboard_url' => 'dashboard',
+    'dashboard_url' => 'dashboard/admin',
 
     'logout_url' => 'logout',
 
