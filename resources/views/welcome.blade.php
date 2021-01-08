@@ -375,7 +375,7 @@
 
                 </div>
                 <div class="col-lg-6 text-center">
-                    <a class="btn background-brand btn-lg w-100 text-white" href="{{ route('play.index') }}">Play
+                    <a class="btn background-brand btn-lg w-100 text-white" href="{{ route('register') }}">Register
                         now</a>
                 </div>
                 <div class="col-lg-3 text-center">

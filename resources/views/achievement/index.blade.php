@@ -52,6 +52,8 @@
                 </div>
             </div>
         </div>
+        <div class="spacer">
+        </div>
     </section>
 
     @include('layouts.footer')
