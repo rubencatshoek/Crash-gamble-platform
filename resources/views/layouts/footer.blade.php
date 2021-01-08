@@ -66,7 +66,7 @@
                 </ul>
             </div>
         </div>
-        <hr style="border-top: 1px solid #82828a;" class="mt-5">
+        <hr style="border-top: 1px solid #82828a;" class="mt-5 d-none d-sm-block">
         <div class="row pt-2">
             <div class="col-md-12">
                 <p class="text-center">Copyright © <?php echo date("Y"); ?> Crash Gamble Website. All rights reserved.</p>
