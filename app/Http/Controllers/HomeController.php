@@ -17,8 +17,8 @@ class HomeController extends Controller
     public function index()
     {
         $userCount = $this->totalPlayers();
-        $highestBet = $this->highestBet();
-        $highestBetToday = $this->highestBetToday();
+        $highestBet = round($this->highestBet());
+        $highestBetToday = round($this->highestBetToday());
         $totalProfit = round($this->totalProfit());
         $latestGames = $this->retrieveAmountOfGames(5);
         $totalWagered = round($this->totalWagered());
@@ -40,10 +40,10 @@ class HomeController extends Controller
      */
     public function welcome()
     {
-        $highestBet = $this->highestBet();
-        $highestBetToday = $this->highestBetToday();
+        $highestBet = round($this->highestBet(), 2);
+        $highestBetToday = round($this->highestBetToday(), 2);
         $totalPlayers = $this->totalPlayers();
-        $totalWagered = $this->totalWagered();
+        $totalWagered = round($this->totalWagered(), 2);
 
         return view('welcome', compact('highestBet', 'totalPlayers', 'totalWagered', 'highestBetToday'));
     }
