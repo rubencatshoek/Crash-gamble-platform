@@ -76,12 +76,12 @@ Route::get('/leaderboards/profit/squad/{squad}', [App\Http\Controllers\Leaderboa
 //Dashboard routes
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
 
-    //Frontpage of the dashboard
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/bet/{betId}', [App\Http\Controllers\BetController::class, 'show'])->name('bet.user.id');
-
 //Admin routes within dashboard
     Route::middleware('auth.admin')->prefix('admin')->group(function () {
+
+        //Frontpage of the dashboard
+        Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::get('/bet/{betId}', [App\Http\Controllers\BetController::class, 'show'])->name('bet.user.id');
 
         //user routes
         Route::prefix('users')->group(function () {

@@ -244,7 +244,7 @@ return [
         ['header' => 'GENERAL'],
         [
             'text' => 'Dashboard',
-            'url'  => 'dashboard',
+            'url'  => 'dashboard/admin',
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
