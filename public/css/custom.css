@@ -85,6 +85,45 @@ section {
     font-weight: 900;
 }
 
+/* CHAT ---------------------------------------------------------------------- */
+.chat {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chat li {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #B3A9A9;
+}
+
+.chat li .chat-body p {
+    margin: 0;
+    color: #777777;
+}
+
+.panel-body {
+    height: 88vh;
+    overflow: auto;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+
 /* OTHER ---------------------------------------------------------------------- */
 .text-grey {
     color: #82828a;
@@ -188,4 +227,8 @@ input[type="text"]:disabled, input[type="email"]:disabled {
     .hero-background {
         background-image: none;
     }
+}
+
+.cursor-pointer{
+    cursor: pointer;
 }
