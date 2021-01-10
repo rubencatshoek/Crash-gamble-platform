@@ -26,7 +26,7 @@
                     <div class="card-body">
                         Highest bet all time
 
-                        <h1 class="font-weight-bold">{{$highestBetWithBetId->amount_bet}}</h1>
+                        <h1 class="font-weight-bold">{{round($highestBetWithBetId->amount_bet)}}</h1>
                         <a class="text-sm light-grey" href="{{ route('bet.user.id', $highestBetWithBetId->id) }}">View
                             highest bet all time</a>
                     </div>
