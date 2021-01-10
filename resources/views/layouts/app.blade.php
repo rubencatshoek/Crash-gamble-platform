@@ -31,7 +31,7 @@
 </head>
 <body>
 <nav class="shadow-sm navbar navbar-expand-lg background-main fixed-top navbar-dark py-3" id="mainNav">
-    <div class="container">
+    <div class="container-fluid">
         <a href="{{ route('welcome') }}">
             <img alt="logo" class="img-fluid" height="200px" width="200px" src="{{ asset('img/logo.png') }}">
         </a>
@@ -41,6 +41,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('welcome') }}"
+                       style="@if(Request::is('play')) color:white !important; @endif">Home</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('play.index') }}"
                        style="@if(Request::is('play')) color:white !important; @endif">Play</a>
