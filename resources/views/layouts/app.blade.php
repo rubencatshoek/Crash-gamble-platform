@@ -43,7 +43,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('welcome') }}"
-                       style="@if(Request::is('play')) color:white !important; @endif">Home</a>
+                       style="@if(Request::is('/')) color:white !important; @endif">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('play.index') }}"
@@ -93,7 +93,7 @@
                                 {{ $user->paid_balance + $user->free_balance }}
                             </a>
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownBalanceMenuLink">
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownBalanceMenuLink">
                                 <a href="#" class="dropdown-item py-2">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -125,7 +125,7 @@
                             {{ $user->name }}
                         </a>
 
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
 
                             @if($user->isAdmin())
                                 <a class="dropdown-item py-2" href="{{ route('home') }}">

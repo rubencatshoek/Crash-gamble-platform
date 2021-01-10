@@ -22,7 +22,7 @@ class HomeController extends Controller
         $totalProfit = round($this->totalProfit());
         $latestGames = $this->retrieveAmountOfGames(5);
         $totalWagered = round($this->totalWagered());
-        $highestBetWithBetId = $this->highestBetWithBetId();
+        $highestBetWithBetId = round($this->highestBetWithBetId());
         $highestCrash = $this->highestCrash();
         $highestCrashToday = $this->highestCrashToday();
         $totalBets = $this->totalBets();
