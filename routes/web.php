@@ -26,6 +26,11 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('
 Route::get('/leaderboards', [App\Http\Controllers\LeaderboardController::class, 'index'])->name('leaderboards.index');
 Route::get('/faq', [App\Http\Controllers\FaqController::class, 'index'])->name('user.faq.index');
 
+// chat routes
+Route::get('/play/messages', [App\Http\Controllers\PlayController::class, 'fetchMessages'])->name('messages');
+Route::post('/play/messages', [App\Http\Controllers\PlayController::class, 'sendMessage'])->name('messages');
+Route::post('/play/checkifmuted', [App\Http\Controllers\Admin\UserController::class, 'checkIfMuted'])->name('checkIfMuted');
+
 Route::get('/legal', [App\Http\Controllers\LegalController::class, 'indexLegal'])->name('legal.index');
 Route::get('/tos', [App\Http\Controllers\LegalController::class, 'indexTos'])->name('legal.tos');
 Route::get('/help', [App\Http\Controllers\LegalController::class, 'indexHelp'])->name('legal.help');
@@ -93,4 +98,3 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     });
 
 });
-

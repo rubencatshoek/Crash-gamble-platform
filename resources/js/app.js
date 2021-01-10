@@ -7,6 +7,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import VueChatScroll from 'vue-chat-scroll';
+Vue.use(VueChatScroll);
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,6 +22,8 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('chat-messages', require('./components/ChatMessages.vue').default);
+Vue.component('chat-form', require('./components/ChatForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +33,38 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+
+    data: {
+        messages: []
+    },
+
+    created() {
+        this.fetchMessages();
+
+        Echo.private('chat')
+
+            .listen('MessageSent', (e) => {
+                this.messages.push({
+                    message: e.message.message,
+                    name: e.user.name,
+                    created_at: e.message.created_at,
+                    user_id: e.user.id
+                });
+            });
+    },
+
+    methods: {
+        fetchMessages() {
+            axios.get('play/messages').then(response => {
+                this.messages = response.data;
+            });
+        },
+
+        addMessage(message) {
+            message.created_at = new Date().getTime();
+            this.messages.push(message);
+            axios.post('play/messages', message).then(response => {
+            });
+        }
+    }
 });

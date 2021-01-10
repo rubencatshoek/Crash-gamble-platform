@@ -256,7 +256,7 @@
             let modal = $(this);
 
             //Set all default confirm modal/form values
-            modal.find('#confirm_form').attr('action', `/dashboard/admin/users/${id}/updateStatus`);
+            modal.find('#confirm_form').attr('action', `users/${id}/updateStatus`);
             modal.find('#action').val(`${action}`);
             modal.find('#id').val(id);
 
