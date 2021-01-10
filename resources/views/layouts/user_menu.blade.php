@@ -53,8 +53,8 @@
 
     @if(!$user->isAdmin())
     <div class="pb-3">
-        <a class="text-decoration-none" href="{{ route('achievement.index') }}"
-           style="@if(Request::is('achievement')) color:white !important; @endif">
+        <a class="text-decoration-none" href="{{ route('frontAchievementPage') }}"
+           style="@if(Request::is('achievements')) color:white !important; @endif">
             Achievements
         </a>
     </div>
