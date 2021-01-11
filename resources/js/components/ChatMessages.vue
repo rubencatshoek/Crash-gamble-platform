@@ -14,17 +14,19 @@
                         {{ message.name }}
                     </b>
 
-                    <small v-if="new Date(message['created_at']).getDate() === new Date().getDate()"
-                           class="text-white">
-                        {{ moment.utc(message.created_at).local().format('HH:mm') }}
-                    </small>
 
-                    <small v-else-if="new Date(message['created_at']).getDate() < new Date().getDate()"
-                           class="text-white">
-                        {{ moment.utc(message.created_at).local().format('L HH:MM') }}
-                    </small>
 
-                    <div v-if="auth_user !== null">
+                    <div v-if="auth_user !== null" style="display: inline">
+                        <small v-if="new Date(message['created_at']).getDate() === new Date().getDate() && auth_user !== null"
+                               class="text-white">
+                            {{ moment.utc(message.created_at).local().format('HH:mm') }}
+                        </small>
+
+                        <small v-else-if="new Date(message['created_at']).getDate() < new Date().getDate() && auth_user !== null"
+                               class="text-white">
+                            {{ moment.utc(message.created_at).local().format('L HH:MM') }}
+                        </small>
+
                         <div v-if="auth_user.role_id === 2 || auth_user.role_id === 3 && message.role_id === 1"
                              class="dropdown-menu">
                             <mute @muted="changeStatus"
@@ -41,7 +43,17 @@
                         </div>
                     </div>
 
-                    <div v-else>
+                    <div v-else style="display: inline">
+                        <small v-if="new Date(message['created_at']).getDate() === new Date().getDate()"
+                               class="text-white">
+                            {{ moment.utc(message.created_at).local().format('HH:MM') }}
+                        </small>
+
+                        <small v-else-if="new Date(message['created_at']).getDate() < new Date().getDate()"
+                               class="text-white">
+                            {{ moment.utc(message.created_at).local().format('L HH:MM') }}
+                        </small>
+
                         <div class="dropdown-menu">
                             <mute @muted="changeStatus"
                                   v-if="message.status_id === null || message.status_id === 1 || message.status_id === 3"
@@ -54,11 +66,6 @@
                             <un-ban @unban="changeStatus" v-if="message.status_id === 1" :userId="message.user_id"
                                     :message="message"></un-ban>
                         </div>
-
-                        <small v-if="new Date(message['created_at']).getDate() === new Date().getDate()"
-                               class="text-white">
-                            {{ moment.utc(message.created_at).local().format('HH:MM') }}
-                        </small>
                     </div>
                 </div>
                 <p>

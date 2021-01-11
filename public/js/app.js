@@ -2062,6 +2062,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -65727,36 +65734,38 @@ var render = function() {
                   )
                 ]),
             _vm._v(" "),
-            new Date(message["created_at"]).getDate() === new Date().getDate()
-              ? _c("small", { staticClass: "text-white" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(
-                        _vm.moment
-                          .utc(message.created_at)
-                          .local()
-                          .format("HH:mm")
-                      ) +
-                      "\n                "
-                  )
-                ])
-              : new Date(message["created_at"]).getDate() < new Date().getDate()
-              ? _c("small", { staticClass: "text-white" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(
-                        _vm.moment
-                          .utc(message.created_at)
-                          .local()
-                          .format("L HH:MM")
-                      ) +
-                      "\n                "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
             _vm.auth_user !== null
-              ? _c("div", [
+              ? _c("div", { staticStyle: { display: "inline" } }, [
+                  new Date(message["created_at"]).getDate() ===
+                    new Date().getDate() && _vm.auth_user !== null
+                    ? _c("small", { staticClass: "text-white" }, [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(
+                              _vm.moment
+                                .utc(message.created_at)
+                                .local()
+                                .format("HH:mm")
+                            ) +
+                            "\n                    "
+                        )
+                      ])
+                    : new Date(message["created_at"]).getDate() <
+                        new Date().getDate() && _vm.auth_user !== null
+                    ? _c("small", { staticClass: "text-white" }, [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(
+                              _vm.moment
+                                .utc(message.created_at)
+                                .local()
+                                .format("L HH:MM")
+                            ) +
+                            "\n                    "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
                   _vm.auth_user.role_id === 2 ||
                   (_vm.auth_user.role_id === 3 && message.role_id === 1)
                     ? _c(
@@ -65807,7 +65816,37 @@ var render = function() {
                       )
                     : _vm._e()
                 ])
-              : _c("div", [
+              : _c("div", { staticStyle: { display: "inline" } }, [
+                  new Date(message["created_at"]).getDate() ===
+                  new Date().getDate()
+                    ? _c("small", { staticClass: "text-white" }, [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(
+                              _vm.moment
+                                .utc(message.created_at)
+                                .local()
+                                .format("HH:MM")
+                            ) +
+                            "\n                    "
+                        )
+                      ])
+                    : new Date(message["created_at"]).getDate() <
+                      new Date().getDate()
+                    ? _c("small", { staticClass: "text-white" }, [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(
+                              _vm.moment
+                                .utc(message.created_at)
+                                .local()
+                                .format("L HH:MM")
+                            ) +
+                            "\n                    "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c(
                     "div",
                     { staticClass: "dropdown-menu" },
@@ -65853,23 +65892,7 @@ var render = function() {
                         : _vm._e()
                     ],
                     1
-                  ),
-                  _vm._v(" "),
-                  new Date(message["created_at"]).getDate() ===
-                  new Date().getDate()
-                    ? _c("small", { staticClass: "text-white" }, [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(
-                              _vm.moment
-                                .utc(message.created_at)
-                                .local()
-                                .format("HH:MM")
-                            ) +
-                            "\n                    "
-                        )
-                      ])
-                    : _vm._e()
+                  )
                 ])
           ]),
           _vm._v(" "),
