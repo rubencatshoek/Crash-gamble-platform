@@ -103,12 +103,18 @@ class PlayController extends Controller
     {
         $messages = DB::table('messages')
             ->leftJoin('user_statuses', 'messages.user_id', '=', 'user_statuses.user_id')
+            ->where('user_statuses.status_id', '!==', 1)
+            ->orWhere('user_statuses.status_id', '!==', 2)
+            ->orWhereNull('user_statuses.status_id')
             ->join('users', 'messages.user_id', '=', 'users.id')
             ->select('messages.*', 'user_statuses.status_id', 'users.name', 'users.role_id')
-            ->orderBy('messages.created_at')
+            ->orderBy('messages.created_at', 'desc')
+            ->take(50)
             ->get();
 
-        return $messages;
+        $reverseObj = json_decode($messages);
+
+        return array_reverse($reverseObj);
     }
 
     /**

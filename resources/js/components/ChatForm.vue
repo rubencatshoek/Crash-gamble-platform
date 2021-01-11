@@ -25,8 +25,11 @@ export default {
             this.$emit('messagesent', {
                 name: this.user.name,
                 message: this.newMessage,
-                user_id: this.user.id
+                user_id: this.user.id,
+                role_id: this.user.role_id,
+                status_id: this.user.status_id,
             });
+
             this.newMessage = '';
         },
     }
