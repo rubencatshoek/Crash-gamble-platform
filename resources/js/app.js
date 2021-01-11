@@ -42,13 +42,15 @@ const app = new Vue({
         this.fetchMessages();
 
         Echo.private('chat')
-
             .listen('MessageSent', (e) => {
                 this.messages.push({
                     message: e.message.message,
                     name: e.user.name,
                     created_at: e.message.created_at,
-                    user_id: e.user.id
+                    user_id: e.user.id,
+                    role_id: e.user.role_id,
+                    status_id: null
+
                 });
             });
     },

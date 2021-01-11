@@ -3,7 +3,7 @@
         <li class="left clearfix" v-for="message in messages">
             <div class="chat-body clearfix">
                 <div class="header">
-                    <b v-if="auth_user !== null && auth_user.role_id !== 1"
+                    <b v-if="auth_user !== null && auth_user.role_id !== 1 && message.role_id !== 3"
                        class="primary-font text-white cursor-pointer" data-toggle="dropdown"
                        aria-haspopup="true"
                        aria-expanded="false">
@@ -16,17 +16,12 @@
 
                     <small v-if="new Date(message['created_at']).getDate() === new Date().getDate()"
                            class="text-white">
-                        {{
-                            new Date(message.created_at).toLocaleTimeString([], {
-                                hour: '2-digit',
-                                minute: '2-digit'
-                            })
-                        }}
+                        {{ moment.utc(message.created_at).local().format('HH:mm') }}
                     </small>
 
                     <small v-else-if="new Date(message['created_at']).getDate() < new Date().getDate()"
                            class="text-white">
-                        {{ new Date(message.created_at).toLocaleString() }}
+                        {{ moment.utc(message.created_at).local().format('L HH:MM') }}
                     </small>
 
                     <div v-if="auth_user !== null">
@@ -38,7 +33,8 @@
                             <un-mute @unmute="changeStatus" v-else-if="message.status_id === 2"
                                      :userId="message.user_id"
                                      :message="message"></un-mute>
-                            <ban @ban="changeStatus" v-if="message.status_id === null" :userId="message.user_id"
+                            <ban @ban="changeStatus" v-if="message.status_id === null || message.status_id === 2"
+                                 :userId="message.user_id"
                                  :message="message"></ban>
                             <un-ban @unban="changeStatus" v-if="message.status_id === 1" :userId="message.user_id"
                                     :message="message"></un-ban>
@@ -61,12 +57,7 @@
 
                         <small v-if="new Date(message['created_at']).getDate() === new Date().getDate()"
                                class="text-white">
-                            {{
-                                new Date(message.created_at).toLocaleTimeString([], {
-                                    hour: '2-digit',
-                                    minute: '2-digit'
-                                })
-                            }}
+                            {{ moment.utc(message.created_at).local().format('HH:MM') }}
                         </small>
                     </div>
                 </div>
@@ -83,6 +74,9 @@ import Mute from "./Mute";
 import UnMute from "./UnMute";
 import Ban from "./Ban";
 import UnBan from "./UnBan";
+import moment from "moment";
+
+Vue.prototype.moment = moment
 
 export default {
     components: {UnBan, UnMute, Mute, Ban},
